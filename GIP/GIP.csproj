@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EDAE134E-F00C-4498-A3BD-64D14FC51351}</ProjectGuid>
+    <ProjectGuid>{7AFDB0B2-31A3-4872-BCC7-52CC1B4E5A0F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>GIP6ICT</RootNamespace>
-    <AssemblyName>GIP6ICT</AssemblyName>
+    <RootNamespace>GIP</RootNamespace>
+    <AssemblyName>GIP</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -54,6 +54,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GIP6ICT.Properties
+namespace GIP.Properties
 {
 
 

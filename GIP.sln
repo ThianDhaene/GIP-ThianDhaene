@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.3.32825.248
+VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIP6ICT", "GIP6ICT\GIP6ICT.csproj", "{EDAE134E-F00C-4498-A3BD-64D14FC51351}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIP", "GIP\GIP.csproj", "{7AFDB0B2-31A3-4872-BCC7-52CC1B4E5A0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EDAE134E-F00C-4498-A3BD-64D14FC51351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EDAE134E-F00C-4498-A3BD-64D14FC51351}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EDAE134E-F00C-4498-A3BD-64D14FC51351}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EDAE134E-F00C-4498-A3BD-64D14FC51351}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AFDB0B2-31A3-4872-BCC7-52CC1B4E5A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AFDB0B2-31A3-4872-BCC7-52CC1B4E5A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AFDB0B2-31A3-4872-BCC7-52CC1B4E5A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AFDB0B2-31A3-4872-BCC7-52CC1B4E5A0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {66F57594-0EE3-4273-BDFF-9AC5861DA771}
+		SolutionGuid = {27077AA7-AF39-49FA-B780-63A9017B2DD9}
 	EndGlobalSection
 EndGlobal

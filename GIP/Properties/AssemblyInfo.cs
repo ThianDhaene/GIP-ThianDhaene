@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GIP6ICT")]
+[assembly: AssemblyTitle("GIP")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Contoso")]
-[assembly: AssemblyProduct("GIP6ICT")]
-[assembly: AssemblyCopyright("Copyright © Contoso 2023")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("GIP")]
+[assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("edae134e-f00c-4498-a3bd-64d14fc51351")]
+[assembly: Guid("7afdb0b2-31a3-4872-bcc7-52cc1b4e5a0f")]
 
 // Version information for an assembly consists of the following four values:
 //
