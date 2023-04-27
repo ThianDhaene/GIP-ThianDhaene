@@ -59,12 +59,13 @@ namespace GIP
                 lstConsole.Items.Insert(0, data);
                 if (data.Contains("PARKING-OPGESTART"))
                 {
-                    tsConnectie.Text="Verbonden";
+                    tsConnectie.Text = "Verbonden";
                     tsConnectie.ForeColor = Color.Green;
                 }
-                else if (data.Contains("Slagboom1-01"))
+                else if (data.StartsWith("B"))
                 {
-                    
+                    int bezetteparkeerplaatsen = int.Parse(data.Substring(1));
+                    BezetteParkeerplaatsen =  bezetteparkeerplaatsen;
                 }
             }));
 
@@ -163,7 +164,7 @@ namespace GIP
         private void button1_Click_1(object sender, EventArgs e)
         {
             BezetteParkeerplaatsen++;
-            serial.Write("test\r");
+            //serial.Write("test\r");
             
         }
 

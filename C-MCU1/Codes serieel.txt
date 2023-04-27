@@ -5,3 +5,5 @@ slagboom1-2 //slagboom 1 altijd gesloten
 slagboom2-0 //slagboom 2 normale werking
 slagboom2-1 //slagboom 2 altijd open
 slagboom2-2 //slagboom 2 altijd gesloten
+
+B[nummer] //op de plaats van nummer wordt het nummer van het aantal bezette plaatsen ingevuld
