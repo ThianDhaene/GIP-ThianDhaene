@@ -40,6 +40,14 @@ volatile char parkeerplaats1[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 char slagboom1 = 0;
 char slagboom2 = 0;
 
+//Doorsturen status parking
+volatile unsigned char ticks1s;
+volatile unsigned char ticks16;
+void init_timer(void);
+char bezetteparkeerplaatsen[27];
+char buffer[5];
+char bezetteplaatsen=0;
+
 char parkingstring[160];
 
 void sendString0(char s[]);
@@ -60,7 +68,6 @@ volatile unsigned char msg=MSG_OLD;
 
 int main(void)
 {
-	char *ptr;
 	DDRD |= (1<<DDRD7);
 	
 	DDRB=(1<<DDRB0)|(1<<DDRB1);
@@ -72,6 +79,7 @@ int main(void)
 	serieel_init1();
 	serieel_init0();
 	twi_init();
+	init_timer();
 	
 	Servo1(0);
 	Servo2(0);
@@ -114,6 +122,27 @@ int main(void)
 			{
 				slagboom1=2;
 			}
+		}
+		if (ticks1s)
+		{
+			bezetteplaatsen=0;
+			for (int i = 0; i < 26; i++)
+			{
+				if(bezetteparkeerplaatsen[i]==1)
+				{
+					bezetteplaatsen++;
+					sprintf(buffer, "PB%d\r\n",i+1);
+				}
+				if(bezetteparkeerplaatsen[i]==0)
+				{
+					sprintf(buffer, "PL%d\r\n",i+1);
+				}
+				sendString1(buffer);
+				_delay_ms(20);
+			}
+			sprintf(buffer, "B%d\r\n",bezetteplaatsen);
+			sendString1(buffer);
+			ticks1s=0;
 		}
 		
 	}
@@ -246,6 +275,12 @@ ISR (TIMER0_COMPA_vect)
 		PORTC = array1[waarde_t];
 		linkrechts=1;
 	}
+	ticks16++;
+	if(ticks16==64)
+	{
+		ticks16=0;
+		ticks1s=1;
+	}
 	
 }
 
@@ -277,4 +312,18 @@ ISR(USART1_RX_vect)
 		msg=MSG_NEW;
 	}
 	else rx_ptr++;
+}
+
+void init_timer(void)
+{
+	//init
+	DDRA &=~(1<<DDRA0);
+	DDRC |=(1<<DDRC0);
+	TCCR0A |= (1<<WGM01);	//Instellen WGM01 op 1 in TCCR0A
+	TCCR0A &=~(1<<WGM00);	//Instellen WGM00 op 0 in TCCR0A
+	TCCR0B &=~((1<<WGM02) | (1<<CS01));		//Instellen  WGM02 en CS01 op 0 in TCCR0B
+	TCCR0B |= ((1<<CS02)| (1<<CS00));		//Instellen CS02 en CS00 op 1 in TCCR0B
+	OCR0A = 224;
+	TIMSK0 |= (1<<OCIE0A);
+	sei();
 }
