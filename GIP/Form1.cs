@@ -154,6 +154,7 @@ namespace GIP
                     if (BezetteParkeerplaatsen <= 26)
                     {
                         tsProgressbar.Value = BezetteParkeerplaatsen;
+                        tsBeschikbaar.Text = BezetteParkeerplaatsen + ("/26");
                     }
                 }
             }

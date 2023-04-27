@@ -20,3 +20,14 @@ C:\Users\D'haeneThian\Source\Repos\ThianDhaene\6ICT\GIP\GIP\obj\Debug\GIP.csproj
 C:\Users\D'haeneThian\Source\Repos\ThianDhaene\6ICT\GIP\GIP\obj\Debug\GIP.csproj.CoreCompileInputs.cache
 C:\Users\D'haeneThian\Source\Repos\ThianDhaene\6ICT\GIP\GIP\obj\Debug\GIP.exe
 C:\Users\D'haeneThian\Source\Repos\ThianDhaene\6ICT\GIP\GIP\obj\Debug\GIP.pdb
+C:\Users\D'haeneThian\source\Repos\ThianDhaene\GIP6ICT\GIP\bin\Debug\GIP.exe.config
+C:\Users\D'haeneThian\source\Repos\ThianDhaene\GIP6ICT\GIP\bin\Debug\GIP.exe
+C:\Users\D'haeneThian\source\Repos\ThianDhaene\GIP6ICT\GIP\bin\Debug\GIP.pdb
+C:\Users\D'haeneThian\source\Repos\ThianDhaene\GIP6ICT\GIP\obj\Debug\GIP.csproj.AssemblyReference.cache
+C:\Users\D'haeneThian\source\Repos\ThianDhaene\GIP6ICT\GIP\obj\Debug\GIP.csproj.SuggestedBindingRedirects.cache
+C:\Users\D'haeneThian\source\Repos\ThianDhaene\GIP6ICT\GIP\obj\Debug\GIP.Form1.resources
+C:\Users\D'haeneThian\source\Repos\ThianDhaene\GIP6ICT\GIP\obj\Debug\GIP.Properties.Resources.resources
+C:\Users\D'haeneThian\source\Repos\ThianDhaene\GIP6ICT\GIP\obj\Debug\GIP.csproj.GenerateResource.cache
+C:\Users\D'haeneThian\source\Repos\ThianDhaene\GIP6ICT\GIP\obj\Debug\GIP.csproj.CoreCompileInputs.cache
+C:\Users\D'haeneThian\source\Repos\ThianDhaene\GIP6ICT\GIP\obj\Debug\GIP.exe
+C:\Users\D'haeneThian\source\Repos\ThianDhaene\GIP6ICT\GIP\obj\Debug\GIP.pdb
