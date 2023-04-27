@@ -141,7 +141,7 @@
             this.altijdGeslotenSlagboom1ToolStripMenuItem,
             this.altijdOpenSlagboom1ToolStripMenuItem});
             this.slagboom1ToolStripMenuItem.Name = "slagboom1ToolStripMenuItem";
-            this.slagboom1ToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
+            this.slagboom1ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.slagboom1ToolStripMenuItem.Text = "Slagboom 1";
             // 
             // normaleWerkingSlagboom1ToolStripMenuItem
@@ -150,25 +150,25 @@
             this.normaleWerkingSlagboom1ToolStripMenuItem.CheckOnClick = true;
             this.normaleWerkingSlagboom1ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.normaleWerkingSlagboom1ToolStripMenuItem.Name = "normaleWerkingSlagboom1ToolStripMenuItem";
-            this.normaleWerkingSlagboom1ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.normaleWerkingSlagboom1ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.normaleWerkingSlagboom1ToolStripMenuItem.Text = "Normale Werking";
-            this.normaleWerkingSlagboom1ToolStripMenuItem.Click += new System.EventHandler(this.slagboom1ToolStripMenuItem_Click);
+            this.normaleWerkingSlagboom1ToolStripMenuItem.Click += new System.EventHandler(this.slagboomToolStripMenuItem_Click);
             // 
             // altijdGeslotenSlagboom1ToolStripMenuItem
             // 
             this.altijdGeslotenSlagboom1ToolStripMenuItem.CheckOnClick = true;
             this.altijdGeslotenSlagboom1ToolStripMenuItem.Name = "altijdGeslotenSlagboom1ToolStripMenuItem";
-            this.altijdGeslotenSlagboom1ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.altijdGeslotenSlagboom1ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.altijdGeslotenSlagboom1ToolStripMenuItem.Text = "Altijd Gesloten";
-            this.altijdGeslotenSlagboom1ToolStripMenuItem.Click += new System.EventHandler(this.slagboom1ToolStripMenuItem_Click);
+            this.altijdGeslotenSlagboom1ToolStripMenuItem.Click += new System.EventHandler(this.slagboomToolStripMenuItem_Click);
             // 
             // altijdOpenSlagboom1ToolStripMenuItem
             // 
             this.altijdOpenSlagboom1ToolStripMenuItem.CheckOnClick = true;
             this.altijdOpenSlagboom1ToolStripMenuItem.Name = "altijdOpenSlagboom1ToolStripMenuItem";
-            this.altijdOpenSlagboom1ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.altijdOpenSlagboom1ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.altijdOpenSlagboom1ToolStripMenuItem.Text = "Altijd Open";
-            this.altijdOpenSlagboom1ToolStripMenuItem.Click += new System.EventHandler(this.slagboom1ToolStripMenuItem_Click);
+            this.altijdOpenSlagboom1ToolStripMenuItem.Click += new System.EventHandler(this.slagboomToolStripMenuItem_Click);
             // 
             // slagboom2ToolStripMenuItem
             // 
@@ -177,7 +177,7 @@
             this.altijdGeslotenSlagboom2ToolStripMenuItem,
             this.altijdOpenSlagboom2ToolStripMenuItem});
             this.slagboom2ToolStripMenuItem.Name = "slagboom2ToolStripMenuItem";
-            this.slagboom2ToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
+            this.slagboom2ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.slagboom2ToolStripMenuItem.Text = "Slagboom 2";
             // 
             // normaleWerkingSlagboom2ToolStripMenuItem
@@ -185,23 +185,23 @@
             this.normaleWerkingSlagboom2ToolStripMenuItem.Checked = true;
             this.normaleWerkingSlagboom2ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.normaleWerkingSlagboom2ToolStripMenuItem.Name = "normaleWerkingSlagboom2ToolStripMenuItem";
-            this.normaleWerkingSlagboom2ToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.normaleWerkingSlagboom2ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.normaleWerkingSlagboom2ToolStripMenuItem.Text = "Normale werking";
-            this.normaleWerkingSlagboom2ToolStripMenuItem.Click += new System.EventHandler(this.slagboom2ToolStripMenuItem_Click);
+            this.normaleWerkingSlagboom2ToolStripMenuItem.Click += new System.EventHandler(this.slagboomToolStripMenuItem_Click);
             // 
             // altijdGeslotenSlagboom2ToolStripMenuItem
             // 
             this.altijdGeslotenSlagboom2ToolStripMenuItem.Name = "altijdGeslotenSlagboom2ToolStripMenuItem";
-            this.altijdGeslotenSlagboom2ToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.altijdGeslotenSlagboom2ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.altijdGeslotenSlagboom2ToolStripMenuItem.Text = "Altijd Gesloten";
-            this.altijdGeslotenSlagboom2ToolStripMenuItem.Click += new System.EventHandler(this.slagboom2ToolStripMenuItem_Click);
+            this.altijdGeslotenSlagboom2ToolStripMenuItem.Click += new System.EventHandler(this.slagboomToolStripMenuItem_Click);
             // 
             // altijdOpenSlagboom2ToolStripMenuItem
             // 
             this.altijdOpenSlagboom2ToolStripMenuItem.Name = "altijdOpenSlagboom2ToolStripMenuItem";
-            this.altijdOpenSlagboom2ToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.altijdOpenSlagboom2ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.altijdOpenSlagboom2ToolStripMenuItem.Text = "Altijd Open";
-            this.altijdOpenSlagboom2ToolStripMenuItem.Click += new System.EventHandler(this.slagboom2ToolStripMenuItem_Click);
+            this.altijdOpenSlagboom2ToolStripMenuItem.Click += new System.EventHandler(this.slagboomToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 

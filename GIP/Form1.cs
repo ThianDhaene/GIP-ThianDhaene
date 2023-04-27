@@ -83,7 +83,7 @@ namespace GIP
             lstConsole.Width = pnlConnect.Width - lstPoort.Width;
         }
 
-        private void slagboom1ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void slagboomToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem currentItem = sender as ToolStripMenuItem;
             try
@@ -113,28 +113,6 @@ namespace GIP
                     serial.Write("slagboom1-3\r");
                     lstConsole.Items.Insert(0, "Altijd gesloten 1");
                     tsSlagboom1.Text = "Slagboom 1: Altijd Gesloten";
-
-                }
-            }
-            catch (Exception ex)
-            {
-                //Toon de error wanneer er geen poort is geselecteerd
-                MessageBox.Show("Error: " + ex.Message + " U heeft waarschijnlijk geen poort geselecteerd");
-            }
-        }
-
-        private void slagboom2ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem currentItem = sender as ToolStripMenuItem;
-            try
-            {
-                if (currentItem != null)
-                {
-                    ((ToolStripMenuItem)currentItem.OwnerItem).DropDownItems.OfType<ToolStripMenuItem>().ToList().ForEach(item =>
-                    {
-                        item.Checked = false;
-                    });
-                    currentItem.Checked = true;
                 }
                 if (currentItem == normaleWerkingSlagboom2ToolStripMenuItem)
                 {
@@ -161,6 +139,7 @@ namespace GIP
                 MessageBox.Show("Error: " + ex.Message + " U heeft waarschijnlijk geen poort geselecteerd");
             }
         }
+
         int _bezetteparkeerplaatsen = 0;
         public int BezetteParkeerplaatsen
         {
