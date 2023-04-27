@@ -21,6 +21,7 @@ namespace GIP
         private void Form1_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            pbParking.SizeMode = PictureBoxSizeMode.Zoom;
             lstPoort.Width = pnlConnect.Width / 3;
             lstConsole.Width = pnlConnect.Width - lstPoort.Width;
             //alle seriële poorten voor dit toestel opvragen
@@ -63,10 +64,20 @@ namespace GIP
                     tsConnectie.Text = "Verbonden";
                     tsConnectie.ForeColor = Color.Green;
                 }
-                else if (data.StartsWith("B"))
+                else if (data.StartsWith("B")) // Aantal bezette parkeerplaatsen
                 {
                     int bezetteparkeerplaatsen = int.Parse(data.Substring(1));
                     BezetteParkeerplaatsen = bezetteparkeerplaatsen;
+                }
+                else if (data.StartsWith("PB")) //Parking Bezet
+                {
+                    int parkeerplaats = int.Parse(data.Substring(2));
+                    this.Text = parkeerplaats.ToString();
+                }
+                else if (data.StartsWith("PL")) //Parking Leeg
+                {
+                    int parkeerplaats = int.Parse(data.Substring(2));
+                    this.Text = parkeerplaats.ToString();
                 }
             }));
 
@@ -158,16 +169,6 @@ namespace GIP
             }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            BezetteParkeerplaatsen++;
-            //serial.Write("test\r");
-
-        }
-
-        private void normaleWerkingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
