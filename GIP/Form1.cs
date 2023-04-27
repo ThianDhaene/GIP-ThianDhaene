@@ -27,9 +27,19 @@ namespace GIP
             //alle seriële poorten voor dit toestel opvragen
             string[] ports = System.IO.Ports.SerialPort.GetPortNames();
             foreach (string poort in ports)
+            {
                 lstPoort.Items.Add(poort);
+            }
+            foreach (Label label in pbParking.Controls.OfType<Label>())
+            {
+                label.Parent = pbParking;
+            }
+            InitializeLabels(); //oproepen functie om alle labels op te slaan in de map
         }
 
+        //Selecteren seriele poort
+        //Dit event wordt opgeroepen wanneer en keuze voor een seriele poort wordt gemaakt,
+        //hierna wordt indien mogelijk de verbinding opgezet
         private void lstPoort_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstPoort.SelectedIndex == -1) return;
@@ -49,13 +59,42 @@ namespace GIP
             }
             catch (System.Exception ex)
             {
+                MessageBox.Show("Error: " + ex.Message);
                 lstConsole.Items.Add(ex.Message.ToString());
             }
         }
-        string data;
+
+        //InitializeLabels
+        //InitializeLabels zal van alle labels van elk parkeervak het nummer opslaan zodat automatisch het nummer later kan gebruikt worden
+        private Dictionary<int, Label> labelMap = new Dictionary<int, Label>();
+        private void InitializeLabels()
+        {
+            //Eerst wordt een tag toegewezen aan elk label waarna dit wordt opgeslagen in een map
+            foreach (Label label in pnlParkingEnStatus.Controls.OfType<Label>())
+            {
+                int number = int.Parse(label.Name.Substring(1));
+                label.Tag = number;
+                labelMap[number] = label;
+                label.Text = label.Tag.ToString();
+            }
+        }
+
+        //Aanpassen Kleur Labels
+        //Deze functie zorgt ervoor dat het label gekoppelt aan het nummer van de 
+        //parkeerplaats veranderd van kleur afhankelijk of de parking bezet is of niet
+        private void AanpassenKleur(int nummer, Color color)
+        {
+            if (labelMap.TryGetValue(nummer, out Label label))
+            {
+                label.BackColor = color;
+            }
+        }
+
+        //Data ontvangen
+        //Event waarin alle serieel ontvangen data wordt verwerkt met de nodige extra functies
         private void serial_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            data = serial.ReadLine();
+            string data = serial.ReadLine();
             Invoke(new MethodInvoker(delegate ()
             {
                 lstConsole.Items.Insert(0, data);
@@ -72,21 +111,17 @@ namespace GIP
                 else if (data.StartsWith("PB")) //Parking Bezet
                 {
                     int parkeerplaats = int.Parse(data.Substring(2));
-                    this.Text = parkeerplaats.ToString();
+                    AanpassenKleur(parkeerplaats, Color.Red);
                 }
                 else if (data.StartsWith("PL")) //Parking Leeg
                 {
                     int parkeerplaats = int.Parse(data.Substring(2));
-                    this.Text = parkeerplaats.ToString();
+                    AanpassenKleur(parkeerplaats, Color.Green);
                 }
             }));
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            serial.Write("test\r");
-        }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
@@ -94,6 +129,9 @@ namespace GIP
             lstConsole.Width = pnlConnect.Width - lstPoort.Width;
         }
 
+        //Slagboom mode keuzemenu
+        //Event dat wordt geactiveerd bij het selecteren van een andere slagboom,
+        //afhankelijk van de naam wordt de mode toegepast en serieel verzonden naar de microcontroller
         private void slagboomToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem currentItem = sender as ToolStripMenuItem;
@@ -169,6 +207,6 @@ namespace GIP
             }
         }
 
-        
+
     }
 }
