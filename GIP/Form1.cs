@@ -96,16 +96,19 @@ namespace GIP
             {
                 lstConsole.Items.Insert(0, "Normale Werking 1");
                 tsSlagboom1.Text = "Slagboom 1: Normaal";
+                serial.Write("slagboom1-0\r");
             }
             else if (currentItem == altijdOpenSlagboom1ToolStripMenuItem)
             {
                 lstConsole.Items.Insert(0, "Altijd open 1");
                 tsSlagboom1.Text = "Slagboom 1: Altijd Open";
+                serial.Write("slagboom1-1\r");
             }
             else if (currentItem == altijdGeslotenSlagboom1ToolStripMenuItem)
             {
                 lstConsole.Items.Insert(0, "Altijd gesloten 1");
                 tsSlagboom1.Text = "Slagboom 1: Altijd Gesloten";
+                serial.Write("slagboom1-3\r");
             }
         }
 
@@ -124,16 +127,19 @@ namespace GIP
             {
                 lstConsole.Items.Insert(0, "Normale Werking 2");
                 tsSlagboom2.Text = "Slagboom 2: Normaal";
+                serial.Write("slagboom2-0\r");
             }
             else if (currentItem == altijdOpenSlagboom2ToolStripMenuItem)
             {
                 lstConsole.Items.Insert(0, "Altijd open 2");
                 tsSlagboom2.Text = "Slagboom 2: Altijd Open";
+                serial.Write("slagboom2-1\r");
             }
             else if (currentItem == altijdGeslotenSlagboom2ToolStripMenuItem)
             {
                 lstConsole.Items.Insert(0, "Altijd gesloten 2");
                 tsSlagboom2.Text = "Slagboom 2: Altijd Gesloten";
+                serial.Write("slagboom2-2\r");
             }
         }
         int _bezetteparkeerplaatsen = 0;
