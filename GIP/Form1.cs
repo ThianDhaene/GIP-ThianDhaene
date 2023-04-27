@@ -20,6 +20,7 @@ namespace GIP
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             lstPoort.Width = pnlConnect.Width / 3;
             lstConsole.Width = pnlConnect.Width - lstPoort.Width;
             //alle seriële poorten voor dit toestel opvragen
@@ -65,7 +66,7 @@ namespace GIP
                 else if (data.StartsWith("B"))
                 {
                     int bezetteparkeerplaatsen = int.Parse(data.Substring(1));
-                    BezetteParkeerplaatsen =  bezetteparkeerplaatsen;
+                    BezetteParkeerplaatsen = bezetteparkeerplaatsen;
                 }
             }));
 
@@ -85,62 +86,79 @@ namespace GIP
         private void slagboom1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem currentItem = sender as ToolStripMenuItem;
-            if (currentItem != null)
+            try
             {
-                ((ToolStripMenuItem)currentItem.OwnerItem).DropDownItems.OfType<ToolStripMenuItem>().ToList().ForEach(item =>
+                if (currentItem != null)
                 {
-                    item.Checked = false;
-                });
-                currentItem.Checked = true;
+                    ((ToolStripMenuItem)currentItem.OwnerItem).DropDownItems.OfType<ToolStripMenuItem>().ToList().ForEach(item =>
+                    {
+                        item.Checked = false;
+                    });
+                    currentItem.Checked = true;
+                }
+                if (currentItem == normaleWerkingSlagboom1ToolStripMenuItem)
+                {
+                    serial.Write("slagboom1-0\r");
+                    lstConsole.Items.Insert(0, "Normale Werking 1");
+                    tsSlagboom1.Text = "Slagboom 1: Normaal";
+                }
+                else if (currentItem == altijdOpenSlagboom1ToolStripMenuItem)
+                {
+                    serial.Write("slagboom1-1\r");
+                    lstConsole.Items.Insert(0, "Altijd open 1");
+                    tsSlagboom1.Text = "Slagboom 1: Altijd Open";
+                }
+                else if (currentItem == altijdGeslotenSlagboom1ToolStripMenuItem)
+                {
+                    serial.Write("slagboom1-3\r");
+                    lstConsole.Items.Insert(0, "Altijd gesloten 1");
+                    tsSlagboom1.Text = "Slagboom 1: Altijd Gesloten";
+
+                }
             }
-            if (currentItem == normaleWerkingSlagboom1ToolStripMenuItem)
+            catch (Exception ex)
             {
-                lstConsole.Items.Insert(0, "Normale Werking 1");
-                tsSlagboom1.Text = "Slagboom 1: Normaal";
-                serial.Write("slagboom1-0\r");
-            }
-            else if (currentItem == altijdOpenSlagboom1ToolStripMenuItem)
-            {
-                lstConsole.Items.Insert(0, "Altijd open 1");
-                tsSlagboom1.Text = "Slagboom 1: Altijd Open";
-                serial.Write("slagboom1-1\r");
-            }
-            else if (currentItem == altijdGeslotenSlagboom1ToolStripMenuItem)
-            {
-                lstConsole.Items.Insert(0, "Altijd gesloten 1");
-                tsSlagboom1.Text = "Slagboom 1: Altijd Gesloten";
-                serial.Write("slagboom1-3\r");
+                //Toon de error wanneer er geen poort is geselecteerd
+                MessageBox.Show("Error: " + ex.Message + " U heeft waarschijnlijk geen poort geselecteerd");
             }
         }
 
         private void slagboom2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem currentItem = sender as ToolStripMenuItem;
-            if (currentItem != null)
+            try
             {
-                ((ToolStripMenuItem)currentItem.OwnerItem).DropDownItems.OfType<ToolStripMenuItem>().ToList().ForEach(item =>
+                if (currentItem != null)
                 {
-                    item.Checked = false;
-                });
-                currentItem.Checked = true;
+                    ((ToolStripMenuItem)currentItem.OwnerItem).DropDownItems.OfType<ToolStripMenuItem>().ToList().ForEach(item =>
+                    {
+                        item.Checked = false;
+                    });
+                    currentItem.Checked = true;
+                }
+                if (currentItem == normaleWerkingSlagboom2ToolStripMenuItem)
+                {
+                    serial.Write("slagboom2-0\r");
+                    lstConsole.Items.Insert(0, "Normale Werking 2");
+                    tsSlagboom2.Text = "Slagboom 2: Normaal";
+                }
+                else if (currentItem == altijdOpenSlagboom2ToolStripMenuItem)
+                {
+                    serial.Write("slagboom2-1\r");
+                    lstConsole.Items.Insert(0, "Altijd open 2");
+                    tsSlagboom2.Text = "Slagboom 2: Altijd Open";
+                }
+                else if (currentItem == altijdGeslotenSlagboom2ToolStripMenuItem)
+                {
+                    serial.Write("slagboom2-2\r");
+                    lstConsole.Items.Insert(0, "Altijd gesloten 2");
+                    tsSlagboom2.Text = "Slagboom 2: Altijd Gesloten";
+                }
             }
-            if (currentItem == normaleWerkingSlagboom2ToolStripMenuItem)
+            catch (Exception ex)
             {
-                lstConsole.Items.Insert(0, "Normale Werking 2");
-                tsSlagboom2.Text = "Slagboom 2: Normaal";
-                serial.Write("slagboom2-0\r");
-            }
-            else if (currentItem == altijdOpenSlagboom2ToolStripMenuItem)
-            {
-                lstConsole.Items.Insert(0, "Altijd open 2");
-                tsSlagboom2.Text = "Slagboom 2: Altijd Open";
-                serial.Write("slagboom2-1\r");
-            }
-            else if (currentItem == altijdGeslotenSlagboom2ToolStripMenuItem)
-            {
-                lstConsole.Items.Insert(0, "Altijd gesloten 2");
-                tsSlagboom2.Text = "Slagboom 2: Altijd Gesloten";
-                serial.Write("slagboom2-2\r");
+                //Toon de error wanneer er geen poort is geselecteerd
+                MessageBox.Show("Error: " + ex.Message + " U heeft waarschijnlijk geen poort geselecteerd");
             }
         }
         int _bezetteparkeerplaatsen = 0;
@@ -165,7 +183,7 @@ namespace GIP
         {
             BezetteParkeerplaatsen++;
             //serial.Write("test\r");
-            
+
         }
 
         private void normaleWerkingToolStripMenuItem_Click(object sender, EventArgs e)
