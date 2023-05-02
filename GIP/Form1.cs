@@ -207,6 +207,12 @@ namespace GIP
             }
         }
 
-
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (serial.IsOpen)
+            {
+                serial.Close();
+            }
+        }
     }
 }

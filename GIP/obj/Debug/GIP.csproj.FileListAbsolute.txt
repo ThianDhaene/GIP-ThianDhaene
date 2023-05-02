@@ -42,3 +42,14 @@ C:\Users\Thian\Documents\GitHub\GIP-ThianDhaene\GIP\obj\Debug\GIP.csproj.Generat
 C:\Users\Thian\Documents\GitHub\GIP-ThianDhaene\GIP\obj\Debug\GIP.csproj.CoreCompileInputs.cache
 C:\Users\Thian\Documents\GitHub\GIP-ThianDhaene\GIP\obj\Debug\GIP.exe
 C:\Users\Thian\Documents\GitHub\GIP-ThianDhaene\GIP\obj\Debug\GIP.pdb
+C:\Users\Thian\Source\Repos\ThianDhaene\GIP-ThianDhaene\GIP\bin\Debug\GIP.exe.config
+C:\Users\Thian\Source\Repos\ThianDhaene\GIP-ThianDhaene\GIP\bin\Debug\GIP.exe
+C:\Users\Thian\Source\Repos\ThianDhaene\GIP-ThianDhaene\GIP\bin\Debug\GIP.pdb
+C:\Users\Thian\Source\Repos\ThianDhaene\GIP-ThianDhaene\GIP\obj\Debug\GIP.csproj.AssemblyReference.cache
+C:\Users\Thian\Source\Repos\ThianDhaene\GIP-ThianDhaene\GIP\obj\Debug\GIP.csproj.SuggestedBindingRedirects.cache
+C:\Users\Thian\Source\Repos\ThianDhaene\GIP-ThianDhaene\GIP\obj\Debug\GIP.Form1.resources
+C:\Users\Thian\Source\Repos\ThianDhaene\GIP-ThianDhaene\GIP\obj\Debug\GIP.Properties.Resources.resources
+C:\Users\Thian\Source\Repos\ThianDhaene\GIP-ThianDhaene\GIP\obj\Debug\GIP.csproj.GenerateResource.cache
+C:\Users\Thian\Source\Repos\ThianDhaene\GIP-ThianDhaene\GIP\obj\Debug\GIP.csproj.CoreCompileInputs.cache
+C:\Users\Thian\Source\Repos\ThianDhaene\GIP-ThianDhaene\GIP\obj\Debug\GIP.exe
+C:\Users\Thian\Source\Repos\ThianDhaene\GIP-ThianDhaene\GIP\obj\Debug\GIP.pdb
