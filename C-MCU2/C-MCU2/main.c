@@ -26,7 +26,20 @@ int main(void)
 {
     serieel_init0();
 	
-	DDRD |= ((1<<DDRD3) |(1<<DDRD4) |(1<<DDRD5) | (1<<DDRD6));
+	//Sensoren voor P1 P2 P3
+	DDRA &=~ (1<<DDRA4) | (1<<DDRA3) |(1<<DDRA7);
+	
+	//Schakelaars voor P4,5,6,7,8,9,10,11
+	DDRC &=~(1<<DDRC0)|(1<<DDRC1)|(1<<DDRC2)|(1<<DDRC3)|(1<<DDRC4)|(1<<DDRC5)|(1<<DDRC6)|(1<<DDRC7);
+	//P12,13,18,19,20
+	DDRD &=~(1<<DDRD6)|(1<<DDRD5)|(1<<DDRD4)|(1<<DDRD3)|(1<<DDRD2);
+	//P21,22,23,24,25
+	DDRB &=~(1<<DDRB4)|(1<<DDRB3)|(1<<DDRB2)|(1<<DDRB1)|(1<<DDRB0);
+	//P26
+	DDRA &=~(1<<DDRA0);
+	
+	
+	DDRD |= ((1<<DDRD3) |(1<<DDRD4) |(1<<DDRD5) | (1<<DDRD6)); 
 	
     while (1) 
     {
