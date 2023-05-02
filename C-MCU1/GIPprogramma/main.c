@@ -74,6 +74,10 @@ int main(void)
 	PORTB&=~(1<<PORTB0);
 	PORTB|=(1<<PORTB1);
 	
+	//P14 P15 P16 P17
+	DDRC &=~ (1<<DDRC4)|(1<<DDRC5)|(1<<DDRC6)|(1<<DDRC7);
+	
+	
 	//opstarten van verschillende componenten
 	init_servo();
 	serieel_init1();
@@ -103,6 +107,26 @@ int main(void)
 	sei();
 	while (1)
 	{
+		
+		//Alle ingangen controlleren
+		//P14
+		if(PINC &(1<<PINC4)) { bezetteparkeerplaatsen[14]=1; }
+		if(!(PINC &(1<<PINC4))) { bezetteparkeerplaatsen[14]=0; }
+			
+		//P15
+		if(PINC &(1<<PINC5)) { bezetteparkeerplaatsen[15]=1; }
+		if(!(PINC &(1<<PINC5))) { bezetteparkeerplaatsen[15]=0; }
+		
+		//P16
+		if(PINC &(1<<PINC6)) { bezetteparkeerplaatsen[16]=1; }
+		if(!(PINC &(1<<PINC6))) { bezetteparkeerplaatsen[16]=0; }
+		
+		//P17
+		if(PINC &(1<<PINC7)) { bezetteparkeerplaatsen[17]=1; }
+		if(!(PINC &(1<<PINC7))) { bezetteparkeerplaatsen[17]=0; }
+		
+		
+		//Nieuwe seriele berichten verwerken
 		if(msg==MSG_NEW)
 		{
 			PORTD |=(1<<PORTD7);
@@ -131,11 +155,11 @@ int main(void)
 				if(bezetteparkeerplaatsen[i]==1)
 				{
 					bezetteplaatsen++;
-					sprintf(buffer, "PB%d\r\n",i+1);
+					sprintf(buffer, "PB%d\r\n",i);
 				}
 				if(bezetteparkeerplaatsen[i]==0)
 				{
-					sprintf(buffer, "PL%d\r\n",i+1);
+					sprintf(buffer, "PL%d\r\n",i);
 				}
 				sendString1(buffer);
 				_delay_ms(20);
