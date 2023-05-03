@@ -153,21 +153,76 @@ char OmzettenNaarHex(char i, char status)
 	//P4
 	if(i==4 && status==0) {return 0x07;}
 	if(i==4 && status==1) {return 0x08;}
-	//P4
-	if(i==4 && status==0) {return 0x09;}
-	if(i==4 && status==1) {return 0x010;}
 	//P5
-	if(i==5 && status==0) {return 0x11;}
-	if(i==5 && status==1) {return 0x12;}
+	if(i==5 && status==0) {return 0x09;}
+	if(i==5 && status==1) {return 0x10;}
 	//P6
-	if(i==6 && status==0) {return 0x13;}
-	if(i==6 && status==1) {return 0x14;}
+	if(i==6 && status==0) {return 0x11;}
+	if(i==6 && status==1) {return 0x12;}
 	//P7
-	if(i==5 && status==0) {return 0x15;}
-	if(i==5 && status==1) {return 0x16;}
+	if(i==7 && status==0) {return 0x13;}
+	if(i==7 && status==1) {return 0x14;}
 	//P8
-	if(i==8 && status==0) {return 0x17;}
-	if(i==8 && status==1) {return 0x18;}
+	if(i==8 && status==0) {return 0x15;}
+	if(i==8 && status==1) {return 0x16;}
+	//P9
+	if(i==9 && status==0) {return 0x17;}
+	if(i==9 && status==1) {return 0x18;}
+	//P10
+	if(i==10 && status==0) {return 0x19;}
+	if(i==10 && status==1) {return 0x20;}
+	//P11
+	if(i==11 && status==0) {return 0x21;}
+	if(i==11 && status==1) {return 0x22;}
+	//P12
+	if(i==12 && status==0) {return 0x23;}
+	if(i==12 && status==1) {return 0x24;}
+	//P13
+	if(i==13 && status==0) {return 0x25;}
+	if(i==13 && status==1) {return 0x26;}
+	
+	////P14
+	//if(i==14 && status==0) {return 0x27;}
+	//if(i==14 && status==1) {return 0x28;}
+	////P15
+	//if(i==15 && status==0) {return 0x29;}
+	//if(i==15 && status==1) {return 0x30;}
+	////P16
+	//if(i==16 && status==0) {return 0x31;}
+	//if(i==16 && status==1) {return 0x32;}
+	////P17
+	//if(i==17 && status==0) {return 0x33;}
+	//if(i==17 && status==1) {return 0x34;}
+		
+	//P18
+	if(i==18 && status==0) {return 0x35;}
+	if(i==18 && status==1) {return 0x36;}
+	//P19
+	if(i==19 && status==0) {return 0x37;}
+	if(i==19 && status==1) {return 0x38;}
+	//P20
+	if(i==20 && status==0) {return 0x39;}
+	if(i==20 && status==1) {return 0x40;}
+	//P21
+	if(i==21 && status==0) {return 0x41;}
+	if(i==21 && status==1) {return 0x42;}
+	//P22
+	if(i==22 && status==0) {return 0x43;}
+	if(i==22 && status==1) {return 0x44;}
+	//P23
+	if(i==23 && status==0) {return 0x45;}
+	if(i==23 && status==1) {return 0x46;}
+	//P24
+	if(i==24 && status==0) {return 0x47;}
+	if(i==24 && status==1) {return 0x48;}
+	//P25
+	if(i==25 && status==0) {return 0x49;}
+	if(i==25 && status==1) {return 0x50;}
+	//P26
+	if(i==26 && status==0) {return 0x51;}
+	if(i==26 && status==1) {return 0x52;}
+
+	
 	
 }
 

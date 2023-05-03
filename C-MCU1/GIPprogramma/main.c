@@ -209,7 +209,6 @@ void serieel_init1(void)
 	UCSR1C &=~(1<<UPM10)|(1<<UPM11); //geen pariteit
 	UCSR1B |=((1<<RXEN1)|(1<<TXEN1)); //activeren zender en ontvanger
 	UCSR1B |= (1<<RXCIE1); //activeren interrupt rx
-
 }
 
 void serieel_init0(void)
@@ -228,7 +227,6 @@ void serieel_init0(void)
 	UCSR0C &=~(1<<UPM00)|(1<<UPM01); //geen pariteit
 	UCSR0B |=((1<<RXEN0)|(1<<TXEN0)); //activeren zender en ontvanger
 	UCSR0B |= (1<<RXCIE0); //activeren interrupt rx
-
 }
 
 void sendChar0(char data)
@@ -337,6 +335,12 @@ ISR(USART1_RX_vect)
 		msg=MSG_NEW;
 	}
 	else rx_ptr++;
+}
+
+ISR(USART0_RX_vect)
+{
+	char data = UDR0;
+	if(data==0x01){bezetteparkeerplaatsen[1]=0;}
 }
 
 void init_timer(void)
