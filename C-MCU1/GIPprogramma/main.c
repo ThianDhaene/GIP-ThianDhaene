@@ -340,7 +340,71 @@ ISR(USART1_RX_vect)
 ISR(USART0_RX_vect)
 {
 	char data = UDR0;
+	if(data==0x01){bezetteparkeerplaatsen[1]=0;}
 	if(data==0x02){bezetteparkeerplaatsen[1]=1;}
+		
+	if(data==0x03){bezetteparkeerplaatsen[2]=0;}
+	if(data==0x04){bezetteparkeerplaatsen[2]=1;}
+		
+	if(data==0x05){bezetteparkeerplaatsen[3]=0;}
+	if(data==0x06){bezetteparkeerplaatsen[3]=1;}
+		
+	if(data==0x07){bezetteparkeerplaatsen[4]=0;}
+	if(data==0x08){bezetteparkeerplaatsen[4]=1;}
+		
+	if(data==0x09){bezetteparkeerplaatsen[5]=0;}
+	if(data==0x10){bezetteparkeerplaatsen[5]=1;}
+	
+	if(data==0x11){bezetteparkeerplaatsen[6]=0;}
+	if(data==0x12){bezetteparkeerplaatsen[6]=1;}
+	
+	if(data==0x13){bezetteparkeerplaatsen[7]=0;}
+	if(data==0x14){bezetteparkeerplaatsen[7]=1;}
+		
+	if(data==0x15){bezetteparkeerplaatsen[8]=0;}
+	if(data==0x16){bezetteparkeerplaatsen[8]=1;}
+	
+	if(data==0x17){bezetteparkeerplaatsen[9]=0;}
+	if(data==0x18){bezetteparkeerplaatsen[9]=1;}
+		
+	if(data==0x19){bezetteparkeerplaatsen[10]=0;}
+	if(data==0x20){bezetteparkeerplaatsen[10]=1;}
+	
+	if(data==0x21){bezetteparkeerplaatsen[11]=0;}
+	if(data==0x22){bezetteparkeerplaatsen[11]=1;}
+		
+	if(data==0x23){bezetteparkeerplaatsen[12]=0;}
+	if(data==0x24){bezetteparkeerplaatsen[12]=1;}
+	
+	if(data==0x25){bezetteparkeerplaatsen[13]=0;}
+	if(data==0x26){bezetteparkeerplaatsen[13]=1;}
+		
+	if(data==0x35){bezetteparkeerplaatsen[18]=0;}
+	if(data==0x36){bezetteparkeerplaatsen[18]=1;}
+		
+	if(data==0x37){bezetteparkeerplaatsen[19]=0;}
+	if(data==0x38){bezetteparkeerplaatsen[19]=1;}
+		
+	if(data==0x39){bezetteparkeerplaatsen[20]=0;}
+	if(data==0x40){bezetteparkeerplaatsen[20]=1;}
+		
+	if(data==0x41){bezetteparkeerplaatsen[21]=0;}
+	if(data==0x42){bezetteparkeerplaatsen[21]=1;}
+		
+	if(data==0x43){bezetteparkeerplaatsen[22]=0;}
+	if(data==0x44){bezetteparkeerplaatsen[22]=1;}
+		
+	if(data==0x45){bezetteparkeerplaatsen[23]=0;}
+	if(data==0x46){bezetteparkeerplaatsen[23]=1;}
+		
+	if(data==0x47){bezetteparkeerplaatsen[24]=0;}
+	if(data==0x48){bezetteparkeerplaatsen[24]=1;}
+		
+	if(data==0x49){bezetteparkeerplaatsen[25]=0;}
+	if(data==0x50){bezetteparkeerplaatsen[25]=1;}
+	
+	if(data==0x51){bezetteparkeerplaatsen[26]=0;}
+	if(data==0x52){bezetteparkeerplaatsen[26]=1;}
 }
 
 void init_timer(void)
