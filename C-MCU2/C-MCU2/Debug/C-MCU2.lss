@@ -3,31 +3,31 @@ C-MCU2.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000003ae  2**0
+  0 .data         00000000  00800100  00800100  00000574  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000033a  00000000  00000000  00000074  2**1
+  1 .text         00000500  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          0000001d  00800100  00800100  000003ae  2**0
+  2 .bss          0000001d  00800100  00800100  00000574  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000003ae  2**0
+  3 .comment      00000030  00000000  00000000  00000574  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000003e0  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000005a4  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000060  00000000  00000000  00000420  2**0
+  5 .debug_aranges 00000060  00000000  00000000  000005e4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000002dc  00000000  00000000  00000480  2**0
+  6 .debug_info   000002eb  00000000  00000000  00000644  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000001b9  00000000  00000000  0000075c  2**0
+  7 .debug_abbrev 00000207  00000000  00000000  0000092f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000006e9  00000000  00000000  00000915  2**0
+  8 .debug_line   00000948  00000000  00000000  00000b36  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000d4  00000000  00000000  00001000  2**2
+  9 .debug_frame  000000d4  00000000  00000000  00001480  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000022e  00000000  00000000  000010d4  2**0
+ 10 .debug_str    00000235  00000000  00000000  00001554  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000347  00000000  00000000  00001302  2**0
+ 11 .debug_loc    00000635  00000000  00000000  00001789  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000050  00000000  00000000  00001649  2**0
+ 12 .debug_ranges 00000050  00000000  00000000  00001dbe  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -49,11 +49,11 @@ Disassembly of section .text:
   34:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
   38:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
   3c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
-  40:	0c 94 d5 00 	jmp	0x1aa	; 0x1aa <__vector_16>
+  40:	0c 94 b6 01 	jmp	0x36c	; 0x36c <__vector_16>
   44:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
   48:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
   4c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
-  50:	0c 94 c3 00 	jmp	0x186	; 0x186 <__vector_20>
+  50:	0c 94 8d 01 	jmp	0x31a	; 0x31a <__vector_20>
   54:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
   58:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
   5c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
@@ -86,530 +86,772 @@ Disassembly of section .text:
   92:	ad 31       	cpi	r26, 0x1D	; 29
   94:	b2 07       	cpc	r27, r18
   96:	e1 f7       	brne	.-8      	; 0x90 <.do_clear_bss_loop>
-  98:	0e 94 06 01 	call	0x20c	; 0x20c <main>
-  9c:	0c 94 9b 01 	jmp	0x336	; 0x336 <_exit>
+  98:	0e 94 e7 01 	call	0x3ce	; 0x3ce <main>
+  9c:	0c 94 7e 02 	jmp	0x4fc	; 0x4fc <_exit>
 
 000000a0 <__bad_interrupt>:
   a0:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 000000a4 <OmzettenNaarHex>:
-	TCCR0A &=~(1<<WGM00);	//Instellen WGM00 op 0 in TCCR0A
-	TCCR0B &=~((1<<WGM02) | (1<<CS01));		//Instellen  WGM02 en CS01 op 0 in TCCR0B
-	TCCR0B |= ((1<<CS02)| (1<<CS00));		//Instellen CS02 en CS00 op 1 in TCCR0B
-	OCR0A = 224;
-	TIMSK0 |= (1<<OCIE0A);
-	sei();
+	while(i < 64)					//Blijft lus doorlopen zolang i kleiner is dan 64 om niet over de maximum hoeveelheid data te gaan
+	{
+		if( s[i] == '\0' ) break;	//
+		sendChar0(s[i++]);			//
+	}
+}
   a4:	81 30       	cpi	r24, 0x01	; 1
-  a6:	29 f4       	brne	.+10     	; 0xb2 <OmzettenNaarHex+0xe>
+  a6:	39 f4       	brne	.+14     	; 0xb6 <OmzettenNaarHex+0x12>
   a8:	66 23       	and	r22, r22
-  aa:	69 f1       	breq	.+90     	; 0x106 <OmzettenNaarHex+0x62>
-  ac:	61 30       	cpi	r22, 0x01	; 1
-  ae:	51 f5       	brne	.+84     	; 0x104 <OmzettenNaarHex+0x60>
-  b0:	2c c0       	rjmp	.+88     	; 0x10a <OmzettenNaarHex+0x66>
-  b2:	82 30       	cpi	r24, 0x02	; 2
-  b4:	29 f4       	brne	.+10     	; 0xc0 <OmzettenNaarHex+0x1c>
-  b6:	66 23       	and	r22, r22
-  b8:	51 f1       	breq	.+84     	; 0x10e <OmzettenNaarHex+0x6a>
-  ba:	61 30       	cpi	r22, 0x01	; 1
-  bc:	19 f5       	brne	.+70     	; 0x104 <OmzettenNaarHex+0x60>
-  be:	29 c0       	rjmp	.+82     	; 0x112 <OmzettenNaarHex+0x6e>
-  c0:	83 30       	cpi	r24, 0x03	; 3
-  c2:	29 f4       	brne	.+10     	; 0xce <OmzettenNaarHex+0x2a>
-  c4:	66 23       	and	r22, r22
-  c6:	39 f1       	breq	.+78     	; 0x116 <OmzettenNaarHex+0x72>
-  c8:	61 30       	cpi	r22, 0x01	; 1
-  ca:	e1 f4       	brne	.+56     	; 0x104 <OmzettenNaarHex+0x60>
-  cc:	26 c0       	rjmp	.+76     	; 0x11a <OmzettenNaarHex+0x76>
-  ce:	84 30       	cpi	r24, 0x04	; 4
-  d0:	29 f4       	brne	.+10     	; 0xdc <OmzettenNaarHex+0x38>
-  d2:	66 23       	and	r22, r22
-  d4:	21 f1       	breq	.+72     	; 0x11e <OmzettenNaarHex+0x7a>
-  d6:	61 30       	cpi	r22, 0x01	; 1
-  d8:	a9 f4       	brne	.+42     	; 0x104 <OmzettenNaarHex+0x60>
-  da:	23 c0       	rjmp	.+70     	; 0x122 <OmzettenNaarHex+0x7e>
-  dc:	85 30       	cpi	r24, 0x05	; 5
-  de:	29 f4       	brne	.+10     	; 0xea <OmzettenNaarHex+0x46>
-  e0:	66 23       	and	r22, r22
-  e2:	09 f1       	breq	.+66     	; 0x126 <OmzettenNaarHex+0x82>
+  aa:	09 f4       	brne	.+2      	; 0xae <OmzettenNaarHex+0xa>
+  ac:	ba c0       	rjmp	.+372    	; 0x222 <OmzettenNaarHex+0x17e>
+  ae:	61 30       	cpi	r22, 0x01	; 1
+  b0:	09 f0       	breq	.+2      	; 0xb4 <OmzettenNaarHex+0x10>
+  b2:	b6 c0       	rjmp	.+364    	; 0x220 <OmzettenNaarHex+0x17c>
+  b4:	b8 c0       	rjmp	.+368    	; 0x226 <OmzettenNaarHex+0x182>
+  b6:	82 30       	cpi	r24, 0x02	; 2
+  b8:	39 f4       	brne	.+14     	; 0xc8 <OmzettenNaarHex+0x24>
+  ba:	66 23       	and	r22, r22
+  bc:	09 f4       	brne	.+2      	; 0xc0 <OmzettenNaarHex+0x1c>
+  be:	b5 c0       	rjmp	.+362    	; 0x22a <OmzettenNaarHex+0x186>
+  c0:	61 30       	cpi	r22, 0x01	; 1
+  c2:	09 f0       	breq	.+2      	; 0xc6 <OmzettenNaarHex+0x22>
+  c4:	ad c0       	rjmp	.+346    	; 0x220 <OmzettenNaarHex+0x17c>
+  c6:	b3 c0       	rjmp	.+358    	; 0x22e <OmzettenNaarHex+0x18a>
+  c8:	83 30       	cpi	r24, 0x03	; 3
+  ca:	39 f4       	brne	.+14     	; 0xda <OmzettenNaarHex+0x36>
+  cc:	66 23       	and	r22, r22
+  ce:	09 f4       	brne	.+2      	; 0xd2 <OmzettenNaarHex+0x2e>
+  d0:	b0 c0       	rjmp	.+352    	; 0x232 <OmzettenNaarHex+0x18e>
+  d2:	61 30       	cpi	r22, 0x01	; 1
+  d4:	09 f0       	breq	.+2      	; 0xd8 <OmzettenNaarHex+0x34>
+  d6:	a4 c0       	rjmp	.+328    	; 0x220 <OmzettenNaarHex+0x17c>
+  d8:	ae c0       	rjmp	.+348    	; 0x236 <OmzettenNaarHex+0x192>
+  da:	84 30       	cpi	r24, 0x04	; 4
+  dc:	39 f4       	brne	.+14     	; 0xec <OmzettenNaarHex+0x48>
+  de:	66 23       	and	r22, r22
+  e0:	09 f4       	brne	.+2      	; 0xe4 <OmzettenNaarHex+0x40>
+  e2:	ab c0       	rjmp	.+342    	; 0x23a <OmzettenNaarHex+0x196>
   e4:	61 30       	cpi	r22, 0x01	; 1
-  e6:	71 f4       	brne	.+28     	; 0x104 <OmzettenNaarHex+0x60>
-  e8:	20 c0       	rjmp	.+64     	; 0x12a <OmzettenNaarHex+0x86>
-  ea:	86 30       	cpi	r24, 0x06	; 6
-  ec:	29 f4       	brne	.+10     	; 0xf8 <OmzettenNaarHex+0x54>
-  ee:	66 23       	and	r22, r22
-  f0:	f1 f0       	breq	.+60     	; 0x12e <OmzettenNaarHex+0x8a>
-  f2:	61 30       	cpi	r22, 0x01	; 1
-  f4:	39 f4       	brne	.+14     	; 0x104 <OmzettenNaarHex+0x60>
-  f6:	1d c0       	rjmp	.+58     	; 0x132 <OmzettenNaarHex+0x8e>
-  f8:	88 30       	cpi	r24, 0x08	; 8
-  fa:	21 f4       	brne	.+8      	; 0x104 <OmzettenNaarHex+0x60>
-  fc:	66 23       	and	r22, r22
-  fe:	d9 f0       	breq	.+54     	; 0x136 <OmzettenNaarHex+0x92>
- 100:	61 30       	cpi	r22, 0x01	; 1
- 102:	d9 f0       	breq	.+54     	; 0x13a <OmzettenNaarHex+0x96>
- 104:	08 95       	ret
- 106:	81 e0       	ldi	r24, 0x01	; 1
- 108:	08 95       	ret
- 10a:	82 e0       	ldi	r24, 0x02	; 2
- 10c:	08 95       	ret
- 10e:	83 e0       	ldi	r24, 0x03	; 3
- 110:	08 95       	ret
- 112:	84 e0       	ldi	r24, 0x04	; 4
- 114:	08 95       	ret
- 116:	85 e0       	ldi	r24, 0x05	; 5
- 118:	08 95       	ret
- 11a:	86 e0       	ldi	r24, 0x06	; 6
- 11c:	08 95       	ret
- 11e:	87 e0       	ldi	r24, 0x07	; 7
- 120:	08 95       	ret
- 122:	88 e0       	ldi	r24, 0x08	; 8
- 124:	08 95       	ret
- 126:	81 e1       	ldi	r24, 0x11	; 17
- 128:	08 95       	ret
- 12a:	82 e1       	ldi	r24, 0x12	; 18
- 12c:	08 95       	ret
- 12e:	83 e1       	ldi	r24, 0x13	; 19
- 130:	08 95       	ret
- 132:	84 e1       	ldi	r24, 0x14	; 20
- 134:	08 95       	ret
- 136:	87 e1       	ldi	r24, 0x17	; 23
- 138:	08 95       	ret
- 13a:	88 e1       	ldi	r24, 0x18	; 24
- 13c:	08 95       	ret
+  e6:	09 f0       	breq	.+2      	; 0xea <OmzettenNaarHex+0x46>
+  e8:	9b c0       	rjmp	.+310    	; 0x220 <OmzettenNaarHex+0x17c>
+  ea:	a9 c0       	rjmp	.+338    	; 0x23e <OmzettenNaarHex+0x19a>
+  ec:	85 30       	cpi	r24, 0x05	; 5
+  ee:	39 f4       	brne	.+14     	; 0xfe <OmzettenNaarHex+0x5a>
+  f0:	66 23       	and	r22, r22
+  f2:	09 f4       	brne	.+2      	; 0xf6 <OmzettenNaarHex+0x52>
+  f4:	a6 c0       	rjmp	.+332    	; 0x242 <OmzettenNaarHex+0x19e>
+  f6:	61 30       	cpi	r22, 0x01	; 1
+  f8:	09 f0       	breq	.+2      	; 0xfc <OmzettenNaarHex+0x58>
+  fa:	92 c0       	rjmp	.+292    	; 0x220 <OmzettenNaarHex+0x17c>
+  fc:	a4 c0       	rjmp	.+328    	; 0x246 <OmzettenNaarHex+0x1a2>
+  fe:	86 30       	cpi	r24, 0x06	; 6
+ 100:	39 f4       	brne	.+14     	; 0x110 <OmzettenNaarHex+0x6c>
+ 102:	66 23       	and	r22, r22
+ 104:	09 f4       	brne	.+2      	; 0x108 <OmzettenNaarHex+0x64>
+ 106:	a1 c0       	rjmp	.+322    	; 0x24a <OmzettenNaarHex+0x1a6>
+ 108:	61 30       	cpi	r22, 0x01	; 1
+ 10a:	09 f0       	breq	.+2      	; 0x10e <OmzettenNaarHex+0x6a>
+ 10c:	89 c0       	rjmp	.+274    	; 0x220 <OmzettenNaarHex+0x17c>
+ 10e:	9f c0       	rjmp	.+318    	; 0x24e <OmzettenNaarHex+0x1aa>
+ 110:	87 30       	cpi	r24, 0x07	; 7
+ 112:	39 f4       	brne	.+14     	; 0x122 <OmzettenNaarHex+0x7e>
+ 114:	66 23       	and	r22, r22
+ 116:	09 f4       	brne	.+2      	; 0x11a <OmzettenNaarHex+0x76>
+ 118:	9c c0       	rjmp	.+312    	; 0x252 <OmzettenNaarHex+0x1ae>
+ 11a:	61 30       	cpi	r22, 0x01	; 1
+ 11c:	09 f0       	breq	.+2      	; 0x120 <OmzettenNaarHex+0x7c>
+ 11e:	80 c0       	rjmp	.+256    	; 0x220 <OmzettenNaarHex+0x17c>
+ 120:	9a c0       	rjmp	.+308    	; 0x256 <OmzettenNaarHex+0x1b2>
+ 122:	88 30       	cpi	r24, 0x08	; 8
+ 124:	39 f4       	brne	.+14     	; 0x134 <OmzettenNaarHex+0x90>
+ 126:	66 23       	and	r22, r22
+ 128:	09 f4       	brne	.+2      	; 0x12c <OmzettenNaarHex+0x88>
+ 12a:	97 c0       	rjmp	.+302    	; 0x25a <OmzettenNaarHex+0x1b6>
+ 12c:	61 30       	cpi	r22, 0x01	; 1
+ 12e:	09 f0       	breq	.+2      	; 0x132 <OmzettenNaarHex+0x8e>
+ 130:	77 c0       	rjmp	.+238    	; 0x220 <OmzettenNaarHex+0x17c>
+ 132:	95 c0       	rjmp	.+298    	; 0x25e <OmzettenNaarHex+0x1ba>
+ 134:	89 30       	cpi	r24, 0x09	; 9
+ 136:	39 f4       	brne	.+14     	; 0x146 <OmzettenNaarHex+0xa2>
+ 138:	66 23       	and	r22, r22
+ 13a:	09 f4       	brne	.+2      	; 0x13e <OmzettenNaarHex+0x9a>
+ 13c:	92 c0       	rjmp	.+292    	; 0x262 <OmzettenNaarHex+0x1be>
+ 13e:	61 30       	cpi	r22, 0x01	; 1
+ 140:	09 f0       	breq	.+2      	; 0x144 <OmzettenNaarHex+0xa0>
+ 142:	6e c0       	rjmp	.+220    	; 0x220 <OmzettenNaarHex+0x17c>
+ 144:	90 c0       	rjmp	.+288    	; 0x266 <OmzettenNaarHex+0x1c2>
+ 146:	8a 30       	cpi	r24, 0x0A	; 10
+ 148:	39 f4       	brne	.+14     	; 0x158 <OmzettenNaarHex+0xb4>
+ 14a:	66 23       	and	r22, r22
+ 14c:	09 f4       	brne	.+2      	; 0x150 <OmzettenNaarHex+0xac>
+ 14e:	8d c0       	rjmp	.+282    	; 0x26a <OmzettenNaarHex+0x1c6>
+ 150:	61 30       	cpi	r22, 0x01	; 1
+ 152:	09 f0       	breq	.+2      	; 0x156 <OmzettenNaarHex+0xb2>
+ 154:	65 c0       	rjmp	.+202    	; 0x220 <OmzettenNaarHex+0x17c>
+ 156:	8b c0       	rjmp	.+278    	; 0x26e <OmzettenNaarHex+0x1ca>
+ 158:	8b 30       	cpi	r24, 0x0B	; 11
+ 15a:	39 f4       	brne	.+14     	; 0x16a <OmzettenNaarHex+0xc6>
+ 15c:	66 23       	and	r22, r22
+ 15e:	09 f4       	brne	.+2      	; 0x162 <OmzettenNaarHex+0xbe>
+ 160:	88 c0       	rjmp	.+272    	; 0x272 <OmzettenNaarHex+0x1ce>
+ 162:	61 30       	cpi	r22, 0x01	; 1
+ 164:	09 f0       	breq	.+2      	; 0x168 <OmzettenNaarHex+0xc4>
+ 166:	5c c0       	rjmp	.+184    	; 0x220 <OmzettenNaarHex+0x17c>
+ 168:	86 c0       	rjmp	.+268    	; 0x276 <OmzettenNaarHex+0x1d2>
+ 16a:	8c 30       	cpi	r24, 0x0C	; 12
+ 16c:	39 f4       	brne	.+14     	; 0x17c <OmzettenNaarHex+0xd8>
+ 16e:	66 23       	and	r22, r22
+ 170:	09 f4       	brne	.+2      	; 0x174 <OmzettenNaarHex+0xd0>
+ 172:	83 c0       	rjmp	.+262    	; 0x27a <OmzettenNaarHex+0x1d6>
+ 174:	61 30       	cpi	r22, 0x01	; 1
+ 176:	09 f0       	breq	.+2      	; 0x17a <OmzettenNaarHex+0xd6>
+ 178:	53 c0       	rjmp	.+166    	; 0x220 <OmzettenNaarHex+0x17c>
+ 17a:	81 c0       	rjmp	.+258    	; 0x27e <OmzettenNaarHex+0x1da>
+ 17c:	8d 30       	cpi	r24, 0x0D	; 13
+ 17e:	39 f4       	brne	.+14     	; 0x18e <OmzettenNaarHex+0xea>
+ 180:	66 23       	and	r22, r22
+ 182:	09 f4       	brne	.+2      	; 0x186 <OmzettenNaarHex+0xe2>
+ 184:	7e c0       	rjmp	.+252    	; 0x282 <OmzettenNaarHex+0x1de>
+ 186:	61 30       	cpi	r22, 0x01	; 1
+ 188:	09 f0       	breq	.+2      	; 0x18c <OmzettenNaarHex+0xe8>
+ 18a:	4a c0       	rjmp	.+148    	; 0x220 <OmzettenNaarHex+0x17c>
+ 18c:	7c c0       	rjmp	.+248    	; 0x286 <OmzettenNaarHex+0x1e2>
+ 18e:	82 31       	cpi	r24, 0x12	; 18
+ 190:	39 f4       	brne	.+14     	; 0x1a0 <OmzettenNaarHex+0xfc>
+ 192:	66 23       	and	r22, r22
+ 194:	09 f4       	brne	.+2      	; 0x198 <OmzettenNaarHex+0xf4>
+ 196:	79 c0       	rjmp	.+242    	; 0x28a <OmzettenNaarHex+0x1e6>
+ 198:	61 30       	cpi	r22, 0x01	; 1
+ 19a:	09 f0       	breq	.+2      	; 0x19e <OmzettenNaarHex+0xfa>
+ 19c:	41 c0       	rjmp	.+130    	; 0x220 <OmzettenNaarHex+0x17c>
+ 19e:	77 c0       	rjmp	.+238    	; 0x28e <OmzettenNaarHex+0x1ea>
+ 1a0:	83 31       	cpi	r24, 0x13	; 19
+ 1a2:	31 f4       	brne	.+12     	; 0x1b0 <OmzettenNaarHex+0x10c>
+ 1a4:	66 23       	and	r22, r22
+ 1a6:	09 f4       	brne	.+2      	; 0x1aa <OmzettenNaarHex+0x106>
+ 1a8:	74 c0       	rjmp	.+232    	; 0x292 <OmzettenNaarHex+0x1ee>
+ 1aa:	61 30       	cpi	r22, 0x01	; 1
+ 1ac:	c9 f5       	brne	.+114    	; 0x220 <OmzettenNaarHex+0x17c>
+ 1ae:	73 c0       	rjmp	.+230    	; 0x296 <OmzettenNaarHex+0x1f2>
+ 1b0:	84 31       	cpi	r24, 0x14	; 20
+ 1b2:	31 f4       	brne	.+12     	; 0x1c0 <OmzettenNaarHex+0x11c>
+ 1b4:	66 23       	and	r22, r22
+ 1b6:	09 f4       	brne	.+2      	; 0x1ba <OmzettenNaarHex+0x116>
+ 1b8:	70 c0       	rjmp	.+224    	; 0x29a <OmzettenNaarHex+0x1f6>
+ 1ba:	61 30       	cpi	r22, 0x01	; 1
+ 1bc:	89 f5       	brne	.+98     	; 0x220 <OmzettenNaarHex+0x17c>
+ 1be:	6f c0       	rjmp	.+222    	; 0x29e <OmzettenNaarHex+0x1fa>
+ 1c0:	85 31       	cpi	r24, 0x15	; 21
+ 1c2:	31 f4       	brne	.+12     	; 0x1d0 <OmzettenNaarHex+0x12c>
+ 1c4:	66 23       	and	r22, r22
+ 1c6:	09 f4       	brne	.+2      	; 0x1ca <OmzettenNaarHex+0x126>
+ 1c8:	6c c0       	rjmp	.+216    	; 0x2a2 <OmzettenNaarHex+0x1fe>
+ 1ca:	61 30       	cpi	r22, 0x01	; 1
+ 1cc:	49 f5       	brne	.+82     	; 0x220 <OmzettenNaarHex+0x17c>
+ 1ce:	6b c0       	rjmp	.+214    	; 0x2a6 <OmzettenNaarHex+0x202>
+ 1d0:	86 31       	cpi	r24, 0x16	; 22
+ 1d2:	31 f4       	brne	.+12     	; 0x1e0 <OmzettenNaarHex+0x13c>
+ 1d4:	66 23       	and	r22, r22
+ 1d6:	09 f4       	brne	.+2      	; 0x1da <OmzettenNaarHex+0x136>
+ 1d8:	68 c0       	rjmp	.+208    	; 0x2aa <OmzettenNaarHex+0x206>
+ 1da:	61 30       	cpi	r22, 0x01	; 1
+ 1dc:	09 f5       	brne	.+66     	; 0x220 <OmzettenNaarHex+0x17c>
+ 1de:	67 c0       	rjmp	.+206    	; 0x2ae <OmzettenNaarHex+0x20a>
+ 1e0:	87 31       	cpi	r24, 0x17	; 23
+ 1e2:	31 f4       	brne	.+12     	; 0x1f0 <OmzettenNaarHex+0x14c>
+ 1e4:	66 23       	and	r22, r22
+ 1e6:	09 f4       	brne	.+2      	; 0x1ea <OmzettenNaarHex+0x146>
+ 1e8:	64 c0       	rjmp	.+200    	; 0x2b2 <OmzettenNaarHex+0x20e>
+ 1ea:	61 30       	cpi	r22, 0x01	; 1
+ 1ec:	c9 f4       	brne	.+50     	; 0x220 <OmzettenNaarHex+0x17c>
+ 1ee:	63 c0       	rjmp	.+198    	; 0x2b6 <OmzettenNaarHex+0x212>
+ 1f0:	88 31       	cpi	r24, 0x18	; 24
+ 1f2:	31 f4       	brne	.+12     	; 0x200 <OmzettenNaarHex+0x15c>
+ 1f4:	66 23       	and	r22, r22
+ 1f6:	09 f4       	brne	.+2      	; 0x1fa <OmzettenNaarHex+0x156>
+ 1f8:	60 c0       	rjmp	.+192    	; 0x2ba <OmzettenNaarHex+0x216>
+ 1fa:	61 30       	cpi	r22, 0x01	; 1
+ 1fc:	89 f4       	brne	.+34     	; 0x220 <OmzettenNaarHex+0x17c>
+ 1fe:	5f c0       	rjmp	.+190    	; 0x2be <OmzettenNaarHex+0x21a>
+ 200:	89 31       	cpi	r24, 0x19	; 25
+ 202:	31 f4       	brne	.+12     	; 0x210 <OmzettenNaarHex+0x16c>
+ 204:	66 23       	and	r22, r22
+ 206:	09 f4       	brne	.+2      	; 0x20a <OmzettenNaarHex+0x166>
+ 208:	5c c0       	rjmp	.+184    	; 0x2c2 <OmzettenNaarHex+0x21e>
+ 20a:	61 30       	cpi	r22, 0x01	; 1
+ 20c:	49 f4       	brne	.+18     	; 0x220 <OmzettenNaarHex+0x17c>
+ 20e:	5b c0       	rjmp	.+182    	; 0x2c6 <OmzettenNaarHex+0x222>
+ 210:	8a 31       	cpi	r24, 0x1A	; 26
+ 212:	31 f4       	brne	.+12     	; 0x220 <OmzettenNaarHex+0x17c>
+ 214:	66 23       	and	r22, r22
+ 216:	09 f4       	brne	.+2      	; 0x21a <OmzettenNaarHex+0x176>
+ 218:	58 c0       	rjmp	.+176    	; 0x2ca <OmzettenNaarHex+0x226>
+ 21a:	61 30       	cpi	r22, 0x01	; 1
+ 21c:	09 f4       	brne	.+2      	; 0x220 <OmzettenNaarHex+0x17c>
+ 21e:	57 c0       	rjmp	.+174    	; 0x2ce <OmzettenNaarHex+0x22a>
+ 220:	08 95       	ret
+ 222:	81 e0       	ldi	r24, 0x01	; 1
+ 224:	08 95       	ret
+ 226:	82 e0       	ldi	r24, 0x02	; 2
+ 228:	08 95       	ret
+ 22a:	83 e0       	ldi	r24, 0x03	; 3
+ 22c:	08 95       	ret
+ 22e:	84 e0       	ldi	r24, 0x04	; 4
+ 230:	08 95       	ret
+ 232:	85 e0       	ldi	r24, 0x05	; 5
+ 234:	08 95       	ret
+ 236:	86 e0       	ldi	r24, 0x06	; 6
+ 238:	08 95       	ret
+ 23a:	87 e0       	ldi	r24, 0x07	; 7
+ 23c:	08 95       	ret
+ 23e:	88 e0       	ldi	r24, 0x08	; 8
+ 240:	08 95       	ret
+ 242:	89 e0       	ldi	r24, 0x09	; 9
+ 244:	08 95       	ret
+ 246:	80 e1       	ldi	r24, 0x10	; 16
+ 248:	08 95       	ret
+ 24a:	81 e1       	ldi	r24, 0x11	; 17
+ 24c:	08 95       	ret
+ 24e:	82 e1       	ldi	r24, 0x12	; 18
+ 250:	08 95       	ret
+ 252:	83 e1       	ldi	r24, 0x13	; 19
+ 254:	08 95       	ret
+ 256:	84 e1       	ldi	r24, 0x14	; 20
+ 258:	08 95       	ret
+ 25a:	85 e1       	ldi	r24, 0x15	; 21
+ 25c:	08 95       	ret
+ 25e:	86 e1       	ldi	r24, 0x16	; 22
+ 260:	08 95       	ret
+ 262:	87 e1       	ldi	r24, 0x17	; 23
+ 264:	08 95       	ret
+ 266:	88 e1       	ldi	r24, 0x18	; 24
+ 268:	08 95       	ret
+ 26a:	89 e1       	ldi	r24, 0x19	; 25
+ 26c:	08 95       	ret
+ 26e:	80 e2       	ldi	r24, 0x20	; 32
+ 270:	08 95       	ret
+ 272:	81 e2       	ldi	r24, 0x21	; 33
+ 274:	08 95       	ret
+ 276:	82 e2       	ldi	r24, 0x22	; 34
+ 278:	08 95       	ret
+ 27a:	83 e2       	ldi	r24, 0x23	; 35
+ 27c:	08 95       	ret
+ 27e:	84 e2       	ldi	r24, 0x24	; 36
+ 280:	08 95       	ret
+ 282:	85 e2       	ldi	r24, 0x25	; 37
+ 284:	08 95       	ret
+ 286:	86 e2       	ldi	r24, 0x26	; 38
+ 288:	08 95       	ret
+ 28a:	85 e3       	ldi	r24, 0x35	; 53
+ 28c:	08 95       	ret
+ 28e:	86 e3       	ldi	r24, 0x36	; 54
+ 290:	08 95       	ret
+ 292:	87 e3       	ldi	r24, 0x37	; 55
+ 294:	08 95       	ret
+ 296:	88 e3       	ldi	r24, 0x38	; 56
+ 298:	08 95       	ret
+ 29a:	89 e3       	ldi	r24, 0x39	; 57
+ 29c:	08 95       	ret
+ 29e:	80 e4       	ldi	r24, 0x40	; 64
+ 2a0:	08 95       	ret
+ 2a2:	81 e4       	ldi	r24, 0x41	; 65
+ 2a4:	08 95       	ret
+ 2a6:	82 e4       	ldi	r24, 0x42	; 66
+ 2a8:	08 95       	ret
+ 2aa:	83 e4       	ldi	r24, 0x43	; 67
+ 2ac:	08 95       	ret
+ 2ae:	84 e4       	ldi	r24, 0x44	; 68
+ 2b0:	08 95       	ret
+ 2b2:	85 e4       	ldi	r24, 0x45	; 69
+ 2b4:	08 95       	ret
+ 2b6:	86 e4       	ldi	r24, 0x46	; 70
+ 2b8:	08 95       	ret
+ 2ba:	87 e4       	ldi	r24, 0x47	; 71
+ 2bc:	08 95       	ret
+ 2be:	88 e4       	ldi	r24, 0x48	; 72
+ 2c0:	08 95       	ret
+ 2c2:	89 e4       	ldi	r24, 0x49	; 73
+ 2c4:	08 95       	ret
+ 2c6:	80 e5       	ldi	r24, 0x50	; 80
+ 2c8:	08 95       	ret
+ 2ca:	81 e5       	ldi	r24, 0x51	; 81
+ 2cc:	08 95       	ret
+ 2ce:	82 e5       	ldi	r24, 0x52	; 82
+ 2d0:	08 95       	ret
 
-0000013e <serieel_init0>:
- 13e:	50 98       	cbi	0x0a, 0	; 10
- 140:	51 9a       	sbi	0x0a, 1	; 10
- 142:	e0 ec       	ldi	r30, 0xC0	; 192
- 144:	f0 e0       	ldi	r31, 0x00	; 0
- 146:	80 81       	ld	r24, Z
- 148:	8d 7f       	andi	r24, 0xFD	; 253
- 14a:	80 83       	st	Z, r24
- 14c:	87 e1       	ldi	r24, 0x17	; 23
- 14e:	90 e0       	ldi	r25, 0x00	; 0
- 150:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
- 154:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
- 158:	a2 ec       	ldi	r26, 0xC2	; 194
- 15a:	b0 e0       	ldi	r27, 0x00	; 0
- 15c:	8c 91       	ld	r24, X
- 15e:	86 60       	ori	r24, 0x06	; 6
- 160:	8c 93       	st	X, r24
- 162:	e1 ec       	ldi	r30, 0xC1	; 193
- 164:	f0 e0       	ldi	r31, 0x00	; 0
- 166:	80 81       	ld	r24, Z
- 168:	8b 7f       	andi	r24, 0xFB	; 251
- 16a:	80 83       	st	Z, r24
- 16c:	8c 91       	ld	r24, X
- 16e:	87 7f       	andi	r24, 0xF7	; 247
- 170:	8c 93       	st	X, r24
- 172:	8c 91       	ld	r24, X
- 174:	8f 7e       	andi	r24, 0xEF	; 239
- 176:	8c 93       	st	X, r24
- 178:	80 81       	ld	r24, Z
- 17a:	88 61       	ori	r24, 0x18	; 24
- 17c:	80 83       	st	Z, r24
- 17e:	80 81       	ld	r24, Z
- 180:	80 68       	ori	r24, 0x80	; 128
- 182:	80 83       	st	Z, r24
- 184:	08 95       	ret
+000002d2 <serieel_init0>:
+ 2d2:	50 98       	cbi	0x0a, 0	; 10
+ 2d4:	51 9a       	sbi	0x0a, 1	; 10
+ 2d6:	e0 ec       	ldi	r30, 0xC0	; 192
+ 2d8:	f0 e0       	ldi	r31, 0x00	; 0
+ 2da:	80 81       	ld	r24, Z
+ 2dc:	8d 7f       	andi	r24, 0xFD	; 253
+ 2de:	80 83       	st	Z, r24
+ 2e0:	87 e1       	ldi	r24, 0x17	; 23
+ 2e2:	90 e0       	ldi	r25, 0x00	; 0
+ 2e4:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
+ 2e8:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
+ 2ec:	a2 ec       	ldi	r26, 0xC2	; 194
+ 2ee:	b0 e0       	ldi	r27, 0x00	; 0
+ 2f0:	8c 91       	ld	r24, X
+ 2f2:	86 60       	ori	r24, 0x06	; 6
+ 2f4:	8c 93       	st	X, r24
+ 2f6:	e1 ec       	ldi	r30, 0xC1	; 193
+ 2f8:	f0 e0       	ldi	r31, 0x00	; 0
+ 2fa:	80 81       	ld	r24, Z
+ 2fc:	8b 7f       	andi	r24, 0xFB	; 251
+ 2fe:	80 83       	st	Z, r24
+ 300:	8c 91       	ld	r24, X
+ 302:	87 7f       	andi	r24, 0xF7	; 247
+ 304:	8c 93       	st	X, r24
+ 306:	8c 91       	ld	r24, X
+ 308:	8f 7e       	andi	r24, 0xEF	; 239
+ 30a:	8c 93       	st	X, r24
+ 30c:	80 81       	ld	r24, Z
+ 30e:	88 61       	ori	r24, 0x18	; 24
+ 310:	80 83       	st	Z, r24
+ 312:	80 81       	ld	r24, Z
+ 314:	80 68       	ori	r24, 0x80	; 128
+ 316:	80 83       	st	Z, r24
+ 318:	08 95       	ret
 
-00000186 <__vector_20>:
- 186:	1f 92       	push	r1
- 188:	0f 92       	push	r0
- 18a:	0f b6       	in	r0, 0x3f	; 63
- 18c:	0f 92       	push	r0
- 18e:	11 24       	eor	r1, r1
- 190:	0f 90       	pop	r0
- 192:	0f be       	out	0x3f, r0	; 63
- 194:	0f 90       	pop	r0
- 196:	1f 90       	pop	r1
- 198:	18 95       	reti
+0000031a <__vector_20>:
+ 31a:	1f 92       	push	r1
+ 31c:	0f 92       	push	r0
+ 31e:	0f b6       	in	r0, 0x3f	; 63
+ 320:	0f 92       	push	r0
+ 322:	11 24       	eor	r1, r1
+ 324:	0f 90       	pop	r0
+ 326:	0f be       	out	0x3f, r0	; 63
+ 328:	0f 90       	pop	r0
+ 32a:	1f 90       	pop	r1
+ 32c:	18 95       	reti
 
-0000019a <sendChar0>:
- 19a:	e0 ec       	ldi	r30, 0xC0	; 192
- 19c:	f0 e0       	ldi	r31, 0x00	; 0
- 19e:	90 81       	ld	r25, Z
- 1a0:	95 ff       	sbrs	r25, 5
- 1a2:	fd cf       	rjmp	.-6      	; 0x19e <sendChar0+0x4>
- 1a4:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
- 1a8:	08 95       	ret
+0000032e <sendChar0>:
+ 32e:	e0 ec       	ldi	r30, 0xC0	; 192
+ 330:	f0 e0       	ldi	r31, 0x00	; 0
+ 332:	90 81       	ld	r25, Z
+ 334:	95 ff       	sbrs	r25, 5
+ 336:	fd cf       	rjmp	.-6      	; 0x332 <sendChar0+0x4>
+ 338:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+ 33c:	08 95       	ret
 
-000001aa <__vector_16>:
+0000033e <init_timer>:
+
+void init_timer(void)
+{
+	//init
+	DDRA &=~(1<<DDRA0);
+ 33e:	08 98       	cbi	0x01, 0	; 1
+	DDRC |=(1<<DDRC0);
+ 340:	38 9a       	sbi	0x07, 0	; 7
+	TCCR0A |= (1<<WGM01);	//Instellen WGM01 op 1 in TCCR0A
+ 342:	84 b5       	in	r24, 0x24	; 36
+ 344:	82 60       	ori	r24, 0x02	; 2
+ 346:	84 bd       	out	0x24, r24	; 36
+	TCCR0A &=~(1<<WGM00);	//Instellen WGM00 op 0 in TCCR0A
+ 348:	84 b5       	in	r24, 0x24	; 36
+ 34a:	8e 7f       	andi	r24, 0xFE	; 254
+ 34c:	84 bd       	out	0x24, r24	; 36
+	TCCR0B &=~((1<<WGM02) | (1<<CS01));		//Instellen  WGM02 en CS01 op 0 in TCCR0B
+ 34e:	85 b5       	in	r24, 0x25	; 37
+ 350:	85 7f       	andi	r24, 0xF5	; 245
+ 352:	85 bd       	out	0x25, r24	; 37
+	TCCR0B |= ((1<<CS02)| (1<<CS00));		//Instellen CS02 en CS00 op 1 in TCCR0B
+ 354:	85 b5       	in	r24, 0x25	; 37
+ 356:	85 60       	ori	r24, 0x05	; 5
+ 358:	85 bd       	out	0x25, r24	; 37
+	OCR0A = 224;
+ 35a:	80 ee       	ldi	r24, 0xE0	; 224
+ 35c:	87 bd       	out	0x27, r24	; 39
+	TIMSK0 |= (1<<OCIE0A);
+ 35e:	ee e6       	ldi	r30, 0x6E	; 110
+ 360:	f0 e0       	ldi	r31, 0x00	; 0
+ 362:	80 81       	ld	r24, Z
+ 364:	82 60       	ori	r24, 0x02	; 2
+ 366:	80 83       	st	Z, r24
+	sei();
+ 368:	78 94       	sei
+ 36a:	08 95       	ret
+
+0000036c <__vector_16>:
 }
 
 ISR (TIMER0_COMPA_vect)
 {
- 1aa:	1f 92       	push	r1
- 1ac:	0f 92       	push	r0
- 1ae:	0f b6       	in	r0, 0x3f	; 63
- 1b0:	0f 92       	push	r0
- 1b2:	11 24       	eor	r1, r1
- 1b4:	8f 93       	push	r24
+ 36c:	1f 92       	push	r1
+ 36e:	0f 92       	push	r0
+ 370:	0f b6       	in	r0, 0x3f	; 63
+ 372:	0f 92       	push	r0
+ 374:	11 24       	eor	r1, r1
+ 376:	8f 93       	push	r24
 	ticks16++;
- 1b6:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
- 1ba:	8f 5f       	subi	r24, 0xFF	; 255
- 1bc:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+ 378:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 37c:	8f 5f       	subi	r24, 0xFF	; 255
+ 37e:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
 	if(ticks16==64)
- 1c0:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
- 1c4:	80 34       	cpi	r24, 0x40	; 64
- 1c6:	29 f4       	brne	.+10     	; 0x1d2 <__vector_16+0x28>
+ 382:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 386:	80 34       	cpi	r24, 0x40	; 64
+ 388:	29 f4       	brne	.+10     	; 0x394 <__vector_16+0x28>
 	{
 		ticks16=0;
- 1c8:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
+ 38a:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
 		ticks1s=1;
- 1cc:	81 e0       	ldi	r24, 0x01	; 1
- 1ce:	80 93 1c 01 	sts	0x011C, r24	; 0x80011c <ticks1s>
+ 38e:	81 e0       	ldi	r24, 0x01	; 1
+ 390:	80 93 1c 01 	sts	0x011C, r24	; 0x80011c <ticks1s>
 	}
 }
- 1d2:	8f 91       	pop	r24
- 1d4:	0f 90       	pop	r0
- 1d6:	0f be       	out	0x3f, r0	; 63
- 1d8:	0f 90       	pop	r0
- 1da:	1f 90       	pop	r1
- 1dc:	18 95       	reti
+ 394:	8f 91       	pop	r24
+ 396:	0f 90       	pop	r0
+ 398:	0f be       	out	0x3f, r0	; 63
+ 39a:	0f 90       	pop	r0
+ 39c:	1f 90       	pop	r1
+ 39e:	18 95       	reti
 
-000001de <init_ingangen>:
+000003a0 <init_ingangen>:
 
 void init_ingangen(void)
 {
 	//P1
 	DDRA &=~ (1<<DDRA7);
- 1de:	0f 98       	cbi	0x01, 7	; 1
+ 3a0:	0f 98       	cbi	0x01, 7	; 1
 	//P2
 	DDRA &=~ (1<<DDRA4);
- 1e0:	0c 98       	cbi	0x01, 4	; 1
+ 3a2:	0c 98       	cbi	0x01, 4	; 1
 	//P3
 	DDRA &=~ (1<<DDRA3);
- 1e2:	0b 98       	cbi	0x01, 3	; 1
+ 3a4:	0b 98       	cbi	0x01, 3	; 1
 	//P4
 	DDRC &=~ (1<<DDRC0);
- 1e4:	38 98       	cbi	0x07, 0	; 7
+ 3a6:	38 98       	cbi	0x07, 0	; 7
 	//P5
 	DDRC &=~ (1<<DDRC1);
- 1e6:	39 98       	cbi	0x07, 1	; 7
+ 3a8:	39 98       	cbi	0x07, 1	; 7
 	//P6
 	DDRC &=~ (1<<DDRC2);
- 1e8:	3a 98       	cbi	0x07, 2	; 7
+ 3aa:	3a 98       	cbi	0x07, 2	; 7
 	//P7
 	DDRC &=~ (1<<DDRC3);
- 1ea:	3b 98       	cbi	0x07, 3	; 7
+ 3ac:	3b 98       	cbi	0x07, 3	; 7
 	//P8
 	DDRC &=~ (1<<DDRC4);
- 1ec:	3c 98       	cbi	0x07, 4	; 7
+ 3ae:	3c 98       	cbi	0x07, 4	; 7
 	//P9
 	DDRC &=~ (1<<DDRC5);
- 1ee:	3d 98       	cbi	0x07, 5	; 7
+ 3b0:	3d 98       	cbi	0x07, 5	; 7
 	//P10
 	DDRC &=~ (1<<DDRC6);
- 1f0:	3e 98       	cbi	0x07, 6	; 7
+ 3b2:	3e 98       	cbi	0x07, 6	; 7
 	//P11
 	DDRC &=~ (1<<DDRC7);
- 1f2:	3f 98       	cbi	0x07, 7	; 7
+ 3b4:	3f 98       	cbi	0x07, 7	; 7
 	//P12
 	DDRD &=~ (1<<DDRD6);
- 1f4:	56 98       	cbi	0x0a, 6	; 10
+ 3b6:	56 98       	cbi	0x0a, 6	; 10
 	//P13
 	DDRD &=~ (1<<DDRD5);
- 1f6:	55 98       	cbi	0x0a, 5	; 10
+ 3b8:	55 98       	cbi	0x0a, 5	; 10
 	//P18
 	DDRD &=~ (1<<DDRD4);
- 1f8:	54 98       	cbi	0x0a, 4	; 10
+ 3ba:	54 98       	cbi	0x0a, 4	; 10
 	//P19
 	DDRD &=~ (1<<DDRD3);
- 1fa:	53 98       	cbi	0x0a, 3	; 10
+ 3bc:	53 98       	cbi	0x0a, 3	; 10
 	//P20
 	DDRD &=~ (1<<DDRD2);
- 1fc:	52 98       	cbi	0x0a, 2	; 10
+ 3be:	52 98       	cbi	0x0a, 2	; 10
 	//P21
 	DDRB &=~ (1<<DDRB4);
- 1fe:	24 98       	cbi	0x04, 4	; 4
+ 3c0:	24 98       	cbi	0x04, 4	; 4
 	//P22
 	DDRB &=~ (1<<DDRB3);
- 200:	23 98       	cbi	0x04, 3	; 4
+ 3c2:	23 98       	cbi	0x04, 3	; 4
 	//P23
 	DDRB &=~ (1<<DDRB2);
- 202:	22 98       	cbi	0x04, 2	; 4
+ 3c4:	22 98       	cbi	0x04, 2	; 4
 	//P24
 	DDRB &=~ (1<<DDRB1);
- 204:	21 98       	cbi	0x04, 1	; 4
+ 3c6:	21 98       	cbi	0x04, 1	; 4
 	//P25
 	DDRB &=~ (1<<DDRB0);
- 206:	20 98       	cbi	0x04, 0	; 4
+ 3c8:	20 98       	cbi	0x04, 0	; 4
 	//P26
 	DDRA &=~(1<<DDRA0);
- 208:	08 98       	cbi	0x01, 0	; 1
- 20a:	08 95       	ret
+ 3ca:	08 98       	cbi	0x01, 0	; 1
+ 3cc:	08 95       	ret
 
-0000020c <main>:
+000003ce <main>:
 volatile unsigned char ticks16;
 void init_timer(void);
 
 int main(void)
 {
     serieel_init0();
- 20c:	0e 94 9f 00 	call	0x13e	; 0x13e <serieel_init0>
+ 3ce:	0e 94 69 01 	call	0x2d2	; 0x2d2 <serieel_init0>
 	init_ingangen();
- 210:	0e 94 ef 00 	call	0x1de	; 0x1de <init_ingangen>
+ 3d2:	0e 94 d0 01 	call	0x3a0	; 0x3a0 <init_ingangen>
+	init_timer();
+ 3d6:	0e 94 9f 01 	call	0x33e	; 0x33e <init_timer>
     while (1) 
     {
 		//Inlezen alle ingangen
 		//P1
 		if(PINC &(PINC0)) {bezetteparkeerplaatsen[1]=0;}
 		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[1]=1;}
- 214:	c1 e0       	ldi	r28, 0x01	; 1
- 216:	d1 e0       	ldi	r29, 0x01	; 1
- 218:	01 e0       	ldi	r16, 0x01	; 1
- 21a:	d0 2e       	mov	r13, r16
+ 3da:	c1 e0       	ldi	r28, 0x01	; 1
+ 3dc:	d1 e0       	ldi	r29, 0x01	; 1
+ 3de:	01 e0       	ldi	r16, 0x01	; 1
+ 3e0:	d0 2e       	mov	r13, r16
 	
     while (1) 
     {
 		//Inlezen alle ingangen
 		//P1
 		if(PINC &(PINC0)) {bezetteparkeerplaatsen[1]=0;}
- 21c:	86 b1       	in	r24, 0x06	; 6
+ 3e2:	86 b1       	in	r24, 0x06	; 6
 		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[1]=1;}
- 21e:	86 b1       	in	r24, 0x06	; 6
- 220:	d9 82       	std	Y+1, r13	; 0x01
+ 3e4:	86 b1       	in	r24, 0x06	; 6
+ 3e6:	d9 82       	std	Y+1, r13	; 0x01
 			
 		//P2
 		if(PINC &(PINC0)) {bezetteparkeerplaatsen[2]=0;}
- 222:	86 b1       	in	r24, 0x06	; 6
+ 3e8:	86 b1       	in	r24, 0x06	; 6
 		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[2]=1;}
- 224:	86 b1       	in	r24, 0x06	; 6
- 226:	da 82       	std	Y+2, r13	; 0x02
+ 3ea:	86 b1       	in	r24, 0x06	; 6
+ 3ec:	da 82       	std	Y+2, r13	; 0x02
 		
 		//P3
 		if(PINC &(PINC0)) {bezetteparkeerplaatsen[3]=0;}
- 228:	86 b1       	in	r24, 0x06	; 6
+ 3ee:	86 b1       	in	r24, 0x06	; 6
 		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[3]=1;}
- 22a:	86 b1       	in	r24, 0x06	; 6
- 22c:	db 82       	std	Y+3, r13	; 0x03
+ 3f0:	86 b1       	in	r24, 0x06	; 6
+ 3f2:	db 82       	std	Y+3, r13	; 0x03
 		
 		//P4
 		if(PINC &(PINC0)) {bezetteparkeerplaatsen[4]=1;}
- 22e:	86 b1       	in	r24, 0x06	; 6
+ 3f4:	86 b1       	in	r24, 0x06	; 6
 		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[4]=0;}
- 230:	86 b1       	in	r24, 0x06	; 6
- 232:	1c 82       	std	Y+4, r1	; 0x04
+ 3f6:	86 b1       	in	r24, 0x06	; 6
+ 3f8:	1c 82       	std	Y+4, r1	; 0x04
 			
 		//P5
 		if(PINC &(PINC1)) {bezetteparkeerplaatsen[5]=1;}
- 234:	30 99       	sbic	0x06, 0	; 6
- 236:	0d 83       	std	Y+5, r16	; 0x05
+ 3fa:	30 99       	sbic	0x06, 0	; 6
+ 3fc:	0d 83       	std	Y+5, r16	; 0x05
 		if(!(PINC &(PINC1))){bezetteparkeerplaatsen[5]=0;}
- 238:	30 9b       	sbis	0x06, 0	; 6
- 23a:	1d 82       	std	Y+5, r1	; 0x05
+ 3fe:	30 9b       	sbis	0x06, 0	; 6
+ 400:	1d 82       	std	Y+5, r1	; 0x05
 
 		//P6
 		if(PINC &(PINC2)) {bezetteparkeerplaatsen[6]=1;}
- 23c:	31 99       	sbic	0x06, 1	; 6
- 23e:	0e 83       	std	Y+6, r16	; 0x06
+ 402:	31 99       	sbic	0x06, 1	; 6
+ 404:	0e 83       	std	Y+6, r16	; 0x06
 		if(!(PINC &(PINC2))){bezetteparkeerplaatsen[6]=0;}
- 240:	31 9b       	sbis	0x06, 1	; 6
- 242:	1e 82       	std	Y+6, r1	; 0x06
+ 406:	31 9b       	sbis	0x06, 1	; 6
+ 408:	1e 82       	std	Y+6, r1	; 0x06
 
 		//P7
 		if(PINC &(PINC3)) {bezetteparkeerplaatsen[7]=1;}
- 244:	86 b1       	in	r24, 0x06	; 6
- 246:	83 70       	andi	r24, 0x03	; 3
- 248:	09 f0       	breq	.+2      	; 0x24c <main+0x40>
- 24a:	0f 83       	std	Y+7, r16	; 0x07
+ 40a:	86 b1       	in	r24, 0x06	; 6
+ 40c:	83 70       	andi	r24, 0x03	; 3
+ 40e:	09 f0       	breq	.+2      	; 0x412 <__FUSE_REGION_LENGTH__+0x12>
+ 410:	0f 83       	std	Y+7, r16	; 0x07
 		if(!(PINC &(PINC3))){bezetteparkeerplaatsen[7]=0;}
- 24c:	86 b1       	in	r24, 0x06	; 6
- 24e:	83 70       	andi	r24, 0x03	; 3
- 250:	09 f4       	brne	.+2      	; 0x254 <main+0x48>
- 252:	1f 82       	std	Y+7, r1	; 0x07
+ 412:	86 b1       	in	r24, 0x06	; 6
+ 414:	83 70       	andi	r24, 0x03	; 3
+ 416:	09 f4       	brne	.+2      	; 0x41a <__FUSE_REGION_LENGTH__+0x1a>
+ 418:	1f 82       	std	Y+7, r1	; 0x07
 
 		//P8
 		if(PINC &(PINC4)) {bezetteparkeerplaatsen[8]=1;}
- 254:	32 99       	sbic	0x06, 2	; 6
- 256:	08 87       	std	Y+8, r16	; 0x08
+ 41a:	32 99       	sbic	0x06, 2	; 6
+ 41c:	08 87       	std	Y+8, r16	; 0x08
 		if(!(PINC &(PINC4))){bezetteparkeerplaatsen[8]=0;}
- 258:	32 9b       	sbis	0x06, 2	; 6
- 25a:	18 86       	std	Y+8, r1	; 0x08
+ 41e:	32 9b       	sbis	0x06, 2	; 6
+ 420:	18 86       	std	Y+8, r1	; 0x08
 
 		//P9
 		if(PINC &(PINC5)) {bezetteparkeerplaatsen[9]=1;}
- 25c:	86 b1       	in	r24, 0x06	; 6
- 25e:	85 70       	andi	r24, 0x05	; 5
- 260:	09 f0       	breq	.+2      	; 0x264 <main+0x58>
- 262:	09 87       	std	Y+9, r16	; 0x09
+ 422:	86 b1       	in	r24, 0x06	; 6
+ 424:	85 70       	andi	r24, 0x05	; 5
+ 426:	09 f0       	breq	.+2      	; 0x42a <__FUSE_REGION_LENGTH__+0x2a>
+ 428:	09 87       	std	Y+9, r16	; 0x09
 		if(!(PINC &(PINC5))){bezetteparkeerplaatsen[9]=0;}
- 264:	86 b1       	in	r24, 0x06	; 6
- 266:	85 70       	andi	r24, 0x05	; 5
- 268:	09 f4       	brne	.+2      	; 0x26c <main+0x60>
- 26a:	19 86       	std	Y+9, r1	; 0x09
+ 42a:	86 b1       	in	r24, 0x06	; 6
+ 42c:	85 70       	andi	r24, 0x05	; 5
+ 42e:	09 f4       	brne	.+2      	; 0x432 <__FUSE_REGION_LENGTH__+0x32>
+ 430:	19 86       	std	Y+9, r1	; 0x09
 
 		//P10
 		if(PINC &(PINC6)) {bezetteparkeerplaatsen[10]=1;}
- 26c:	86 b1       	in	r24, 0x06	; 6
- 26e:	86 70       	andi	r24, 0x06	; 6
- 270:	09 f0       	breq	.+2      	; 0x274 <main+0x68>
- 272:	0a 87       	std	Y+10, r16	; 0x0a
+ 432:	86 b1       	in	r24, 0x06	; 6
+ 434:	86 70       	andi	r24, 0x06	; 6
+ 436:	09 f0       	breq	.+2      	; 0x43a <__FUSE_REGION_LENGTH__+0x3a>
+ 438:	0a 87       	std	Y+10, r16	; 0x0a
 		if(!(PINC &(PINC6))){bezetteparkeerplaatsen[10]=0;}
- 274:	86 b1       	in	r24, 0x06	; 6
- 276:	86 70       	andi	r24, 0x06	; 6
- 278:	09 f4       	brne	.+2      	; 0x27c <main+0x70>
- 27a:	1a 86       	std	Y+10, r1	; 0x0a
+ 43a:	86 b1       	in	r24, 0x06	; 6
+ 43c:	86 70       	andi	r24, 0x06	; 6
+ 43e:	09 f4       	brne	.+2      	; 0x442 <__FUSE_REGION_LENGTH__+0x42>
+ 440:	1a 86       	std	Y+10, r1	; 0x0a
 
 		//P11
 		if(PINC &(PINC7)) {bezetteparkeerplaatsen[11]=1;}
- 27c:	86 b1       	in	r24, 0x06	; 6
- 27e:	87 70       	andi	r24, 0x07	; 7
- 280:	09 f0       	breq	.+2      	; 0x284 <main+0x78>
- 282:	0b 87       	std	Y+11, r16	; 0x0b
+ 442:	86 b1       	in	r24, 0x06	; 6
+ 444:	87 70       	andi	r24, 0x07	; 7
+ 446:	09 f0       	breq	.+2      	; 0x44a <__FUSE_REGION_LENGTH__+0x4a>
+ 448:	0b 87       	std	Y+11, r16	; 0x0b
 		if(!(PINC &(PINC7))){bezetteparkeerplaatsen[11]=0;}
- 284:	86 b1       	in	r24, 0x06	; 6
- 286:	87 70       	andi	r24, 0x07	; 7
- 288:	09 f4       	brne	.+2      	; 0x28c <main+0x80>
- 28a:	1b 86       	std	Y+11, r1	; 0x0b
+ 44a:	86 b1       	in	r24, 0x06	; 6
+ 44c:	87 70       	andi	r24, 0x07	; 7
+ 44e:	09 f4       	brne	.+2      	; 0x452 <__FUSE_REGION_LENGTH__+0x52>
+ 450:	1b 86       	std	Y+11, r1	; 0x0b
 
 		//P12
 		if(PIND &(PIND6)) {bezetteparkeerplaatsen[12]=1;}
- 28c:	89 b1       	in	r24, 0x09	; 9
- 28e:	86 70       	andi	r24, 0x06	; 6
- 290:	09 f0       	breq	.+2      	; 0x294 <main+0x88>
- 292:	0c 87       	std	Y+12, r16	; 0x0c
+ 452:	89 b1       	in	r24, 0x09	; 9
+ 454:	86 70       	andi	r24, 0x06	; 6
+ 456:	09 f0       	breq	.+2      	; 0x45a <__FUSE_REGION_LENGTH__+0x5a>
+ 458:	0c 87       	std	Y+12, r16	; 0x0c
 		if(!(PIND &(PIND6))){bezetteparkeerplaatsen[12]=0;}
- 294:	89 b1       	in	r24, 0x09	; 9
- 296:	86 70       	andi	r24, 0x06	; 6
- 298:	09 f4       	brne	.+2      	; 0x29c <main+0x90>
- 29a:	1c 86       	std	Y+12, r1	; 0x0c
+ 45a:	89 b1       	in	r24, 0x09	; 9
+ 45c:	86 70       	andi	r24, 0x06	; 6
+ 45e:	09 f4       	brne	.+2      	; 0x462 <__FUSE_REGION_LENGTH__+0x62>
+ 460:	1c 86       	std	Y+12, r1	; 0x0c
 
 		//P13
 		if(PIND &(PIND5)) {bezetteparkeerplaatsen[13]=1;}
- 29c:	89 b1       	in	r24, 0x09	; 9
- 29e:	85 70       	andi	r24, 0x05	; 5
- 2a0:	09 f0       	breq	.+2      	; 0x2a4 <main+0x98>
- 2a2:	0d 87       	std	Y+13, r16	; 0x0d
+ 462:	89 b1       	in	r24, 0x09	; 9
+ 464:	85 70       	andi	r24, 0x05	; 5
+ 466:	09 f0       	breq	.+2      	; 0x46a <__FUSE_REGION_LENGTH__+0x6a>
+ 468:	0d 87       	std	Y+13, r16	; 0x0d
 		if(!(PIND &(PIND5))){bezetteparkeerplaatsen[13]=0;}
- 2a4:	89 b1       	in	r24, 0x09	; 9
- 2a6:	85 70       	andi	r24, 0x05	; 5
- 2a8:	09 f4       	brne	.+2      	; 0x2ac <main+0xa0>
- 2aa:	1d 86       	std	Y+13, r1	; 0x0d
+ 46a:	89 b1       	in	r24, 0x09	; 9
+ 46c:	85 70       	andi	r24, 0x05	; 5
+ 46e:	09 f4       	brne	.+2      	; 0x472 <__FUSE_REGION_LENGTH__+0x72>
+ 470:	1d 86       	std	Y+13, r1	; 0x0d
 
 		//P18
 		if(PIND &(PIND4)) {bezetteparkeerplaatsen[18]=1;}
- 2ac:	4a 99       	sbic	0x09, 2	; 9
- 2ae:	0a 8b       	std	Y+18, r16	; 0x12
+ 472:	4a 99       	sbic	0x09, 2	; 9
+ 474:	0a 8b       	std	Y+18, r16	; 0x12
 		if(!(PIND &(PIND4))){bezetteparkeerplaatsen[18]=0;}
- 2b0:	4a 9b       	sbis	0x09, 2	; 9
- 2b2:	1a 8a       	std	Y+18, r1	; 0x12
+ 476:	4a 9b       	sbis	0x09, 2	; 9
+ 478:	1a 8a       	std	Y+18, r1	; 0x12
 
 		//P19
 		if(PIND &(PIND3)) {bezetteparkeerplaatsen[19]=1;}
- 2b4:	89 b1       	in	r24, 0x09	; 9
- 2b6:	83 70       	andi	r24, 0x03	; 3
- 2b8:	09 f0       	breq	.+2      	; 0x2bc <main+0xb0>
- 2ba:	0b 8b       	std	Y+19, r16	; 0x13
+ 47a:	89 b1       	in	r24, 0x09	; 9
+ 47c:	83 70       	andi	r24, 0x03	; 3
+ 47e:	09 f0       	breq	.+2      	; 0x482 <__FUSE_REGION_LENGTH__+0x82>
+ 480:	0b 8b       	std	Y+19, r16	; 0x13
 		if(!(PIND &(PIND3))){bezetteparkeerplaatsen[19]=0;}
- 2bc:	89 b1       	in	r24, 0x09	; 9
- 2be:	83 70       	andi	r24, 0x03	; 3
- 2c0:	09 f4       	brne	.+2      	; 0x2c4 <main+0xb8>
- 2c2:	1b 8a       	std	Y+19, r1	; 0x13
+ 482:	89 b1       	in	r24, 0x09	; 9
+ 484:	83 70       	andi	r24, 0x03	; 3
+ 486:	09 f4       	brne	.+2      	; 0x48a <__FUSE_REGION_LENGTH__+0x8a>
+ 488:	1b 8a       	std	Y+19, r1	; 0x13
 
 		//P20
 		if(PIND &(PIND2)) {bezetteparkeerplaatsen[20]=1;}
- 2c4:	49 99       	sbic	0x09, 1	; 9
- 2c6:	0c 8b       	std	Y+20, r16	; 0x14
+ 48a:	49 99       	sbic	0x09, 1	; 9
+ 48c:	0c 8b       	std	Y+20, r16	; 0x14
 		if(!(PIND &(PIND2))){bezetteparkeerplaatsen[20]=0;}
- 2c8:	49 9b       	sbis	0x09, 1	; 9
- 2ca:	1c 8a       	std	Y+20, r1	; 0x14
+ 48e:	49 9b       	sbis	0x09, 1	; 9
+ 490:	1c 8a       	std	Y+20, r1	; 0x14
 
 		//P21
 		if(PINB &(PINB2)) {bezetteparkeerplaatsen[21]=1;}
- 2cc:	19 99       	sbic	0x03, 1	; 3
- 2ce:	0d 8b       	std	Y+21, r16	; 0x15
+ 492:	19 99       	sbic	0x03, 1	; 3
+ 494:	0d 8b       	std	Y+21, r16	; 0x15
 		if(!(PINB &(PINB2))){bezetteparkeerplaatsen[21]=0;}
- 2d0:	19 9b       	sbis	0x03, 1	; 3
- 2d2:	1d 8a       	std	Y+21, r1	; 0x15
+ 496:	19 9b       	sbis	0x03, 1	; 3
+ 498:	1d 8a       	std	Y+21, r1	; 0x15
 
 		//P22
 		if(PINB &(PINB3)) {bezetteparkeerplaatsen[22]=1;}
- 2d4:	83 b1       	in	r24, 0x03	; 3
- 2d6:	83 70       	andi	r24, 0x03	; 3
- 2d8:	09 f0       	breq	.+2      	; 0x2dc <main+0xd0>
- 2da:	0e 8b       	std	Y+22, r16	; 0x16
+ 49a:	83 b1       	in	r24, 0x03	; 3
+ 49c:	83 70       	andi	r24, 0x03	; 3
+ 49e:	09 f0       	breq	.+2      	; 0x4a2 <__FUSE_REGION_LENGTH__+0xa2>
+ 4a0:	0e 8b       	std	Y+22, r16	; 0x16
 		if(!(PINB &(PINB3))){bezetteparkeerplaatsen[22]=0;}
- 2dc:	83 b1       	in	r24, 0x03	; 3
- 2de:	83 70       	andi	r24, 0x03	; 3
- 2e0:	09 f4       	brne	.+2      	; 0x2e4 <main+0xd8>
- 2e2:	1e 8a       	std	Y+22, r1	; 0x16
+ 4a2:	83 b1       	in	r24, 0x03	; 3
+ 4a4:	83 70       	andi	r24, 0x03	; 3
+ 4a6:	09 f4       	brne	.+2      	; 0x4aa <__FUSE_REGION_LENGTH__+0xaa>
+ 4a8:	1e 8a       	std	Y+22, r1	; 0x16
 	
 		//P23
 		if(PINB &(1<<PINB2)) {bezetteparkeerplaatsen[23]=1;}
- 2e4:	1a 99       	sbic	0x03, 2	; 3
- 2e6:	0f 8b       	std	Y+23, r16	; 0x17
+ 4aa:	1a 99       	sbic	0x03, 2	; 3
+ 4ac:	0f 8b       	std	Y+23, r16	; 0x17
 		if(!(PINB &(1<<PINB2))){bezetteparkeerplaatsen[23]=0;}
- 2e8:	1a 9b       	sbis	0x03, 2	; 3
- 2ea:	1f 8a       	std	Y+23, r1	; 0x17
+ 4ae:	1a 9b       	sbis	0x03, 2	; 3
+ 4b0:	1f 8a       	std	Y+23, r1	; 0x17
 
 		//P24
 		if(PINB &(1<<PINB1)) {bezetteparkeerplaatsen[24]=1;}
- 2ec:	19 99       	sbic	0x03, 1	; 3
- 2ee:	08 8f       	std	Y+24, r16	; 0x18
+ 4b2:	19 99       	sbic	0x03, 1	; 3
+ 4b4:	08 8f       	std	Y+24, r16	; 0x18
 		if(!(PINB &(1<<PINB1))){bezetteparkeerplaatsen[24]=0;}
- 2f0:	19 9b       	sbis	0x03, 1	; 3
- 2f2:	18 8e       	std	Y+24, r1	; 0x18
+ 4b6:	19 9b       	sbis	0x03, 1	; 3
+ 4b8:	18 8e       	std	Y+24, r1	; 0x18
 
 		//P25
 		if(PINB &(1<<PINB0)) {bezetteparkeerplaatsen[25]=1;}
- 2f4:	18 99       	sbic	0x03, 0	; 3
- 2f6:	09 8f       	std	Y+25, r16	; 0x19
+ 4ba:	18 99       	sbic	0x03, 0	; 3
+ 4bc:	09 8f       	std	Y+25, r16	; 0x19
 		if(!(PINB &(1<<PINB0))){bezetteparkeerplaatsen[25]=0;}
- 2f8:	18 9b       	sbis	0x03, 0	; 3
- 2fa:	19 8e       	std	Y+25, r1	; 0x19
+ 4be:	18 9b       	sbis	0x03, 0	; 3
+ 4c0:	19 8e       	std	Y+25, r1	; 0x19
 
 		//P26
 		if(PINA &(1<<PINA0)) {bezetteparkeerplaatsen[26]=1;}
- 2fc:	00 99       	sbic	0x00, 0	; 0
- 2fe:	0a 8f       	std	Y+26, r16	; 0x1a
+ 4c2:	00 99       	sbic	0x00, 0	; 0
+ 4c4:	0a 8f       	std	Y+26, r16	; 0x1a
 		if(!(PINA &(1<<PINA0))){bezetteparkeerplaatsen[26]=0;}
- 300:	00 9b       	sbis	0x00, 0	; 0
- 302:	1a 8e       	std	Y+26, r1	; 0x1a
+ 4c6:	00 9b       	sbis	0x00, 0	; 0
+ 4c8:	1a 8e       	std	Y+26, r1	; 0x1a
 			
 		if(ticks1s)
- 304:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <ticks1s>
- 308:	88 23       	and	r24, r24
- 30a:	09 f4       	brne	.+2      	; 0x30e <main+0x102>
- 30c:	87 cf       	rjmp	.-242    	; 0x21c <main+0x10>
- 30e:	7e 01       	movw	r14, r28
- 310:	10 e0       	ldi	r17, 0x00	; 0
+ 4ca:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <ticks1s>
+ 4ce:	88 23       	and	r24, r24
+ 4d0:	09 f4       	brne	.+2      	; 0x4d4 <__FUSE_REGION_LENGTH__+0xd4>
+ 4d2:	87 cf       	rjmp	.-242    	; 0x3e2 <main+0x14>
+ 4d4:	7e 01       	movw	r14, r28
+ 4d6:	10 e0       	ldi	r17, 0x00	; 0
 		{
 			for (int i = 0; i < 26; i++)
 			{
 				sendChar0(OmzettenNaarHex(i,bezetteparkeerplaatsen[i]));
- 312:	f7 01       	movw	r30, r14
- 314:	61 91       	ld	r22, Z+
- 316:	7f 01       	movw	r14, r30
- 318:	81 2f       	mov	r24, r17
- 31a:	0e 94 52 00 	call	0xa4	; 0xa4 <OmzettenNaarHex>
- 31e:	0e 94 cd 00 	call	0x19a	; 0x19a <sendChar0>
+ 4d8:	f7 01       	movw	r30, r14
+ 4da:	61 91       	ld	r22, Z+
+ 4dc:	7f 01       	movw	r14, r30
+ 4de:	81 2f       	mov	r24, r17
+ 4e0:	0e 94 52 00 	call	0xa4	; 0xa4 <OmzettenNaarHex>
+ 4e4:	0e 94 97 01 	call	0x32e	; 0x32e <sendChar0>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 322:	8f ef       	ldi	r24, 0xFF	; 255
- 324:	97 e4       	ldi	r25, 0x47	; 71
- 326:	01 97       	sbiw	r24, 0x01	; 1
- 328:	f1 f7       	brne	.-4      	; 0x326 <main+0x11a>
- 32a:	00 c0       	rjmp	.+0      	; 0x32c <main+0x120>
- 32c:	00 00       	nop
- 32e:	1f 5f       	subi	r17, 0xFF	; 255
+ 4e8:	8f ef       	ldi	r24, 0xFF	; 255
+ 4ea:	97 e4       	ldi	r25, 0x47	; 71
+ 4ec:	01 97       	sbiw	r24, 0x01	; 1
+ 4ee:	f1 f7       	brne	.-4      	; 0x4ec <__FUSE_REGION_LENGTH__+0xec>
+ 4f0:	00 c0       	rjmp	.+0      	; 0x4f2 <__FUSE_REGION_LENGTH__+0xf2>
+ 4f2:	00 00       	nop
+ 4f4:	1f 5f       	subi	r17, 0xFF	; 255
 		if(PINA &(1<<PINA0)) {bezetteparkeerplaatsen[26]=1;}
 		if(!(PINA &(1<<PINA0))){bezetteparkeerplaatsen[26]=0;}
 			
 		if(ticks1s)
 		{
 			for (int i = 0; i < 26; i++)
- 330:	1a 31       	cpi	r17, 0x1A	; 26
- 332:	79 f7       	brne	.-34     	; 0x312 <main+0x106>
- 334:	73 cf       	rjmp	.-282    	; 0x21c <main+0x10>
+ 4f6:	1a 31       	cpi	r17, 0x1A	; 26
+ 4f8:	79 f7       	brne	.-34     	; 0x4d8 <__FUSE_REGION_LENGTH__+0xd8>
+ 4fa:	73 cf       	rjmp	.-282    	; 0x3e2 <main+0x14>
 
-00000336 <_exit>:
- 336:	f8 94       	cli
+000004fc <_exit>:
+ 4fc:	f8 94       	cli
 
-00000338 <__stop_program>:
- 338:	ff cf       	rjmp	.-2      	; 0x338 <__stop_program>
+000004fe <__stop_program>:
+ 4fe:	ff cf       	rjmp	.-2      	; 0x4fe <__stop_program>

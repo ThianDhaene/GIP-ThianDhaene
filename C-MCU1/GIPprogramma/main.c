@@ -340,7 +340,7 @@ ISR(USART1_RX_vect)
 ISR(USART0_RX_vect)
 {
 	char data = UDR0;
-	if(data==0x01){bezetteparkeerplaatsen[1]=0;}
+	if(data==0x02){bezetteparkeerplaatsen[1]=1;}
 }
 
 void init_timer(void)

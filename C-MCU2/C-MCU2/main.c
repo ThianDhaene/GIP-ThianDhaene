@@ -34,6 +34,7 @@ int main(void)
 {
     serieel_init0();
 	init_ingangen();
+	init_timer();
 	
     while (1) 
     {
