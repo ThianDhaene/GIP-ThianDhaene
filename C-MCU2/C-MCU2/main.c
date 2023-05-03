@@ -134,6 +134,7 @@ int main(void)
 				sendChar0(OmzettenNaarHex(i,bezetteparkeerplaatsen[i]));
 				_delay_ms(20);
 			}
+			ticks1s=0;
 		}
 		
 		

@@ -3,31 +3,31 @@ C-MCU2.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000574  2**0
+  0 .data         00000000  00800100  00800100  00000578  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000500  00000000  00000000  00000074  2**1
+  1 .text         00000504  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          0000001d  00800100  00800100  00000574  2**0
+  2 .bss          0000001d  00800100  00800100  00000578  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000574  2**0
+  3 .comment      00000030  00000000  00000000  00000578  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000005a4  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000005a8  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000060  00000000  00000000  000005e4  2**0
+  5 .debug_aranges 00000060  00000000  00000000  000005e8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000002eb  00000000  00000000  00000644  2**0
+  6 .debug_info   000002eb  00000000  00000000  00000648  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000207  00000000  00000000  0000092f  2**0
+  7 .debug_abbrev 00000207  00000000  00000000  00000933  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000948  00000000  00000000  00000b36  2**0
+  8 .debug_line   0000094e  00000000  00000000  00000b3a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000d4  00000000  00000000  00001480  2**2
+  9 .debug_frame  000000d4  00000000  00000000  00001488  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000235  00000000  00000000  00001554  2**0
+ 10 .debug_str    00000235  00000000  00000000  0000155c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000635  00000000  00000000  00001789  2**0
+ 11 .debug_loc    00000635  00000000  00000000  00001791  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000050  00000000  00000000  00001dbe  2**0
+ 12 .debug_ranges 00000050  00000000  00000000  00001dc6  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -87,7 +87,7 @@ Disassembly of section .text:
   94:	b2 07       	cpc	r27, r18
   96:	e1 f7       	brne	.-8      	; 0x90 <.do_clear_bss_loop>
   98:	0e 94 e7 01 	call	0x3ce	; 0x3ce <main>
-  9c:	0c 94 7e 02 	jmp	0x4fc	; 0x4fc <_exit>
+  9c:	0c 94 80 02 	jmp	0x500	; 0x500 <_exit>
 
 000000a0 <__bad_interrupt>:
   a0:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -848,10 +848,16 @@ int main(void)
 			for (int i = 0; i < 26; i++)
  4f6:	1a 31       	cpi	r17, 0x1A	; 26
  4f8:	79 f7       	brne	.-34     	; 0x4d8 <__FUSE_REGION_LENGTH__+0xd8>
- 4fa:	73 cf       	rjmp	.-282    	; 0x3e2 <main+0x14>
+			{
+				sendChar0(OmzettenNaarHex(i,bezetteparkeerplaatsen[i]));
+				_delay_ms(20);
+			}
+			ticks1s=0;
+ 4fa:	10 92 1c 01 	sts	0x011C, r1	; 0x80011c <ticks1s>
+ 4fe:	71 cf       	rjmp	.-286    	; 0x3e2 <main+0x14>
 
-000004fc <_exit>:
- 4fc:	f8 94       	cli
+00000500 <_exit>:
+ 500:	f8 94       	cli
 
-000004fe <__stop_program>:
- 4fe:	ff cf       	rjmp	.-2      	; 0x4fe <__stop_program>
+00000502 <__stop_program>:
+ 502:	ff cf       	rjmp	.-2      	; 0x502 <__stop_program>
