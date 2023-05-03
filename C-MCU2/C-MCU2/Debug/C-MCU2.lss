@@ -3,65 +3,67 @@ C-MCU2.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  0000015e  2**0
+  0 .data         00000000  00800100  00800100  000003ae  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000010a  00000000  00000000  00000054  2**1
+  1 .text         0000033a  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  0000015e  2**0
+  2 .bss          0000001d  00800100  00800100  000003ae  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000003ae  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000190  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000003e0  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000040  00000000  00000000  000001d0  2**0
+  5 .debug_aranges 00000060  00000000  00000000  00000420  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000144  00000000  00000000  00000210  2**0
+  6 .debug_info   000002dc  00000000  00000000  00000480  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000000f8  00000000  00000000  00000354  2**0
+  7 .debug_abbrev 000001b9  00000000  00000000  0000075c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   0000018a  00000000  00000000  0000044c  2**0
+  8 .debug_line   000006e9  00000000  00000000  00000915  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000084  00000000  00000000  000005d8  2**2
+  9 .debug_frame  000000d4  00000000  00000000  00001000  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000177  00000000  00000000  0000065c  2**0
+ 10 .debug_str    0000022e  00000000  00000000  000010d4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000014a  00000000  00000000  000007d3  2**0
+ 11 .debug_loc    00000347  00000000  00000000  00001302  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000030  00000000  00000000  0000091d  2**0
+ 12 .debug_ranges 00000050  00000000  00000000  00001649  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__ctors_end>
-   4:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-   8:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-   c:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  10:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  14:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  18:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  1c:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  20:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  24:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  28:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  2c:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  30:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  34:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  38:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  3c:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  40:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  44:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  48:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  4c:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  50:	0c 94 79 00 	jmp	0xf2	; 0xf2 <__vector_20>
-  54:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  58:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  5c:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  60:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  64:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  68:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  6c:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  70:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  74:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
-  78:	0c 94 48 00 	jmp	0x90	; 0x90 <__bad_interrupt>
+   4:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+   8:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+   c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  10:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  14:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  18:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  1c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  20:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  24:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  28:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  2c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  30:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  34:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  38:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  3c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  40:	0c 94 d5 00 	jmp	0x1aa	; 0x1aa <__vector_16>
+  44:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  48:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  4c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  50:	0c 94 c3 00 	jmp	0x186	; 0x186 <__vector_20>
+  54:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  58:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  5c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  60:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  64:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  68:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  6c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  70:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  74:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  78:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
 
 0000007c <__ctors_end>:
   7c:	11 24       	eor	r1, r1
@@ -70,126 +72,544 @@ Disassembly of section .text:
   82:	d8 e0       	ldi	r29, 0x08	; 8
   84:	de bf       	out	0x3e, r29	; 62
   86:	cd bf       	out	0x3d, r28	; 61
-  88:	0e 94 6e 00 	call	0xdc	; 0xdc <main>
-  8c:	0c 94 83 00 	jmp	0x106	; 0x106 <_exit>
 
-00000090 <__bad_interrupt>:
-  90:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+00000088 <__do_clear_bss>:
+  88:	21 e0       	ldi	r18, 0x01	; 1
+  8a:	a0 e0       	ldi	r26, 0x00	; 0
+  8c:	b1 e0       	ldi	r27, 0x01	; 1
+  8e:	01 c0       	rjmp	.+2      	; 0x92 <.do_clear_bss_start>
 
-00000094 <serieel_init0>:
+00000090 <.do_clear_bss_loop>:
+  90:	1d 92       	st	X+, r1
+
+00000092 <.do_clear_bss_start>:
+  92:	ad 31       	cpi	r26, 0x1D	; 29
+  94:	b2 07       	cpc	r27, r18
+  96:	e1 f7       	brne	.-8      	; 0x90 <.do_clear_bss_loop>
+  98:	0e 94 06 01 	call	0x20c	; 0x20c <main>
+  9c:	0c 94 9b 01 	jmp	0x336	; 0x336 <_exit>
+
+000000a0 <__bad_interrupt>:
+  a0:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a4 <OmzettenNaarHex>:
+	TCCR0A &=~(1<<WGM00);	//Instellen WGM00 op 0 in TCCR0A
+	TCCR0B &=~((1<<WGM02) | (1<<CS01));		//Instellen  WGM02 en CS01 op 0 in TCCR0B
+	TCCR0B |= ((1<<CS02)| (1<<CS00));		//Instellen CS02 en CS00 op 1 in TCCR0B
+	OCR0A = 224;
+	TIMSK0 |= (1<<OCIE0A);
+	sei();
+  a4:	81 30       	cpi	r24, 0x01	; 1
+  a6:	29 f4       	brne	.+10     	; 0xb2 <OmzettenNaarHex+0xe>
+  a8:	66 23       	and	r22, r22
+  aa:	69 f1       	breq	.+90     	; 0x106 <OmzettenNaarHex+0x62>
+  ac:	61 30       	cpi	r22, 0x01	; 1
+  ae:	51 f5       	brne	.+84     	; 0x104 <OmzettenNaarHex+0x60>
+  b0:	2c c0       	rjmp	.+88     	; 0x10a <OmzettenNaarHex+0x66>
+  b2:	82 30       	cpi	r24, 0x02	; 2
+  b4:	29 f4       	brne	.+10     	; 0xc0 <OmzettenNaarHex+0x1c>
+  b6:	66 23       	and	r22, r22
+  b8:	51 f1       	breq	.+84     	; 0x10e <OmzettenNaarHex+0x6a>
+  ba:	61 30       	cpi	r22, 0x01	; 1
+  bc:	19 f5       	brne	.+70     	; 0x104 <OmzettenNaarHex+0x60>
+  be:	29 c0       	rjmp	.+82     	; 0x112 <OmzettenNaarHex+0x6e>
+  c0:	83 30       	cpi	r24, 0x03	; 3
+  c2:	29 f4       	brne	.+10     	; 0xce <OmzettenNaarHex+0x2a>
+  c4:	66 23       	and	r22, r22
+  c6:	39 f1       	breq	.+78     	; 0x116 <OmzettenNaarHex+0x72>
+  c8:	61 30       	cpi	r22, 0x01	; 1
+  ca:	e1 f4       	brne	.+56     	; 0x104 <OmzettenNaarHex+0x60>
+  cc:	26 c0       	rjmp	.+76     	; 0x11a <OmzettenNaarHex+0x76>
+  ce:	84 30       	cpi	r24, 0x04	; 4
+  d0:	29 f4       	brne	.+10     	; 0xdc <OmzettenNaarHex+0x38>
+  d2:	66 23       	and	r22, r22
+  d4:	21 f1       	breq	.+72     	; 0x11e <OmzettenNaarHex+0x7a>
+  d6:	61 30       	cpi	r22, 0x01	; 1
+  d8:	a9 f4       	brne	.+42     	; 0x104 <OmzettenNaarHex+0x60>
+  da:	23 c0       	rjmp	.+70     	; 0x122 <OmzettenNaarHex+0x7e>
+  dc:	85 30       	cpi	r24, 0x05	; 5
+  de:	29 f4       	brne	.+10     	; 0xea <OmzettenNaarHex+0x46>
+  e0:	66 23       	and	r22, r22
+  e2:	09 f1       	breq	.+66     	; 0x126 <OmzettenNaarHex+0x82>
+  e4:	61 30       	cpi	r22, 0x01	; 1
+  e6:	71 f4       	brne	.+28     	; 0x104 <OmzettenNaarHex+0x60>
+  e8:	20 c0       	rjmp	.+64     	; 0x12a <OmzettenNaarHex+0x86>
+  ea:	86 30       	cpi	r24, 0x06	; 6
+  ec:	29 f4       	brne	.+10     	; 0xf8 <OmzettenNaarHex+0x54>
+  ee:	66 23       	and	r22, r22
+  f0:	f1 f0       	breq	.+60     	; 0x12e <OmzettenNaarHex+0x8a>
+  f2:	61 30       	cpi	r22, 0x01	; 1
+  f4:	39 f4       	brne	.+14     	; 0x104 <OmzettenNaarHex+0x60>
+  f6:	1d c0       	rjmp	.+58     	; 0x132 <OmzettenNaarHex+0x8e>
+  f8:	88 30       	cpi	r24, 0x08	; 8
+  fa:	21 f4       	brne	.+8      	; 0x104 <OmzettenNaarHex+0x60>
+  fc:	66 23       	and	r22, r22
+  fe:	d9 f0       	breq	.+54     	; 0x136 <OmzettenNaarHex+0x92>
+ 100:	61 30       	cpi	r22, 0x01	; 1
+ 102:	d9 f0       	breq	.+54     	; 0x13a <OmzettenNaarHex+0x96>
+ 104:	08 95       	ret
+ 106:	81 e0       	ldi	r24, 0x01	; 1
+ 108:	08 95       	ret
+ 10a:	82 e0       	ldi	r24, 0x02	; 2
+ 10c:	08 95       	ret
+ 10e:	83 e0       	ldi	r24, 0x03	; 3
+ 110:	08 95       	ret
+ 112:	84 e0       	ldi	r24, 0x04	; 4
+ 114:	08 95       	ret
+ 116:	85 e0       	ldi	r24, 0x05	; 5
+ 118:	08 95       	ret
+ 11a:	86 e0       	ldi	r24, 0x06	; 6
+ 11c:	08 95       	ret
+ 11e:	87 e0       	ldi	r24, 0x07	; 7
+ 120:	08 95       	ret
+ 122:	88 e0       	ldi	r24, 0x08	; 8
+ 124:	08 95       	ret
+ 126:	81 e1       	ldi	r24, 0x11	; 17
+ 128:	08 95       	ret
+ 12a:	82 e1       	ldi	r24, 0x12	; 18
+ 12c:	08 95       	ret
+ 12e:	83 e1       	ldi	r24, 0x13	; 19
+ 130:	08 95       	ret
+ 132:	84 e1       	ldi	r24, 0x14	; 20
+ 134:	08 95       	ret
+ 136:	87 e1       	ldi	r24, 0x17	; 23
+ 138:	08 95       	ret
+ 13a:	88 e1       	ldi	r24, 0x18	; 24
+ 13c:	08 95       	ret
+
+0000013e <serieel_init0>:
+ 13e:	50 98       	cbi	0x0a, 0	; 10
+ 140:	51 9a       	sbi	0x0a, 1	; 10
+ 142:	e0 ec       	ldi	r30, 0xC0	; 192
+ 144:	f0 e0       	ldi	r31, 0x00	; 0
+ 146:	80 81       	ld	r24, Z
+ 148:	8d 7f       	andi	r24, 0xFD	; 253
+ 14a:	80 83       	st	Z, r24
+ 14c:	87 e1       	ldi	r24, 0x17	; 23
+ 14e:	90 e0       	ldi	r25, 0x00	; 0
+ 150:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
+ 154:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
+ 158:	a2 ec       	ldi	r26, 0xC2	; 194
+ 15a:	b0 e0       	ldi	r27, 0x00	; 0
+ 15c:	8c 91       	ld	r24, X
+ 15e:	86 60       	ori	r24, 0x06	; 6
+ 160:	8c 93       	st	X, r24
+ 162:	e1 ec       	ldi	r30, 0xC1	; 193
+ 164:	f0 e0       	ldi	r31, 0x00	; 0
+ 166:	80 81       	ld	r24, Z
+ 168:	8b 7f       	andi	r24, 0xFB	; 251
+ 16a:	80 83       	st	Z, r24
+ 16c:	8c 91       	ld	r24, X
+ 16e:	87 7f       	andi	r24, 0xF7	; 247
+ 170:	8c 93       	st	X, r24
+ 172:	8c 91       	ld	r24, X
+ 174:	8f 7e       	andi	r24, 0xEF	; 239
+ 176:	8c 93       	st	X, r24
+ 178:	80 81       	ld	r24, Z
+ 17a:	88 61       	ori	r24, 0x18	; 24
+ 17c:	80 83       	st	Z, r24
+ 17e:	80 81       	ld	r24, Z
+ 180:	80 68       	ori	r24, 0x80	; 128
+ 182:	80 83       	st	Z, r24
+ 184:	08 95       	ret
+
+00000186 <__vector_20>:
+ 186:	1f 92       	push	r1
+ 188:	0f 92       	push	r0
+ 18a:	0f b6       	in	r0, 0x3f	; 63
+ 18c:	0f 92       	push	r0
+ 18e:	11 24       	eor	r1, r1
+ 190:	0f 90       	pop	r0
+ 192:	0f be       	out	0x3f, r0	; 63
+ 194:	0f 90       	pop	r0
+ 196:	1f 90       	pop	r1
+ 198:	18 95       	reti
+
+0000019a <sendChar0>:
+ 19a:	e0 ec       	ldi	r30, 0xC0	; 192
+ 19c:	f0 e0       	ldi	r31, 0x00	; 0
+ 19e:	90 81       	ld	r25, Z
+ 1a0:	95 ff       	sbrs	r25, 5
+ 1a2:	fd cf       	rjmp	.-6      	; 0x19e <sendChar0+0x4>
+ 1a4:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+ 1a8:	08 95       	ret
+
+000001aa <__vector_16>:
 }
 
-void serieel_init0(void)
+ISR (TIMER0_COMPA_vect)
 {
-	//de pin PD2 als ingang (RX), de pin PD3 als uitgang (TX) met een hoog niveau
-	DDRD &=~(1<<DDRD0);
-  94:	50 98       	cbi	0x0a, 0	; 10
-	DDRD |=(1<<DDRD1);
-  96:	51 9a       	sbi	0x0a, 1	; 10
-	
-	//init seriële communicatie
-	//USART0, 9600 baud, 8 databit, geen pariteit, 1 stopbit, geen interrupt werking
-	UCSR0A &=~(1<<U2X0); //normale snelheid
-  98:	e0 ec       	ldi	r30, 0xC0	; 192
-  9a:	f0 e0       	ldi	r31, 0x00	; 0
-  9c:	80 81       	ld	r24, Z
-  9e:	8d 7f       	andi	r24, 0xFD	; 253
-  a0:	80 83       	st	Z, r24
-	UBRR0 =23; //Instellen van Baudrate op 9600bps
-  a2:	87 e1       	ldi	r24, 0x17	; 23
-  a4:	90 e0       	ldi	r25, 0x00	; 0
-  a6:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
-  aa:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
-	UCSR0C |= ((1<<UCSZ00)|(1<<UCSZ01)); //8 databits instellen
-  ae:	a2 ec       	ldi	r26, 0xC2	; 194
-  b0:	b0 e0       	ldi	r27, 0x00	; 0
-  b2:	8c 91       	ld	r24, X
-  b4:	86 60       	ori	r24, 0x06	; 6
-  b6:	8c 93       	st	X, r24
-	UCSR0B &=~ (1<<UCSZ02);	//8 databits instellen
-  b8:	e1 ec       	ldi	r30, 0xC1	; 193
-  ba:	f0 e0       	ldi	r31, 0x00	; 0
-  bc:	80 81       	ld	r24, Z
-  be:	8b 7f       	andi	r24, 0xFB	; 251
-  c0:	80 83       	st	Z, r24
-	UCSR0C &=~ (1<<USBS0); //1 stopbit
-  c2:	8c 91       	ld	r24, X
-  c4:	87 7f       	andi	r24, 0xF7	; 247
-  c6:	8c 93       	st	X, r24
-	UCSR0C &=~(1<<UPM00)|(1<<UPM01); //geen pariteit
-  c8:	8c 91       	ld	r24, X
-  ca:	8f 7e       	andi	r24, 0xEF	; 239
-  cc:	8c 93       	st	X, r24
-	UCSR0B |=((1<<RXEN0)|(1<<TXEN0)); //activeren zender en ontvanger
-  ce:	80 81       	ld	r24, Z
-  d0:	88 61       	ori	r24, 0x18	; 24
-  d2:	80 83       	st	Z, r24
-	UCSR0B |= (1<<RXCIE0); //activeren interrupt rx
-  d4:	80 81       	ld	r24, Z
-  d6:	80 68       	ori	r24, 0x80	; 128
-  d8:	80 83       	st	Z, r24
-  da:	08 95       	ret
+ 1aa:	1f 92       	push	r1
+ 1ac:	0f 92       	push	r0
+ 1ae:	0f b6       	in	r0, 0x3f	; 63
+ 1b0:	0f 92       	push	r0
+ 1b2:	11 24       	eor	r1, r1
+ 1b4:	8f 93       	push	r24
+	ticks16++;
+ 1b6:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 1ba:	8f 5f       	subi	r24, 0xFF	; 255
+ 1bc:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+	if(ticks16==64)
+ 1c0:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 1c4:	80 34       	cpi	r24, 0x40	; 64
+ 1c6:	29 f4       	brne	.+10     	; 0x1d2 <__vector_16+0x28>
+	{
+		ticks16=0;
+ 1c8:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
+		ticks1s=1;
+ 1cc:	81 e0       	ldi	r24, 0x01	; 1
+ 1ce:	80 93 1c 01 	sts	0x011C, r24	; 0x80011c <ticks1s>
+	}
+}
+ 1d2:	8f 91       	pop	r24
+ 1d4:	0f 90       	pop	r0
+ 1d6:	0f be       	out	0x3f, r0	; 63
+ 1d8:	0f 90       	pop	r0
+ 1da:	1f 90       	pop	r1
+ 1dc:	18 95       	reti
 
-000000dc <main>:
-void sendString1(char s[]);
-void sendChar1(char data);
+000001de <init_ingangen>:
+
+void init_ingangen(void)
+{
+	//P1
+	DDRA &=~ (1<<DDRA7);
+ 1de:	0f 98       	cbi	0x01, 7	; 1
+	//P2
+	DDRA &=~ (1<<DDRA4);
+ 1e0:	0c 98       	cbi	0x01, 4	; 1
+	//P3
+	DDRA &=~ (1<<DDRA3);
+ 1e2:	0b 98       	cbi	0x01, 3	; 1
+	//P4
+	DDRC &=~ (1<<DDRC0);
+ 1e4:	38 98       	cbi	0x07, 0	; 7
+	//P5
+	DDRC &=~ (1<<DDRC1);
+ 1e6:	39 98       	cbi	0x07, 1	; 7
+	//P6
+	DDRC &=~ (1<<DDRC2);
+ 1e8:	3a 98       	cbi	0x07, 2	; 7
+	//P7
+	DDRC &=~ (1<<DDRC3);
+ 1ea:	3b 98       	cbi	0x07, 3	; 7
+	//P8
+	DDRC &=~ (1<<DDRC4);
+ 1ec:	3c 98       	cbi	0x07, 4	; 7
+	//P9
+	DDRC &=~ (1<<DDRC5);
+ 1ee:	3d 98       	cbi	0x07, 5	; 7
+	//P10
+	DDRC &=~ (1<<DDRC6);
+ 1f0:	3e 98       	cbi	0x07, 6	; 7
+	//P11
+	DDRC &=~ (1<<DDRC7);
+ 1f2:	3f 98       	cbi	0x07, 7	; 7
+	//P12
+	DDRD &=~ (1<<DDRD6);
+ 1f4:	56 98       	cbi	0x0a, 6	; 10
+	//P13
+	DDRD &=~ (1<<DDRD5);
+ 1f6:	55 98       	cbi	0x0a, 5	; 10
+	//P18
+	DDRD &=~ (1<<DDRD4);
+ 1f8:	54 98       	cbi	0x0a, 4	; 10
+	//P19
+	DDRD &=~ (1<<DDRD3);
+ 1fa:	53 98       	cbi	0x0a, 3	; 10
+	//P20
+	DDRD &=~ (1<<DDRD2);
+ 1fc:	52 98       	cbi	0x0a, 2	; 10
+	//P21
+	DDRB &=~ (1<<DDRB4);
+ 1fe:	24 98       	cbi	0x04, 4	; 4
+	//P22
+	DDRB &=~ (1<<DDRB3);
+ 200:	23 98       	cbi	0x04, 3	; 4
+	//P23
+	DDRB &=~ (1<<DDRB2);
+ 202:	22 98       	cbi	0x04, 2	; 4
+	//P24
+	DDRB &=~ (1<<DDRB1);
+ 204:	21 98       	cbi	0x04, 1	; 4
+	//P25
+	DDRB &=~ (1<<DDRB0);
+ 206:	20 98       	cbi	0x04, 0	; 4
+	//P26
+	DDRA &=~(1<<DDRA0);
+ 208:	08 98       	cbi	0x01, 0	; 1
+ 20a:	08 95       	ret
+
+0000020c <main>:
+volatile unsigned char ticks16;
+void init_timer(void);
 
 int main(void)
 {
     serieel_init0();
-  dc:	0e 94 4a 00 	call	0x94	; 0x94 <serieel_init0>
-	
-	//Sensoren voor P1 P2 P3
-	DDRA &=~ (1<<DDRA4) | (1<<DDRA3) |(1<<DDRA7);
-  e0:	0c 98       	cbi	0x01, 4	; 1
-	
-	//Schakelaars voor P4,5,6,7,8,9,10,11
-	DDRC &=~(1<<DDRC0)|(1<<DDRC1)|(1<<DDRC2)|(1<<DDRC3)|(1<<DDRC4)|(1<<DDRC5)|(1<<DDRC6)|(1<<DDRC7);
-  e2:	38 98       	cbi	0x07, 0	; 7
-	//P12,13,18,19,20
-	DDRD &=~(1<<DDRD6)|(1<<DDRD5)|(1<<DDRD4)|(1<<DDRD3)|(1<<DDRD2);
-  e4:	56 98       	cbi	0x0a, 6	; 10
-	//P21,22,23,24,25
-	DDRB &=~(1<<DDRB4)|(1<<DDRB3)|(1<<DDRB2)|(1<<DDRB1)|(1<<DDRB0);
-  e6:	24 98       	cbi	0x04, 4	; 4
-	//P26
-	DDRA &=~(1<<DDRA0);
-  e8:	08 98       	cbi	0x01, 0	; 1
-	
-	
-	DDRD |= ((1<<DDRD3) |(1<<DDRD4) |(1<<DDRD5) | (1<<DDRD6)); 
-  ea:	8a b1       	in	r24, 0x0a	; 10
-  ec:	88 67       	ori	r24, 0x78	; 120
-  ee:	8a b9       	out	0x0a, r24	; 10
+ 20c:	0e 94 9f 00 	call	0x13e	; 0x13e <serieel_init0>
+	init_ingangen();
+ 210:	0e 94 ef 00 	call	0x1de	; 0x1de <init_ingangen>
+    while (1) 
+    {
+		//Inlezen alle ingangen
+		//P1
+		if(PINC &(PINC0)) {bezetteparkeerplaatsen[1]=0;}
+		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[1]=1;}
+ 214:	c1 e0       	ldi	r28, 0x01	; 1
+ 216:	d1 e0       	ldi	r29, 0x01	; 1
+ 218:	01 e0       	ldi	r16, 0x01	; 1
+ 21a:	d0 2e       	mov	r13, r16
 	
     while (1) 
     {
+		//Inlezen alle ingangen
+		//P1
+		if(PINC &(PINC0)) {bezetteparkeerplaatsen[1]=0;}
+ 21c:	86 b1       	in	r24, 0x06	; 6
+		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[1]=1;}
+ 21e:	86 b1       	in	r24, 0x06	; 6
+ 220:	d9 82       	std	Y+1, r13	; 0x01
+			
+		//P2
+		if(PINC &(PINC0)) {bezetteparkeerplaatsen[2]=0;}
+ 222:	86 b1       	in	r24, 0x06	; 6
+		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[2]=1;}
+ 224:	86 b1       	in	r24, 0x06	; 6
+ 226:	da 82       	std	Y+2, r13	; 0x02
 		
-    }
-  f0:	ff cf       	rjmp	.-2      	; 0xf0 <main+0x14>
+		//P3
+		if(PINC &(PINC0)) {bezetteparkeerplaatsen[3]=0;}
+ 228:	86 b1       	in	r24, 0x06	; 6
+		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[3]=1;}
+ 22a:	86 b1       	in	r24, 0x06	; 6
+ 22c:	db 82       	std	Y+3, r13	; 0x03
+		
+		//P4
+		if(PINC &(PINC0)) {bezetteparkeerplaatsen[4]=1;}
+ 22e:	86 b1       	in	r24, 0x06	; 6
+		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[4]=0;}
+ 230:	86 b1       	in	r24, 0x06	; 6
+ 232:	1c 82       	std	Y+4, r1	; 0x04
+			
+		//P5
+		if(PINC &(PINC1)) {bezetteparkeerplaatsen[5]=1;}
+ 234:	30 99       	sbic	0x06, 0	; 6
+ 236:	0d 83       	std	Y+5, r16	; 0x05
+		if(!(PINC &(PINC1))){bezetteparkeerplaatsen[5]=0;}
+ 238:	30 9b       	sbis	0x06, 0	; 6
+ 23a:	1d 82       	std	Y+5, r1	; 0x05
 
-000000f2 <__vector_20>:
-	UCSR0B |=((1<<RXEN0)|(1<<TXEN0)); //activeren zender en ontvanger
-	UCSR0B |= (1<<RXCIE0); //activeren interrupt rx
-}
+		//P6
+		if(PINC &(PINC2)) {bezetteparkeerplaatsen[6]=1;}
+ 23c:	31 99       	sbic	0x06, 1	; 6
+ 23e:	0e 83       	std	Y+6, r16	; 0x06
+		if(!(PINC &(PINC2))){bezetteparkeerplaatsen[6]=0;}
+ 240:	31 9b       	sbis	0x06, 1	; 6
+ 242:	1e 82       	std	Y+6, r1	; 0x06
 
-ISR(USART0_RX_vect)
-{
-  f2:	1f 92       	push	r1
-  f4:	0f 92       	push	r0
-  f6:	0f b6       	in	r0, 0x3f	; 63
-  f8:	0f 92       	push	r0
-  fa:	11 24       	eor	r1, r1
-	//interrupt bij ontvangen van seriele communicatie
-}
-  fc:	0f 90       	pop	r0
-  fe:	0f be       	out	0x3f, r0	; 63
- 100:	0f 90       	pop	r0
- 102:	1f 90       	pop	r1
- 104:	18 95       	reti
+		//P7
+		if(PINC &(PINC3)) {bezetteparkeerplaatsen[7]=1;}
+ 244:	86 b1       	in	r24, 0x06	; 6
+ 246:	83 70       	andi	r24, 0x03	; 3
+ 248:	09 f0       	breq	.+2      	; 0x24c <main+0x40>
+ 24a:	0f 83       	std	Y+7, r16	; 0x07
+		if(!(PINC &(PINC3))){bezetteparkeerplaatsen[7]=0;}
+ 24c:	86 b1       	in	r24, 0x06	; 6
+ 24e:	83 70       	andi	r24, 0x03	; 3
+ 250:	09 f4       	brne	.+2      	; 0x254 <main+0x48>
+ 252:	1f 82       	std	Y+7, r1	; 0x07
 
-00000106 <_exit>:
- 106:	f8 94       	cli
+		//P8
+		if(PINC &(PINC4)) {bezetteparkeerplaatsen[8]=1;}
+ 254:	32 99       	sbic	0x06, 2	; 6
+ 256:	08 87       	std	Y+8, r16	; 0x08
+		if(!(PINC &(PINC4))){bezetteparkeerplaatsen[8]=0;}
+ 258:	32 9b       	sbis	0x06, 2	; 6
+ 25a:	18 86       	std	Y+8, r1	; 0x08
 
-00000108 <__stop_program>:
- 108:	ff cf       	rjmp	.-2      	; 0x108 <__stop_program>
+		//P9
+		if(PINC &(PINC5)) {bezetteparkeerplaatsen[9]=1;}
+ 25c:	86 b1       	in	r24, 0x06	; 6
+ 25e:	85 70       	andi	r24, 0x05	; 5
+ 260:	09 f0       	breq	.+2      	; 0x264 <main+0x58>
+ 262:	09 87       	std	Y+9, r16	; 0x09
+		if(!(PINC &(PINC5))){bezetteparkeerplaatsen[9]=0;}
+ 264:	86 b1       	in	r24, 0x06	; 6
+ 266:	85 70       	andi	r24, 0x05	; 5
+ 268:	09 f4       	brne	.+2      	; 0x26c <main+0x60>
+ 26a:	19 86       	std	Y+9, r1	; 0x09
+
+		//P10
+		if(PINC &(PINC6)) {bezetteparkeerplaatsen[10]=1;}
+ 26c:	86 b1       	in	r24, 0x06	; 6
+ 26e:	86 70       	andi	r24, 0x06	; 6
+ 270:	09 f0       	breq	.+2      	; 0x274 <main+0x68>
+ 272:	0a 87       	std	Y+10, r16	; 0x0a
+		if(!(PINC &(PINC6))){bezetteparkeerplaatsen[10]=0;}
+ 274:	86 b1       	in	r24, 0x06	; 6
+ 276:	86 70       	andi	r24, 0x06	; 6
+ 278:	09 f4       	brne	.+2      	; 0x27c <main+0x70>
+ 27a:	1a 86       	std	Y+10, r1	; 0x0a
+
+		//P11
+		if(PINC &(PINC7)) {bezetteparkeerplaatsen[11]=1;}
+ 27c:	86 b1       	in	r24, 0x06	; 6
+ 27e:	87 70       	andi	r24, 0x07	; 7
+ 280:	09 f0       	breq	.+2      	; 0x284 <main+0x78>
+ 282:	0b 87       	std	Y+11, r16	; 0x0b
+		if(!(PINC &(PINC7))){bezetteparkeerplaatsen[11]=0;}
+ 284:	86 b1       	in	r24, 0x06	; 6
+ 286:	87 70       	andi	r24, 0x07	; 7
+ 288:	09 f4       	brne	.+2      	; 0x28c <main+0x80>
+ 28a:	1b 86       	std	Y+11, r1	; 0x0b
+
+		//P12
+		if(PIND &(PIND6)) {bezetteparkeerplaatsen[12]=1;}
+ 28c:	89 b1       	in	r24, 0x09	; 9
+ 28e:	86 70       	andi	r24, 0x06	; 6
+ 290:	09 f0       	breq	.+2      	; 0x294 <main+0x88>
+ 292:	0c 87       	std	Y+12, r16	; 0x0c
+		if(!(PIND &(PIND6))){bezetteparkeerplaatsen[12]=0;}
+ 294:	89 b1       	in	r24, 0x09	; 9
+ 296:	86 70       	andi	r24, 0x06	; 6
+ 298:	09 f4       	brne	.+2      	; 0x29c <main+0x90>
+ 29a:	1c 86       	std	Y+12, r1	; 0x0c
+
+		//P13
+		if(PIND &(PIND5)) {bezetteparkeerplaatsen[13]=1;}
+ 29c:	89 b1       	in	r24, 0x09	; 9
+ 29e:	85 70       	andi	r24, 0x05	; 5
+ 2a0:	09 f0       	breq	.+2      	; 0x2a4 <main+0x98>
+ 2a2:	0d 87       	std	Y+13, r16	; 0x0d
+		if(!(PIND &(PIND5))){bezetteparkeerplaatsen[13]=0;}
+ 2a4:	89 b1       	in	r24, 0x09	; 9
+ 2a6:	85 70       	andi	r24, 0x05	; 5
+ 2a8:	09 f4       	brne	.+2      	; 0x2ac <main+0xa0>
+ 2aa:	1d 86       	std	Y+13, r1	; 0x0d
+
+		//P18
+		if(PIND &(PIND4)) {bezetteparkeerplaatsen[18]=1;}
+ 2ac:	4a 99       	sbic	0x09, 2	; 9
+ 2ae:	0a 8b       	std	Y+18, r16	; 0x12
+		if(!(PIND &(PIND4))){bezetteparkeerplaatsen[18]=0;}
+ 2b0:	4a 9b       	sbis	0x09, 2	; 9
+ 2b2:	1a 8a       	std	Y+18, r1	; 0x12
+
+		//P19
+		if(PIND &(PIND3)) {bezetteparkeerplaatsen[19]=1;}
+ 2b4:	89 b1       	in	r24, 0x09	; 9
+ 2b6:	83 70       	andi	r24, 0x03	; 3
+ 2b8:	09 f0       	breq	.+2      	; 0x2bc <main+0xb0>
+ 2ba:	0b 8b       	std	Y+19, r16	; 0x13
+		if(!(PIND &(PIND3))){bezetteparkeerplaatsen[19]=0;}
+ 2bc:	89 b1       	in	r24, 0x09	; 9
+ 2be:	83 70       	andi	r24, 0x03	; 3
+ 2c0:	09 f4       	brne	.+2      	; 0x2c4 <main+0xb8>
+ 2c2:	1b 8a       	std	Y+19, r1	; 0x13
+
+		//P20
+		if(PIND &(PIND2)) {bezetteparkeerplaatsen[20]=1;}
+ 2c4:	49 99       	sbic	0x09, 1	; 9
+ 2c6:	0c 8b       	std	Y+20, r16	; 0x14
+		if(!(PIND &(PIND2))){bezetteparkeerplaatsen[20]=0;}
+ 2c8:	49 9b       	sbis	0x09, 1	; 9
+ 2ca:	1c 8a       	std	Y+20, r1	; 0x14
+
+		//P21
+		if(PINB &(PINB2)) {bezetteparkeerplaatsen[21]=1;}
+ 2cc:	19 99       	sbic	0x03, 1	; 3
+ 2ce:	0d 8b       	std	Y+21, r16	; 0x15
+		if(!(PINB &(PINB2))){bezetteparkeerplaatsen[21]=0;}
+ 2d0:	19 9b       	sbis	0x03, 1	; 3
+ 2d2:	1d 8a       	std	Y+21, r1	; 0x15
+
+		//P22
+		if(PINB &(PINB3)) {bezetteparkeerplaatsen[22]=1;}
+ 2d4:	83 b1       	in	r24, 0x03	; 3
+ 2d6:	83 70       	andi	r24, 0x03	; 3
+ 2d8:	09 f0       	breq	.+2      	; 0x2dc <main+0xd0>
+ 2da:	0e 8b       	std	Y+22, r16	; 0x16
+		if(!(PINB &(PINB3))){bezetteparkeerplaatsen[22]=0;}
+ 2dc:	83 b1       	in	r24, 0x03	; 3
+ 2de:	83 70       	andi	r24, 0x03	; 3
+ 2e0:	09 f4       	brne	.+2      	; 0x2e4 <main+0xd8>
+ 2e2:	1e 8a       	std	Y+22, r1	; 0x16
+	
+		//P23
+		if(PINB &(1<<PINB2)) {bezetteparkeerplaatsen[23]=1;}
+ 2e4:	1a 99       	sbic	0x03, 2	; 3
+ 2e6:	0f 8b       	std	Y+23, r16	; 0x17
+		if(!(PINB &(1<<PINB2))){bezetteparkeerplaatsen[23]=0;}
+ 2e8:	1a 9b       	sbis	0x03, 2	; 3
+ 2ea:	1f 8a       	std	Y+23, r1	; 0x17
+
+		//P24
+		if(PINB &(1<<PINB1)) {bezetteparkeerplaatsen[24]=1;}
+ 2ec:	19 99       	sbic	0x03, 1	; 3
+ 2ee:	08 8f       	std	Y+24, r16	; 0x18
+		if(!(PINB &(1<<PINB1))){bezetteparkeerplaatsen[24]=0;}
+ 2f0:	19 9b       	sbis	0x03, 1	; 3
+ 2f2:	18 8e       	std	Y+24, r1	; 0x18
+
+		//P25
+		if(PINB &(1<<PINB0)) {bezetteparkeerplaatsen[25]=1;}
+ 2f4:	18 99       	sbic	0x03, 0	; 3
+ 2f6:	09 8f       	std	Y+25, r16	; 0x19
+		if(!(PINB &(1<<PINB0))){bezetteparkeerplaatsen[25]=0;}
+ 2f8:	18 9b       	sbis	0x03, 0	; 3
+ 2fa:	19 8e       	std	Y+25, r1	; 0x19
+
+		//P26
+		if(PINA &(1<<PINA0)) {bezetteparkeerplaatsen[26]=1;}
+ 2fc:	00 99       	sbic	0x00, 0	; 0
+ 2fe:	0a 8f       	std	Y+26, r16	; 0x1a
+		if(!(PINA &(1<<PINA0))){bezetteparkeerplaatsen[26]=0;}
+ 300:	00 9b       	sbis	0x00, 0	; 0
+ 302:	1a 8e       	std	Y+26, r1	; 0x1a
+			
+		if(ticks1s)
+ 304:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <ticks1s>
+ 308:	88 23       	and	r24, r24
+ 30a:	09 f4       	brne	.+2      	; 0x30e <main+0x102>
+ 30c:	87 cf       	rjmp	.-242    	; 0x21c <main+0x10>
+ 30e:	7e 01       	movw	r14, r28
+ 310:	10 e0       	ldi	r17, 0x00	; 0
+		{
+			for (int i = 0; i < 26; i++)
+			{
+				sendChar0(OmzettenNaarHex(i,bezetteparkeerplaatsen[i]));
+ 312:	f7 01       	movw	r30, r14
+ 314:	61 91       	ld	r22, Z+
+ 316:	7f 01       	movw	r14, r30
+ 318:	81 2f       	mov	r24, r17
+ 31a:	0e 94 52 00 	call	0xa4	; 0xa4 <OmzettenNaarHex>
+ 31e:	0e 94 cd 00 	call	0x19a	; 0x19a <sendChar0>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 322:	8f ef       	ldi	r24, 0xFF	; 255
+ 324:	97 e4       	ldi	r25, 0x47	; 71
+ 326:	01 97       	sbiw	r24, 0x01	; 1
+ 328:	f1 f7       	brne	.-4      	; 0x326 <main+0x11a>
+ 32a:	00 c0       	rjmp	.+0      	; 0x32c <main+0x120>
+ 32c:	00 00       	nop
+ 32e:	1f 5f       	subi	r17, 0xFF	; 255
+		if(PINA &(1<<PINA0)) {bezetteparkeerplaatsen[26]=1;}
+		if(!(PINA &(1<<PINA0))){bezetteparkeerplaatsen[26]=0;}
+			
+		if(ticks1s)
+		{
+			for (int i = 0; i < 26; i++)
+ 330:	1a 31       	cpi	r17, 0x1A	; 26
+ 332:	79 f7       	brne	.-34     	; 0x312 <main+0x106>
+ 334:	73 cf       	rjmp	.-282    	; 0x21c <main+0x10>
+
+00000336 <_exit>:
+ 336:	f8 94       	cli
+
+00000338 <__stop_program>:
+ 338:	ff cf       	rjmp	.-2      	; 0x338 <__stop_program>

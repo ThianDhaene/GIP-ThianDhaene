@@ -124,6 +124,8 @@ int main(void)
 		//P17
 		if(PINC &(1<<PINC7)) { bezetteparkeerplaatsen[17]=1; }
 		if(!(PINC &(1<<PINC7))) { bezetteparkeerplaatsen[17]=0; }
+			
+		
 		
 		
 		//Nieuwe seriele berichten verwerken
@@ -150,7 +152,7 @@ int main(void)
 		if (ticks1s)
 		{
 			bezetteplaatsen=0;
-			for (int i = 0; i < 26; i++)
+			for (int i = 1; i < 26; i++)
 			{
 				if(bezetteparkeerplaatsen[i]==1)
 				{
@@ -305,7 +307,6 @@ ISR (TIMER0_COMPA_vect)
 		ticks16=0;
 		ticks1s=1;
 	}
-	
 }
 
 void init_7seg(void)
