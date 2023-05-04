@@ -40,16 +40,16 @@ int main(void)
     {
 		//Inlezen alle ingangen
 		//P1
-		if(PINC &(PINC0)) {bezetteparkeerplaatsen[1]=0;}
-		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[1]=1;}
-			
+		if(PINA &(PINA7)) {bezetteparkeerplaatsen[1]=0;}
+		if(!(PINA &(PINA7))){bezetteparkeerplaatsen[1]=1;}
+		
 		//P2
-		if(PINC &(PINC0)) {bezetteparkeerplaatsen[2]=0;}
-		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[2]=1;}
+		if(PINA &(PINA4)) {bezetteparkeerplaatsen[2]=0;}
+		if(!(PINA &(PINA4))){bezetteparkeerplaatsen[2]=1;}
 		
 		//P3
-		if(PINC &(PINC0)) {bezetteparkeerplaatsen[3]=0;}
-		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[3]=1;}
+		if(PINA &(PINA3)) {bezetteparkeerplaatsen[3]=0;}
+		if(!(PINA &(PINA3))){bezetteparkeerplaatsen[3]=1;}
 		
 		//P4
 		if(PINC &(PINC0)) {bezetteparkeerplaatsen[4]=1;}
