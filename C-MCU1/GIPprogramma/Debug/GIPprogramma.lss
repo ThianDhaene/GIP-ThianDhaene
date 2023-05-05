@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00000228  00000000  00000000  00002850  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000003b6  00000000  00000000  00002a78  2**0
+ 10 .debug_str    000003bd  00000000  00000000  00002a78  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000560  00000000  00000000  00002e2e  2**0
+ 11 .debug_loc    00000560  00000000  00000000  00002e35  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000d8  00000000  00000000  0000338e  2**0
+ 12 .debug_ranges 000000d8  00000000  00000000  00003395  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -878,7 +878,7 @@ char Servo2(unsigned char graden)
  5c2:	68 94       	set
  5c4:	22 24       	eor	r2, r2
  5c6:	21 f8       	bld	r2, 1
-			for (int i = 1; i < 26; i++)
+			for (int i = 1; i <= 26; i++)
 			{
 				if(bezetteparkeerplaatsen[i]==1)
 				{
@@ -906,7 +906,7 @@ char Servo2(unsigned char graden)
  5e6:	f1 e0       	ldi	r31, 0x01	; 1
  5e8:	bf 2e       	mov	r11, r31
  5ea:	f0 2d       	mov	r31, r0
-			for (int i = 1; i < 26; i++)
+			for (int i = 1; i <= 26; i++)
 			{
 				if(bezetteparkeerplaatsen[i]==1)
 				{
@@ -1032,7 +1032,7 @@ char Servo2(unsigned char graden)
  68c:	32 e0       	ldi	r19, 0x02	; 2
  68e:	3b 83       	std	Y+3, r19	; 0x03
  690:	2a 83       	std	Y+2, r18	; 0x02
-			for (int i = 1; i < 26; i++)
+			for (int i = 1; i <= 26; i++)
  692:	01 e0       	ldi	r16, 0x01	; 1
  694:	10 e0       	ldi	r17, 0x00	; 0
  696:	8a 80       	ldd	r8, Y+2	; 0x02
@@ -1105,10 +1105,10 @@ char Servo2(unsigned char graden)
 		if (ticks1s)
 		{
 			bezetteplaatsen=0;
-			for (int i = 1; i < 26; i++)
+			for (int i = 1; i <= 26; i++)
  70c:	0f 5f       	subi	r16, 0xFF	; 255
  70e:	1f 4f       	sbci	r17, 0xFF	; 255
- 710:	0a 31       	cpi	r16, 0x1A	; 26
+ 710:	0b 31       	cpi	r16, 0x1B	; 27
  712:	11 05       	cpc	r17, r1
  714:	09 f0       	breq	.+2      	; 0x718 <main+0x216>
  716:	bf cf       	rjmp	.-130    	; 0x696 <main+0x194>
@@ -1142,12 +1142,6 @@ char Servo2(unsigned char graden)
  746:	54 cf       	rjmp	.-344    	; 0x5f0 <main+0xee>
 
 00000748 <twi_init>:
-
-#define F_CPU 3686640L
-
-void twi_init(void)
-{
-	TWBR = 42;	//voor snelheid van ongeveer 36864Hz
  748:	8a e2       	ldi	r24, 0x2A	; 42
  74a:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7e00b8>
  74e:	08 95       	ret

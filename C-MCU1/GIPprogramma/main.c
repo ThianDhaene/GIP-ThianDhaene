@@ -152,7 +152,7 @@ int main(void)
 		if (ticks1s)
 		{
 			bezetteplaatsen=0;
-			for (int i = 1; i < 26; i++)
+			for (int i = 1; i <= 26; i++)
 			{
 				if(bezetteparkeerplaatsen[i]==1)
 				{

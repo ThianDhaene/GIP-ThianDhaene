@@ -713,11 +713,11 @@ END GROUP
  .debug_frame   0x00000000      0x1c4 main.o
  .debug_frame   0x000001c4       0x64 twi_master.o
 
-.debug_str      0x00000000      0x3b6
+.debug_str      0x00000000      0x3bd
  *(.debug_str)
- .debug_str     0x00000000      0x340 main.o
-                                0x379 (size before relaxing)
- .debug_str     0x00000340       0x76 twi_master.o
+ .debug_str     0x00000000      0x347 main.o
+                                0x380 (size before relaxing)
+ .debug_str     0x00000347       0x76 twi_master.o
                                 0x1b9 (size before relaxing)
 
 .debug_loc      0x00000000      0x560
