@@ -1,9 +1,9 @@
 /*
- * C-MCU2.c
- *
- * Created: 27/04/2023 12:37:02
- * Author : D'haeneThian
- */ 
+* C-MCU2.c
+*
+* Created: 27/04/2023 12:37:02
+* Author : D'haeneThian
+*/
 
 #include <avr/io.h>
 #define F_CPU 3686400L
@@ -32,104 +32,106 @@ void init_timer(void);
 
 int main(void)
 {
-    serieel_init0();
+	serieel_init0();
 	init_ingangen();
 	init_timer();
 	
-    while (1) 
-    {
+	DDRD |=(1<<DDRD7);
+	
+	while (1)
+	{
 		//Inlezen alle ingangen
 		//P1
-		if(PINA &(PINA7)) {bezetteparkeerplaatsen[1]=0;}
-		if(!(PINA &(PINA7))){bezetteparkeerplaatsen[1]=1;}
+ 		if(PINA &(1<<PINA7)) {bezetteparkeerplaatsen[1]=0; }
+ 		if(!(PINA &(1<<PINA7))){bezetteparkeerplaatsen[1]=1; }
 		
 		//P2
-		if(PINA &(PINA4)) {bezetteparkeerplaatsen[2]=0;}
-		if(!(PINA &(PINA4))){bezetteparkeerplaatsen[2]=1;}
+		if(PINA &(1<<PINA4)) {bezetteparkeerplaatsen[2]=0;}
+		if(!(PINA &(1<<PINA4))){bezetteparkeerplaatsen[2]=1;}
 		
 		//P3
-		if(PINA &(PINA3)) {bezetteparkeerplaatsen[3]=0;}
-		if(!(PINA &(PINA3))){bezetteparkeerplaatsen[3]=1;}
+		if(PINA &(1<<PINA3)) {bezetteparkeerplaatsen[3]=0;}
+		if(!(PINA &(1<<PINA3))){bezetteparkeerplaatsen[3]=1;}
 		
 		//P4
-		if(PINC &(PINC0)) {bezetteparkeerplaatsen[4]=1;}
-		if(!(PINC &(PINC0))){bezetteparkeerplaatsen[4]=0;}
-			
+		if(PINC &(1<<PINC0)) {bezetteparkeerplaatsen[4]=1;}
+		if(!(PINC &(1<<PINC0))){bezetteparkeerplaatsen[4]=0;}
+		
 		//P5
-		if(PINC &(PINC1)) {bezetteparkeerplaatsen[5]=1;}
-		if(!(PINC &(PINC1))){bezetteparkeerplaatsen[5]=0;}
-
+		if(PINC &(1<<PINC1)) {bezetteparkeerplaatsen[5]=1;}
+		if(!(PINC &(1<<PINC1))){bezetteparkeerplaatsen[5]=0;}
+		
 		//P6
-		if(PINC &(PINC2)) {bezetteparkeerplaatsen[6]=1;}
-		if(!(PINC &(PINC2))){bezetteparkeerplaatsen[6]=0;}
-
+		if(PINC &(1<<PINC2)) {bezetteparkeerplaatsen[6]=1;}
+		if(!(PINC &(1<<PINC2))){bezetteparkeerplaatsen[6]=0;}
+		
 		//P7
-		if(PINC &(PINC3)) {bezetteparkeerplaatsen[7]=1;}
-		if(!(PINC &(PINC3))){bezetteparkeerplaatsen[7]=0;}
-
+		if(PINC &(1<<PINC3)) {bezetteparkeerplaatsen[7]=1;}
+		if(!(PINC &(1<<PINC3))){bezetteparkeerplaatsen[7]=0;}
+		
 		//P8
-		if(PINC &(PINC4)) {bezetteparkeerplaatsen[8]=1;}
-		if(!(PINC &(PINC4))){bezetteparkeerplaatsen[8]=0;}
-
+		if(PINC &(1<<PINC4)) {bezetteparkeerplaatsen[8]=1;}
+		if(!(PINC &(1<<PINC4))){bezetteparkeerplaatsen[8]=0;}
+		
 		//P9
-		if(PINC &(PINC5)) {bezetteparkeerplaatsen[9]=1;}
-		if(!(PINC &(PINC5))){bezetteparkeerplaatsen[9]=0;}
-
+		if(PINC &(1<<PINC5)) {bezetteparkeerplaatsen[9]=1;}
+		if(!(PINC &(1<<PINC5))){bezetteparkeerplaatsen[9]=0;}
+		
 		//P10
-		if(PINC &(PINC6)) {bezetteparkeerplaatsen[10]=1;}
-		if(!(PINC &(PINC6))){bezetteparkeerplaatsen[10]=0;}
-
+		if(PINC &(1<<PINC6)) {bezetteparkeerplaatsen[10]=1;}
+		if(!(PINC &(1<<PINC6))){bezetteparkeerplaatsen[10]=0;}
+		
 		//P11
-		if(PINC &(PINC7)) {bezetteparkeerplaatsen[11]=1;}
-		if(!(PINC &(PINC7))){bezetteparkeerplaatsen[11]=0;}
-
+		if(PINC &(1<<PINC7)) {bezetteparkeerplaatsen[11]=1;}
+		if(!(PINC &(1<<PINC7))){bezetteparkeerplaatsen[11]=0;}
+		
 		//P12
-		if(PIND &(PIND6)) {bezetteparkeerplaatsen[12]=1;}
-		if(!(PIND &(PIND6))){bezetteparkeerplaatsen[12]=0;}
-
+		if(PIND &(1<<PIND6)) {bezetteparkeerplaatsen[12]=1;}
+		if(!(PIND &(1<<PIND6))){bezetteparkeerplaatsen[12]=0;}
+		
 		//P13
-		if(PIND &(PIND5)) {bezetteparkeerplaatsen[13]=1;}
-		if(!(PIND &(PIND5))){bezetteparkeerplaatsen[13]=0;}
-
+		if(PIND &(1<<PIND5)) {bezetteparkeerplaatsen[13]=1;}
+		if(!(PIND &(1<<PIND5))){bezetteparkeerplaatsen[13]=0;}
+		
 		//P18
-		if(PIND &(PIND4)) {bezetteparkeerplaatsen[18]=1;}
-		if(!(PIND &(PIND4))){bezetteparkeerplaatsen[18]=0;}
-
+		if(PIND &(1<<PIND4)) {bezetteparkeerplaatsen[18]=1;}
+		if(!(PIND &(1<<PIND4))){bezetteparkeerplaatsen[18]=0;}
+		
 		//P19
-		if(PIND &(PIND3)) {bezetteparkeerplaatsen[19]=1;}
-		if(!(PIND &(PIND3))){bezetteparkeerplaatsen[19]=0;}
-
+		if(PIND &(1<<PIND3)) {bezetteparkeerplaatsen[19]=1;}
+		if(!(PIND &(1<<PIND3))){bezetteparkeerplaatsen[19]=0;}
+		
 		//P20
-		if(PIND &(PIND2)) {bezetteparkeerplaatsen[20]=1;}
-		if(!(PIND &(PIND2))){bezetteparkeerplaatsen[20]=0;}
-
+		if(PIND &(1<<PIND2)) {bezetteparkeerplaatsen[20]=1;}
+		if(!(PIND &(1<<PIND2))){bezetteparkeerplaatsen[20]=0;}
+		
 		//P21
-		if(PINB &(PINB2)) {bezetteparkeerplaatsen[21]=1;}
-		if(!(PINB &(PINB2))){bezetteparkeerplaatsen[21]=0;}
-
+		if(PINB &(1<<PINB2)) {bezetteparkeerplaatsen[21]=1;}
+		if(!(PINB &(1<<PINB2))){bezetteparkeerplaatsen[21]=0;}
+		
 		//P22
-		if(PINB &(PINB3)) {bezetteparkeerplaatsen[22]=1;}
-		if(!(PINB &(PINB3))){bezetteparkeerplaatsen[22]=0;}
-	
+		if(PINB &(1<<PINB3)) {bezetteparkeerplaatsen[22]=1;}
+		if(!(PINB &(1<<PINB3))){bezetteparkeerplaatsen[22]=0;}
+		
 		//P23
 		if(PINB &(1<<PINB2)) {bezetteparkeerplaatsen[23]=1;}
 		if(!(PINB &(1<<PINB2))){bezetteparkeerplaatsen[23]=0;}
-
+		
 		//P24
 		if(PINB &(1<<PINB1)) {bezetteparkeerplaatsen[24]=1;}
 		if(!(PINB &(1<<PINB1))){bezetteparkeerplaatsen[24]=0;}
-
+		
 		//P25
 		if(PINB &(1<<PINB0)) {bezetteparkeerplaatsen[25]=1;}
 		if(!(PINB &(1<<PINB0))){bezetteparkeerplaatsen[25]=0;}
-
+		
 		//P26
 		if(PINA &(1<<PINA0)) {bezetteparkeerplaatsen[26]=1;}
 		if(!(PINA &(1<<PINA0))){bezetteparkeerplaatsen[26]=0;}
-			
+		
 		if(ticks1s)
 		{
-			for (int i = 0; i < 26; i++)
+			for (int i = 0; i <= 26; i++)
 			{
 				sendChar0(OmzettenNaarHex(i,bezetteparkeerplaatsen[i]));
 				_delay_ms(20);
@@ -138,7 +140,7 @@ int main(void)
 		}
 		
 		
-    }
+	}
 }
 
 char OmzettenNaarHex(char i, char status)
@@ -195,7 +197,7 @@ char OmzettenNaarHex(char i, char status)
 	////P17
 	//if(i==17 && status==0) {return 0x33;}
 	//if(i==17 && status==1) {return 0x34;}
-		
+	
 	//P18
 	if(i==18 && status==0) {return 0x35;}
 	if(i==18 && status==1) {return 0x36;}
