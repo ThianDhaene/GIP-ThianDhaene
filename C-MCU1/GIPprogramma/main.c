@@ -70,6 +70,7 @@ int main(void)
 {
 	DDRD |= (1<<DDRD7);
 	
+	DDRA = 0xFF;
 	DDRB=(1<<DDRB0)|(1<<DDRB1);
 	PORTB&=~(1<<PORTB0);
 	PORTB|=(1<<PORTB1);
@@ -169,6 +170,7 @@ int main(void)
 			sprintf(buffer, "B%d\r\n",bezetteplaatsen);
 			sendString1(buffer);
 			ticks1s=0;
+			waarde7(bezetteplaatsen);
 		}
 		
 	}
@@ -291,12 +293,12 @@ ISR (TIMER0_COMPA_vect)
 	PORTB ^=(1<<PORTB0)|(1<<PORTB1);
 	if(linkrechts==1)
 	{
-		PORTC = array1[waarde_e];
+		PORTA = array1[waarde_e];
 		linkrechts=0;
 	}
 	else
 	{
-		PORTC = array1[waarde_t];
+		PORTA = array1[waarde_t];
 		linkrechts=1;
 	}
 	ticks16++;
@@ -410,13 +412,11 @@ ISR(USART0_RX_vect)
 void init_timer(void)
 {
 	//init
-	DDRA &=~(1<<DDRA0);
-	DDRC |=(1<<DDRC0);
 	TCCR0A |= (1<<WGM01);	//Instellen WGM01 op 1 in TCCR0A
 	TCCR0A &=~(1<<WGM00);	//Instellen WGM00 op 0 in TCCR0A
 	TCCR0B &=~((1<<WGM02) | (1<<CS01));		//Instellen  WGM02 en CS01 op 0 in TCCR0B
 	TCCR0B |= ((1<<CS02)| (1<<CS00));		//Instellen CS02 en CS00 op 1 in TCCR0B
-	OCR0A = 224;
+	OCR0A = 20;
 	TIMSK0 |= (1<<OCIE0A);
 	sei();
 }
