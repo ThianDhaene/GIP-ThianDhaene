@@ -170,7 +170,7 @@ int main(void)
 			sprintf(buffer, "B%d\r\n",bezetteplaatsen);
 			sendString1(buffer);
 			ticks1s=0;
-			waarde7(bezetteplaatsen);
+			waarde7(26-bezetteplaatsen);
 		}
 		
 	}
@@ -407,6 +407,27 @@ ISR(USART0_RX_vect)
 	
 	if(data==0x51){bezetteparkeerplaatsen[26]=0;}
 	if(data==0x52){bezetteparkeerplaatsen[26]=1;}
+		
+	//slagboom1
+	if(data==0x53)
+	{
+		Servo1(90);
+	}
+	if(data==0x54)
+	{
+		Servo1(0);
+	}
+	
+	//slagboom2
+	if(data==0x55)
+	{
+		Servo2(90);
+	}
+	if(data==0x56)
+	{
+		Servo2(0);
+	}
+		
 }
 
 void init_timer(void)

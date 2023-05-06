@@ -30,6 +30,9 @@ volatile unsigned char ticks1s;
 volatile unsigned char ticks16;
 void init_timer(void);
 
+char slagboom1 = 1;
+char slagboom2 = 1;
+
 int main(void)
 {
 	serieel_init0();
@@ -131,24 +134,28 @@ int main(void)
 			
 		//Slagbomen
 		//In1
-		if (PINA &(1<<DDRA6))
+		if (!(PINA &(1<<DDRA6))&&slagboom1==0)
 		{
 			sendChar0(0x53);
+			slagboom1=1;
 		}
 		//In2
-		if (PINA &(1<<DDRA5))
+		if (!(PINA &(1<<DDRA5))&&slagboom1==1)
 		{
 			sendChar0(0x54);
+			slagboom1=0;
 		}
 		//Uit1
-		if (PINA &(1<<DDRA2))
+		if (!(PINA &(1<<DDRA2))&&slagboom2==0)
 		{
 			sendChar0(0x55);
+			slagboom2=1;
 		}
 		//Uit2
-		if (PINA &(1<<DDRA1))
+		if (!(PINA &(1<<DDRA1))&&slagboom2==1)
 		{
 			sendChar0(0x56);
+			slagboom2=0;
 		}
 		
 		if(ticks1s)
