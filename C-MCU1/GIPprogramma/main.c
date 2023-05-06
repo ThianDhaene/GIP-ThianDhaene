@@ -70,9 +70,14 @@ int main(void)
 {
 	DDRD |= (1<<DDRD7);
 	
+	DDRA = 0xFF;
 	DDRB=(1<<DDRB0)|(1<<DDRB1);
 	PORTB&=~(1<<PORTB0);
 	PORTB|=(1<<PORTB1);
+	
+	//P14 P15 P16 P17
+	DDRC &=~ (1<<DDRC4)|(1<<DDRC5)|(1<<DDRC6)|(1<<DDRC7);
+	
 	
 	//opstarten van verschillende componenten
 	init_servo();
@@ -103,6 +108,28 @@ int main(void)
 	sei();
 	while (1)
 	{
+		
+		//Alle ingangen controlleren
+		//P14
+		if(PINC &(1<<PINC4)) { bezetteparkeerplaatsen[14]=1; }
+		if(!(PINC &(1<<PINC4))) { bezetteparkeerplaatsen[14]=0; }
+			
+		//P15
+		if(PINC &(1<<PINC5)) { bezetteparkeerplaatsen[15]=1; }
+		if(!(PINC &(1<<PINC5))) { bezetteparkeerplaatsen[15]=0; }
+		
+		//P16
+		if(PINC &(1<<PINC6)) { bezetteparkeerplaatsen[16]=1; }
+		if(!(PINC &(1<<PINC6))) { bezetteparkeerplaatsen[16]=0; }
+		
+		//P17
+		if(PINC &(1<<PINC7)) { bezetteparkeerplaatsen[17]=1; }
+		if(!(PINC &(1<<PINC7))) { bezetteparkeerplaatsen[17]=0; }
+			
+		
+		
+		
+		//Nieuwe seriele berichten verwerken
 		if(msg==MSG_NEW)
 		{
 			PORTD |=(1<<PORTD7);
@@ -126,16 +153,16 @@ int main(void)
 		if (ticks1s)
 		{
 			bezetteplaatsen=0;
-			for (int i = 0; i < 26; i++)
+			for (int i = 1; i <= 26; i++)
 			{
 				if(bezetteparkeerplaatsen[i]==1)
 				{
 					bezetteplaatsen++;
-					sprintf(buffer, "PB%d\r\n",i+1);
+					sprintf(buffer, "PB%d\r\n",i);
 				}
 				if(bezetteparkeerplaatsen[i]==0)
 				{
-					sprintf(buffer, "PL%d\r\n",i+1);
+					sprintf(buffer, "PL%d\r\n",i);
 				}
 				sendString1(buffer);
 				_delay_ms(20);
@@ -143,6 +170,7 @@ int main(void)
 			sprintf(buffer, "B%d\r\n",bezetteplaatsen);
 			sendString1(buffer);
 			ticks1s=0;
+			waarde7(bezetteplaatsen);
 		}
 		
 	}
@@ -183,7 +211,6 @@ void serieel_init1(void)
 	UCSR1C &=~(1<<UPM10)|(1<<UPM11); //geen pariteit
 	UCSR1B |=((1<<RXEN1)|(1<<TXEN1)); //activeren zender en ontvanger
 	UCSR1B |= (1<<RXCIE1); //activeren interrupt rx
-
 }
 
 void serieel_init0(void)
@@ -202,7 +229,6 @@ void serieel_init0(void)
 	UCSR0C &=~(1<<UPM00)|(1<<UPM01); //geen pariteit
 	UCSR0B |=((1<<RXEN0)|(1<<TXEN0)); //activeren zender en ontvanger
 	UCSR0B |= (1<<RXCIE0); //activeren interrupt rx
-
 }
 
 void sendChar0(char data)
@@ -267,12 +293,12 @@ ISR (TIMER0_COMPA_vect)
 	PORTB ^=(1<<PORTB0)|(1<<PORTB1);
 	if(linkrechts==1)
 	{
-		PORTC = array1[waarde_e];
+		PORTA = array1[waarde_e];
 		linkrechts=0;
 	}
 	else
 	{
-		PORTC = array1[waarde_t];
+		PORTA = array1[waarde_t];
 		linkrechts=1;
 	}
 	ticks16++;
@@ -281,7 +307,6 @@ ISR (TIMER0_COMPA_vect)
 		ticks16=0;
 		ticks1s=1;
 	}
-	
 }
 
 void init_7seg(void)
@@ -314,16 +339,84 @@ ISR(USART1_RX_vect)
 	else rx_ptr++;
 }
 
+ISR(USART0_RX_vect)
+{
+	char data = UDR0;
+	if(data==0x01){bezetteparkeerplaatsen[1]=0;}
+	if(data==0x02){bezetteparkeerplaatsen[1]=1;}
+		
+	if(data==0x03){bezetteparkeerplaatsen[2]=0;}
+	if(data==0x04){bezetteparkeerplaatsen[2]=1;}
+		
+	if(data==0x05){bezetteparkeerplaatsen[3]=0;}
+	if(data==0x06){bezetteparkeerplaatsen[3]=1;}
+		
+	if(data==0x07){bezetteparkeerplaatsen[4]=0;}
+	if(data==0x08){bezetteparkeerplaatsen[4]=1;}
+		
+	if(data==0x09){bezetteparkeerplaatsen[5]=0;}
+	if(data==0x10){bezetteparkeerplaatsen[5]=1;}
+	
+	if(data==0x11){bezetteparkeerplaatsen[6]=0;}
+	if(data==0x12){bezetteparkeerplaatsen[6]=1;}
+	
+	if(data==0x13){bezetteparkeerplaatsen[7]=0;}
+	if(data==0x14){bezetteparkeerplaatsen[7]=1;}
+		
+	if(data==0x15){bezetteparkeerplaatsen[8]=0;}
+	if(data==0x16){bezetteparkeerplaatsen[8]=1;}
+	
+	if(data==0x17){bezetteparkeerplaatsen[9]=0;}
+	if(data==0x18){bezetteparkeerplaatsen[9]=1;}
+		
+	if(data==0x19){bezetteparkeerplaatsen[10]=0;}
+	if(data==0x20){bezetteparkeerplaatsen[10]=1;}
+	
+	if(data==0x21){bezetteparkeerplaatsen[11]=0;}
+	if(data==0x22){bezetteparkeerplaatsen[11]=1;}
+		
+	if(data==0x23){bezetteparkeerplaatsen[12]=0;}
+	if(data==0x24){bezetteparkeerplaatsen[12]=1;}
+	
+	if(data==0x25){bezetteparkeerplaatsen[13]=0;}
+	if(data==0x26){bezetteparkeerplaatsen[13]=1;}
+		
+	if(data==0x35){bezetteparkeerplaatsen[18]=0;}
+	if(data==0x36){bezetteparkeerplaatsen[18]=1;}
+		
+	if(data==0x37){bezetteparkeerplaatsen[19]=0;}
+	if(data==0x38){bezetteparkeerplaatsen[19]=1;}
+		
+	if(data==0x39){bezetteparkeerplaatsen[20]=0;}
+	if(data==0x40){bezetteparkeerplaatsen[20]=1;}
+		
+	if(data==0x41){bezetteparkeerplaatsen[21]=0;}
+	if(data==0x42){bezetteparkeerplaatsen[21]=1;}
+		
+	if(data==0x43){bezetteparkeerplaatsen[22]=0;}
+	if(data==0x44){bezetteparkeerplaatsen[22]=1;}
+		
+	if(data==0x45){bezetteparkeerplaatsen[23]=0;}
+	if(data==0x46){bezetteparkeerplaatsen[23]=1;}
+		
+	if(data==0x47){bezetteparkeerplaatsen[24]=0;}
+	if(data==0x48){bezetteparkeerplaatsen[24]=1;}
+		
+	if(data==0x49){bezetteparkeerplaatsen[25]=0;}
+	if(data==0x50){bezetteparkeerplaatsen[25]=1;}
+	
+	if(data==0x51){bezetteparkeerplaatsen[26]=0;}
+	if(data==0x52){bezetteparkeerplaatsen[26]=1;}
+}
+
 void init_timer(void)
 {
 	//init
-	DDRA &=~(1<<DDRA0);
-	DDRC |=(1<<DDRC0);
 	TCCR0A |= (1<<WGM01);	//Instellen WGM01 op 1 in TCCR0A
 	TCCR0A &=~(1<<WGM00);	//Instellen WGM00 op 0 in TCCR0A
 	TCCR0B &=~((1<<WGM02) | (1<<CS01));		//Instellen  WGM02 en CS01 op 0 in TCCR0B
 	TCCR0B |= ((1<<CS02)| (1<<CS00));		//Instellen CS02 en CS00 op 1 in TCCR0B
-	OCR0A = 224;
+	OCR0A = 20;
 	TIMSK0 |= (1<<OCIE0A);
 	sei();
 }
