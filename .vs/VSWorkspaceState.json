@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\GIP"
   ],
-  "SelectedNode": "\\GIP.sln",
+  "SelectedNode": "\\GIP\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }
