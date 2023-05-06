@@ -128,6 +128,28 @@ int main(void)
 		//P26
 		if(PINA &(1<<PINA0)) {bezetteparkeerplaatsen[26]=1;}
 		if(!(PINA &(1<<PINA0))){bezetteparkeerplaatsen[26]=0;}
+			
+		//Slagbomen
+		//In1
+		if (PINA &(1<<DDRA6))
+		{
+			sendChar0(0x53);
+		}
+		//In2
+		if (PINA &(1<<DDRA5))
+		{
+			sendChar0(0x54);
+		}
+		//Uit1
+		if (PINA &(1<<DDRA2))
+		{
+			sendChar0(0x55);
+		}
+		//Uit2
+		if (PINA &(1<<DDRA1))
+		{
+			sendChar0(0x56);
+		}
 		
 		if(ticks1s)
 		{
@@ -225,9 +247,6 @@ char OmzettenNaarHex(char i, char status)
 	//P26
 	if(i==26 && status==0) {return 0x51;}
 	if(i==26 && status==1) {return 0x52;}
-
-	
-	
 }
 
 void serieel_init0(void)
@@ -339,4 +358,14 @@ void init_ingangen(void)
 	DDRB &=~ (1<<DDRB0);
 	//P26
 	DDRA &=~(1<<DDRA0);
+	
+	//SLAGBOMEN
+	//In1
+	DDRA &=~(1<<DDRA6);
+	//In2
+	DDRA &=~(1<<DDRA5);
+	//Uit1
+	DDRA &=~(1<<DDRA2);
+	//Uit2
+	DDRA &=~(1<<DDRA1);
 }
