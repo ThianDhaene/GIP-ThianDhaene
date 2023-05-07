@@ -46,91 +46,91 @@ int main(void)
 		//Inlezen alle ingangen
 		//P1
  		if(PINA &(1<<PINA7)) {bezetteparkeerplaatsen[1]=0; }
- 		if(!(PINA &(1<<PINA7))){bezetteparkeerplaatsen[1]=1; }
+ 		else if(!(PINA &(1<<PINA7))){bezetteparkeerplaatsen[1]=1; }
 		
 		//P2
 		if(PINA &(1<<PINA4)) {bezetteparkeerplaatsen[2]=0;}
-		if(!(PINA &(1<<PINA4))){bezetteparkeerplaatsen[2]=1;}
+		else if(!(PINA &(1<<PINA4))){bezetteparkeerplaatsen[2]=1;}
 		
 		//P3
 		if(PINA &(1<<PINA3)) {bezetteparkeerplaatsen[3]=0;}
-		if(!(PINA &(1<<PINA3))){bezetteparkeerplaatsen[3]=1;}
+		else if(!(PINA &(1<<PINA3))){bezetteparkeerplaatsen[3]=1;}
 		
 		//P4
 		if(PINC &(1<<PINC0)) {bezetteparkeerplaatsen[4]=1;}
-		if(!(PINC &(1<<PINC0))){bezetteparkeerplaatsen[4]=0;}
+		else if(!(PINC &(1<<PINC0))){bezetteparkeerplaatsen[4]=0;}
 		
 		//P5
 		if(PINC &(1<<PINC1)) {bezetteparkeerplaatsen[5]=1;}
-		if(!(PINC &(1<<PINC1))){bezetteparkeerplaatsen[5]=0;}
+		else if(!(PINC &(1<<PINC1))){bezetteparkeerplaatsen[5]=0;}
 		
 		//P6
 		if(PINC &(1<<PINC2)) {bezetteparkeerplaatsen[6]=1;}
-		if(!(PINC &(1<<PINC2))){bezetteparkeerplaatsen[6]=0;}
+		else if(!(PINC &(1<<PINC2))){bezetteparkeerplaatsen[6]=0;}
 		
 		//P7
 		if(PINC &(1<<PINC3)) {bezetteparkeerplaatsen[7]=1;}
-		if(!(PINC &(1<<PINC3))){bezetteparkeerplaatsen[7]=0;}
+		else if(!(PINC &(1<<PINC3))){bezetteparkeerplaatsen[7]=0;}
 		
 		//P8
 		if(PINC &(1<<PINC4)) {bezetteparkeerplaatsen[8]=1;}
-		if(!(PINC &(1<<PINC4))){bezetteparkeerplaatsen[8]=0;}
+		else if(!(PINC &(1<<PINC4))){bezetteparkeerplaatsen[8]=0;}
 		
 		//P9
 		if(PINC &(1<<PINC5)) {bezetteparkeerplaatsen[9]=1;}
-		if(!(PINC &(1<<PINC5))){bezetteparkeerplaatsen[9]=0;}
+		else if(!(PINC &(1<<PINC5))){bezetteparkeerplaatsen[9]=0;}
 		
 		//P10
 		if(PINC &(1<<PINC6)) {bezetteparkeerplaatsen[10]=1;}
-		if(!(PINC &(1<<PINC6))){bezetteparkeerplaatsen[10]=0;}
+		else if(!(PINC &(1<<PINC6))){bezetteparkeerplaatsen[10]=0;}
 		
 		//P11
 		if(PINC &(1<<PINC7)) {bezetteparkeerplaatsen[11]=1;}
-		if(!(PINC &(1<<PINC7))){bezetteparkeerplaatsen[11]=0;}
+		else if(!(PINC &(1<<PINC7))){bezetteparkeerplaatsen[11]=0;}
 		
 		//P12
 		if(PIND &(1<<PIND6)) {bezetteparkeerplaatsen[12]=1;}
-		if(!(PIND &(1<<PIND6))){bezetteparkeerplaatsen[12]=0;}
+		else if(!(PIND &(1<<PIND6))){bezetteparkeerplaatsen[12]=0;}
 		
 		//P13
 		if(PIND &(1<<PIND5)) {bezetteparkeerplaatsen[13]=1;}
-		if(!(PIND &(1<<PIND5))){bezetteparkeerplaatsen[13]=0;}
+		else if(!(PIND &(1<<PIND5))){bezetteparkeerplaatsen[13]=0;}
 		
 		//P18
 		if(PIND &(1<<PIND4)) {bezetteparkeerplaatsen[18]=1;}
-		if(!(PIND &(1<<PIND4))){bezetteparkeerplaatsen[18]=0;}
+		else if(!(PIND &(1<<PIND4))){bezetteparkeerplaatsen[18]=0;}
 		
 		//P19
 		if(PIND &(1<<PIND3)) {bezetteparkeerplaatsen[19]=1;}
-		if(!(PIND &(1<<PIND3))){bezetteparkeerplaatsen[19]=0;}
+		else if(!(PIND &(1<<PIND3))){bezetteparkeerplaatsen[19]=0;}
 		
 		//P20
 		if(PIND &(1<<PIND2)) {bezetteparkeerplaatsen[20]=1;}
-		if(!(PIND &(1<<PIND2))){bezetteparkeerplaatsen[20]=0;}
+		else if(!(PIND &(1<<PIND2))){bezetteparkeerplaatsen[20]=0;}
 		
 		//P21
 		if(PINB &(1<<PINB2)) {bezetteparkeerplaatsen[21]=1;}
-		if(!(PINB &(1<<PINB2))){bezetteparkeerplaatsen[21]=0;}
+		else if(!(PINB &(1<<PINB2))){bezetteparkeerplaatsen[21]=0;}
 		
 		//P22
 		if(PINB &(1<<PINB3)) {bezetteparkeerplaatsen[22]=1;}
-		if(!(PINB &(1<<PINB3))){bezetteparkeerplaatsen[22]=0;}
+		else if(!(PINB &(1<<PINB3))){bezetteparkeerplaatsen[22]=0;}
 		
 		//P23
 		if(PINB &(1<<PINB2)) {bezetteparkeerplaatsen[23]=1;}
-		if(!(PINB &(1<<PINB2))){bezetteparkeerplaatsen[23]=0;}
+		else if(!(PINB &(1<<PINB2))){bezetteparkeerplaatsen[23]=0;}
 		
 		//P24
 		if(PINB &(1<<PINB1)) {bezetteparkeerplaatsen[24]=1;}
-		if(!(PINB &(1<<PINB1))){bezetteparkeerplaatsen[24]=0;}
+		else if(!(PINB &(1<<PINB1))){bezetteparkeerplaatsen[24]=0;}
 		
 		//P25
 		if(PINB &(1<<PINB0)) {bezetteparkeerplaatsen[25]=1;}
-		if(!(PINB &(1<<PINB0))){bezetteparkeerplaatsen[25]=0;}
+		else if(!(PINB &(1<<PINB0))){bezetteparkeerplaatsen[25]=0;}
 		
 		//P26
 		if(PINA &(1<<PINA0)) {bezetteparkeerplaatsen[26]=1;}
-		if(!(PINA &(1<<PINA0))){bezetteparkeerplaatsen[26]=0;}
+		else if(!(PINA &(1<<PINA0))){bezetteparkeerplaatsen[26]=0;}
 			
 		//Slagbomen
 		//In1
