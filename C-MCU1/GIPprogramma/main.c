@@ -36,6 +36,7 @@ char waarde7(char waarde);
 //Aansturen I2C
 void I2C(char adres, char );
 
+volatile char parkeerplaats1[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 char slagboom1 = 0;
 char slagboom2 = 0;
 
@@ -57,11 +58,6 @@ void sendChar1(char data);
 
 void serieel_init1(void);
 void serieel_init0(void);
-
-volatile char i2c1=1;
-volatile char i2c2=0;
-volatile char i2c3=0;
-volatile char i2c4=0;
 
 #define MSG_NEW 1
 #define MSG_OLD 2
@@ -88,10 +84,11 @@ int main(void)
 	serieel_init1();
 	serieel_init0();
 	twi_init();
+	init_timer();
 	
 	Servo1(0);
 	Servo2(90);
-	_delay_ms(200);
+	_delay_ms(2000);
 	Servo1(90);
 	Servo2(180);
 	
@@ -112,7 +109,6 @@ int main(void)
 	while (1)
 	{
 		
-			
 		//Alle ingangen controlleren
 		//P14
 		if(PINC &(1<<PINC4)) { bezetteparkeerplaatsen[14]=1; }
@@ -153,18 +149,6 @@ int main(void)
 			{
 				slagboom1=2;
 			}
-			if(strstr(rx_buf,"slagboom2-0"))
-			{
-				slagboom2=0;
-			}
-			if(strstr(rx_buf,"slagboom2-1"))
-			{
-				slagboom2=1;
-			}
-			if(strstr(rx_buf,"slagboom2-2"))
-			{
-				slagboom2=2;
-			}
 		}
 		if (ticks1s)
 		{
@@ -183,7 +167,6 @@ int main(void)
 				sendString1(buffer);
 				_delay_ms(20);
 			}
-			//I2C(0x40, i2c1);
 			sprintf(buffer, "B%d\r\n",bezetteplaatsen);
 			sendString1(buffer);
 			ticks1s=0;
@@ -326,6 +309,16 @@ ISR (TIMER0_COMPA_vect)
 	}
 }
 
+void init_7seg(void)
+{
+	TCCR0A |= (1<<WGM01);	//Instellen WGM01 op 1 in TCCR0A
+	TCCR0A &=~(1<<WGM00);	//Instellen WGM00 op 0 in TCCR0A
+	TCCR0B &=~((1<<WGM02) | (1<<CS01));		//Instellen  WGM02 en CS01 op 0 in TCCR0B
+	TCCR0B |= ((1<<CS02)| (1<<CS00));		//Instellen CS02 en CS00 op 1 in TCCR0B
+	OCR0A = 20;
+	TIMSK0 |= (1<<OCIE0A);
+}
+
 char waarde7(char waarde)
 {
 	waarde_e=waarde % 10;
@@ -349,8 +342,8 @@ ISR(USART1_RX_vect)
 ISR(USART0_RX_vect)
 {
 	char data = UDR0;
-	if(data==0x01){bezetteparkeerplaatsen[1]=0; i2c1+=1;}
-	if(data==0x02){bezetteparkeerplaatsen[1]=1; i2c1-=1;}
+	if(data==0x01){bezetteparkeerplaatsen[1]=0;}
+	if(data==0x02){bezetteparkeerplaatsen[1]=1;}
 		
 	if(data==0x03){bezetteparkeerplaatsen[2]=0;}
 	if(data==0x04){bezetteparkeerplaatsen[2]=1;}
@@ -372,8 +365,6 @@ ISR(USART0_RX_vect)
 		
 	if(data==0x15){bezetteparkeerplaatsen[8]=0;}
 	if(data==0x16){bezetteparkeerplaatsen[8]=1;}
-	I2C(0x40,i2c1);
-		
 	
 	if(data==0x17){bezetteparkeerplaatsen[9]=0;}
 	if(data==0x18){bezetteparkeerplaatsen[9]=1;}
@@ -436,14 +427,17 @@ ISR(USART0_RX_vect)
 	{
 		Servo2(180);
 	}
+		
 }
 
-void init_7seg(void)
+void init_timer(void)
 {
+	//init
 	TCCR0A |= (1<<WGM01);	//Instellen WGM01 op 1 in TCCR0A
 	TCCR0A &=~(1<<WGM00);	//Instellen WGM00 op 0 in TCCR0A
 	TCCR0B &=~((1<<WGM02) | (1<<CS01));		//Instellen  WGM02 en CS01 op 0 in TCCR0B
 	TCCR0B |= ((1<<CS02)| (1<<CS00));		//Instellen CS02 en CS00 op 1 in TCCR0B
 	OCR0A = 20;
 	TIMSK0 |= (1<<OCIE0A);
+	sei();
 }

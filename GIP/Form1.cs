@@ -75,7 +75,7 @@ namespace GIP
                 int number = int.Parse(label.Name.Substring(1));
                 label.Tag = number;
                 labelMap[number] = label;
-                //label.Text = label.Tag.ToString();
+                label.Text = label.Tag.ToString();
             }
         }
 

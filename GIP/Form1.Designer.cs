@@ -141,7 +141,7 @@
             this.pnlBesturing.Location = new System.Drawing.Point(3, 2);
             this.pnlBesturing.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlBesturing.Name = "pnlBesturing";
-            this.pnlBesturing.Size = new System.Drawing.Size(1888, 929);
+            this.pnlBesturing.Size = new System.Drawing.Size(1888, 944);
             this.pnlBesturing.TabIndex = 2;
             // 
             // pnlParkingEnStatus
@@ -176,7 +176,7 @@
             this.pnlParkingEnStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlParkingEnStatus.Location = new System.Drawing.Point(0, 28);
             this.pnlParkingEnStatus.Name = "pnlParkingEnStatus";
-            this.pnlParkingEnStatus.Size = new System.Drawing.Size(1888, 901);
+            this.pnlParkingEnStatus.Size = new System.Drawing.Size(1888, 916);
             this.pnlParkingEnStatus.TabIndex = 28;
             // 
             // p14
@@ -184,11 +184,12 @@
             this.p14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p14.AutoSize = true;
             this.p14.BackColor = System.Drawing.Color.Green;
             this.p14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p14.Location = new System.Drawing.Point(1156, 251);
+            this.p14.Location = new System.Drawing.Point(1155, 263);
             this.p14.Name = "p14";
-            this.p14.Size = new System.Drawing.Size(30, 25);
+            this.p14.Size = new System.Drawing.Size(21, 18);
             this.p14.TabIndex = 27;
             this.p14.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -197,11 +198,12 @@
             this.p20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.p20.BackColor = System.Drawing.Color.Green;
+            this.p20.AutoSize = true;
+            this.p20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.p20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p20.Location = new System.Drawing.Point(1156, 767);
+            this.p20.Location = new System.Drawing.Point(1155, 779);
             this.p20.Name = "p20";
-            this.p20.Size = new System.Drawing.Size(30, 25);
+            this.p20.Size = new System.Drawing.Size(21, 18);
             this.p20.TabIndex = 20;
             this.p20.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -210,11 +212,12 @@
             this.p1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p1.AutoSize = true;
             this.p1.BackColor = System.Drawing.Color.Green;
             this.p1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p1.Location = new System.Drawing.Point(587, 195);
+            this.p1.Location = new System.Drawing.Point(586, 207);
             this.p1.Name = "p1";
-            this.p1.Size = new System.Drawing.Size(30, 25);
+            this.p1.Size = new System.Drawing.Size(21, 18);
             this.p1.TabIndex = 2;
             this.p1.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -223,11 +226,12 @@
             this.p26.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p26.AutoSize = true;
             this.p26.BackColor = System.Drawing.Color.Green;
             this.p26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p26.Location = new System.Drawing.Point(1298, 681);
+            this.p26.Location = new System.Drawing.Point(1297, 693);
             this.p26.Name = "p26";
-            this.p26.Size = new System.Drawing.Size(30, 25);
+            this.p26.Size = new System.Drawing.Size(21, 18);
             this.p26.TabIndex = 26;
             this.p26.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -236,11 +240,12 @@
             this.p2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p2.AutoSize = true;
             this.p2.BackColor = System.Drawing.Color.Green;
             this.p2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p2.Location = new System.Drawing.Point(587, 277);
+            this.p2.Location = new System.Drawing.Point(586, 289);
             this.p2.Name = "p2";
-            this.p2.Size = new System.Drawing.Size(30, 25);
+            this.p2.Size = new System.Drawing.Size(21, 18);
             this.p2.TabIndex = 3;
             this.p2.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -249,11 +254,12 @@
             this.p25.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p25.AutoSize = true;
             this.p25.BackColor = System.Drawing.Color.Green;
             this.p25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p25.Location = new System.Drawing.Point(1298, 591);
+            this.p25.Location = new System.Drawing.Point(1297, 603);
             this.p25.Name = "p25";
-            this.p25.Size = new System.Drawing.Size(30, 25);
+            this.p25.Size = new System.Drawing.Size(21, 18);
             this.p25.TabIndex = 25;
             this.p25.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -262,11 +268,12 @@
             this.p3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p3.AutoSize = true;
             this.p3.BackColor = System.Drawing.Color.Green;
             this.p3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p3.Location = new System.Drawing.Point(587, 365);
+            this.p3.Location = new System.Drawing.Point(586, 377);
             this.p3.Name = "p3";
-            this.p3.Size = new System.Drawing.Size(30, 25);
+            this.p3.Size = new System.Drawing.Size(21, 18);
             this.p3.TabIndex = 4;
             this.p3.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -275,11 +282,12 @@
             this.p24.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p24.AutoSize = true;
             this.p24.BackColor = System.Drawing.Color.Green;
             this.p24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p24.Location = new System.Drawing.Point(1298, 506);
+            this.p24.Location = new System.Drawing.Point(1297, 518);
             this.p24.Name = "p24";
-            this.p24.Size = new System.Drawing.Size(30, 25);
+            this.p24.Size = new System.Drawing.Size(21, 18);
             this.p24.TabIndex = 24;
             this.p24.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -288,11 +296,12 @@
             this.p4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p4.AutoSize = true;
             this.p4.BackColor = System.Drawing.Color.Green;
             this.p4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p4.Location = new System.Drawing.Point(587, 450);
+            this.p4.Location = new System.Drawing.Point(586, 462);
             this.p4.Name = "p4";
-            this.p4.Size = new System.Drawing.Size(30, 25);
+            this.p4.Size = new System.Drawing.Size(21, 18);
             this.p4.TabIndex = 5;
             this.p4.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -301,11 +310,12 @@
             this.p23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p23.AutoSize = true;
             this.p23.BackColor = System.Drawing.Color.Green;
             this.p23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p23.Location = new System.Drawing.Point(1298, 418);
+            this.p23.Location = new System.Drawing.Point(1297, 430);
             this.p23.Name = "p23";
-            this.p23.Size = new System.Drawing.Size(30, 25);
+            this.p23.Size = new System.Drawing.Size(21, 18);
             this.p23.TabIndex = 23;
             this.p23.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -314,11 +324,12 @@
             this.p5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p5.AutoSize = true;
             this.p5.BackColor = System.Drawing.Color.Green;
             this.p5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p5.Location = new System.Drawing.Point(587, 540);
+            this.p5.Location = new System.Drawing.Point(586, 552);
             this.p5.Name = "p5";
-            this.p5.Size = new System.Drawing.Size(30, 25);
+            this.p5.Size = new System.Drawing.Size(21, 18);
             this.p5.TabIndex = 6;
             this.p5.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -327,11 +338,12 @@
             this.p22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p22.AutoSize = true;
             this.p22.BackColor = System.Drawing.Color.Green;
             this.p22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p22.Location = new System.Drawing.Point(1298, 336);
+            this.p22.Location = new System.Drawing.Point(1297, 348);
             this.p22.Name = "p22";
-            this.p22.Size = new System.Drawing.Size(30, 25);
+            this.p22.Size = new System.Drawing.Size(21, 18);
             this.p22.TabIndex = 22;
             this.p22.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -340,11 +352,12 @@
             this.p6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p6.AutoSize = true;
             this.p6.BackColor = System.Drawing.Color.Green;
             this.p6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p6.Location = new System.Drawing.Point(587, 624);
+            this.p6.Location = new System.Drawing.Point(586, 636);
             this.p6.Name = "p6";
-            this.p6.Size = new System.Drawing.Size(30, 25);
+            this.p6.Size = new System.Drawing.Size(21, 18);
             this.p6.TabIndex = 7;
             this.p6.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -353,11 +366,12 @@
             this.p21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p21.AutoSize = true;
             this.p21.BackColor = System.Drawing.Color.Green;
             this.p21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p21.Location = new System.Drawing.Point(1298, 251);
+            this.p21.Location = new System.Drawing.Point(1297, 263);
             this.p21.Name = "p21";
-            this.p21.Size = new System.Drawing.Size(30, 25);
+            this.p21.Size = new System.Drawing.Size(21, 18);
             this.p21.TabIndex = 21;
             this.p21.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -366,11 +380,12 @@
             this.p7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p7.AutoSize = true;
             this.p7.BackColor = System.Drawing.Color.Green;
             this.p7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p7.Location = new System.Drawing.Point(730, 110);
+            this.p7.Location = new System.Drawing.Point(729, 122);
             this.p7.Name = "p7";
-            this.p7.Size = new System.Drawing.Size(30, 25);
+            this.p7.Size = new System.Drawing.Size(21, 18);
             this.p7.TabIndex = 8;
             this.p7.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -379,11 +394,12 @@
             this.p8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p8.AutoSize = true;
             this.p8.BackColor = System.Drawing.Color.Green;
             this.p8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p8.Location = new System.Drawing.Point(730, 195);
+            this.p8.Location = new System.Drawing.Point(729, 207);
             this.p8.Name = "p8";
-            this.p8.Size = new System.Drawing.Size(30, 25);
+            this.p8.Size = new System.Drawing.Size(21, 18);
             this.p8.TabIndex = 9;
             this.p8.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -392,11 +408,12 @@
             this.p19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p19.AutoSize = true;
             this.p19.BackColor = System.Drawing.Color.Green;
             this.p19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p19.Location = new System.Drawing.Point(1156, 681);
+            this.p19.Location = new System.Drawing.Point(1155, 693);
             this.p19.Name = "p19";
-            this.p19.Size = new System.Drawing.Size(30, 25);
+            this.p19.Size = new System.Drawing.Size(21, 18);
             this.p19.TabIndex = 19;
             this.p19.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -405,11 +422,12 @@
             this.p9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p9.AutoSize = true;
             this.p9.BackColor = System.Drawing.Color.Green;
             this.p9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p9.Location = new System.Drawing.Point(730, 277);
+            this.p9.Location = new System.Drawing.Point(729, 289);
             this.p9.Name = "p9";
-            this.p9.Size = new System.Drawing.Size(30, 25);
+            this.p9.Size = new System.Drawing.Size(21, 18);
             this.p9.TabIndex = 10;
             this.p9.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -418,11 +436,12 @@
             this.p18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p18.AutoSize = true;
             this.p18.BackColor = System.Drawing.Color.Green;
             this.p18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p18.Location = new System.Drawing.Point(1156, 591);
+            this.p18.Location = new System.Drawing.Point(1155, 603);
             this.p18.Name = "p18";
-            this.p18.Size = new System.Drawing.Size(30, 25);
+            this.p18.Size = new System.Drawing.Size(21, 18);
             this.p18.TabIndex = 18;
             this.p18.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -431,11 +450,12 @@
             this.p10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p10.AutoSize = true;
             this.p10.BackColor = System.Drawing.Color.Green;
             this.p10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p10.Location = new System.Drawing.Point(730, 365);
+            this.p10.Location = new System.Drawing.Point(729, 377);
             this.p10.Name = "p10";
-            this.p10.Size = new System.Drawing.Size(30, 25);
+            this.p10.Size = new System.Drawing.Size(21, 18);
             this.p10.TabIndex = 11;
             this.p10.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -444,11 +464,12 @@
             this.p17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p17.AutoSize = true;
             this.p17.BackColor = System.Drawing.Color.Green;
             this.p17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p17.Location = new System.Drawing.Point(1156, 506);
+            this.p17.Location = new System.Drawing.Point(1155, 518);
             this.p17.Name = "p17";
-            this.p17.Size = new System.Drawing.Size(30, 25);
+            this.p17.Size = new System.Drawing.Size(21, 18);
             this.p17.TabIndex = 17;
             this.p17.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -457,11 +478,12 @@
             this.p11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p11.AutoSize = true;
             this.p11.BackColor = System.Drawing.Color.Green;
             this.p11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p11.Location = new System.Drawing.Point(730, 450);
+            this.p11.Location = new System.Drawing.Point(729, 462);
             this.p11.Name = "p11";
-            this.p11.Size = new System.Drawing.Size(30, 25);
+            this.p11.Size = new System.Drawing.Size(21, 18);
             this.p11.TabIndex = 12;
             this.p11.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -470,11 +492,12 @@
             this.p16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p16.AutoSize = true;
             this.p16.BackColor = System.Drawing.Color.Green;
             this.p16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p16.Location = new System.Drawing.Point(1156, 418);
+            this.p16.Location = new System.Drawing.Point(1155, 430);
             this.p16.Name = "p16";
-            this.p16.Size = new System.Drawing.Size(30, 25);
+            this.p16.Size = new System.Drawing.Size(21, 18);
             this.p16.TabIndex = 16;
             this.p16.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -483,11 +506,12 @@
             this.p12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p12.AutoSize = true;
             this.p12.BackColor = System.Drawing.Color.Green;
             this.p12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p12.Location = new System.Drawing.Point(730, 540);
+            this.p12.Location = new System.Drawing.Point(729, 552);
             this.p12.Name = "p12";
-            this.p12.Size = new System.Drawing.Size(30, 25);
+            this.p12.Size = new System.Drawing.Size(21, 18);
             this.p12.TabIndex = 13;
             this.p12.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -496,11 +520,12 @@
             this.p15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p15.AutoSize = true;
             this.p15.BackColor = System.Drawing.Color.Green;
             this.p15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p15.Location = new System.Drawing.Point(1156, 336);
+            this.p15.Location = new System.Drawing.Point(1155, 348);
             this.p15.Name = "p15";
-            this.p15.Size = new System.Drawing.Size(30, 25);
+            this.p15.Size = new System.Drawing.Size(21, 18);
             this.p15.TabIndex = 15;
             this.p15.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -509,11 +534,12 @@
             this.p13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.p13.AutoSize = true;
             this.p13.BackColor = System.Drawing.Color.Green;
             this.p13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p13.Location = new System.Drawing.Point(730, 624);
+            this.p13.Location = new System.Drawing.Point(729, 636);
             this.p13.Name = "p13";
-            this.p13.Size = new System.Drawing.Size(30, 25);
+            this.p13.Size = new System.Drawing.Size(21, 18);
             this.p13.TabIndex = 14;
             this.p13.Text = "‏‏‎ ‎‏‏‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎";
             // 
@@ -523,7 +549,7 @@
             this.pbParking.Image = global::GIP.Properties.Resources.garagesticker;
             this.pbParking.Location = new System.Drawing.Point(0, 0);
             this.pbParking.Name = "pbParking";
-            this.pbParking.Size = new System.Drawing.Size(1888, 901);
+            this.pbParking.Size = new System.Drawing.Size(1888, 916);
             this.pbParking.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbParking.TabIndex = 1;
             this.pbParking.TabStop = false;
@@ -623,74 +649,69 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsConnectie,
+            this.tsLayout3,
             this.tsProgressbar,
             this.tsBeschikbaar,
-            this.tsLayout3,
-            this.tsSlagboom2,
-            this.tsLayout1,
+            this.tsLayout2,
             this.tsSlagboom1,
-            this.tsLayout2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 986);
+            this.tsLayout1,
+            this.tsSlagboom2});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1001);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1902, 47);
+            this.statusStrip1.Size = new System.Drawing.Size(1902, 32);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // tsConnectie
             // 
-            this.tsConnectie.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsConnectie.ForeColor = System.Drawing.Color.Red;
             this.tsConnectie.Name = "tsConnectie";
-            this.tsConnectie.Size = new System.Drawing.Size(228, 41);
+            this.tsConnectie.Size = new System.Drawing.Size(113, 26);
             this.tsConnectie.Text = "Niet Verbonden";
             // 
             // tsLayout3
             // 
-            this.tsLayout3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsLayout3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsLayout3.Name = "tsLayout3";
-            this.tsLayout3.Size = new System.Drawing.Size(38, 41);
+            this.tsLayout3.Size = new System.Drawing.Size(19, 26);
             this.tsLayout3.Text = "||";
             // 
             // tsProgressbar
             // 
-            this.tsProgressbar.AutoSize = false;
             this.tsProgressbar.Maximum = 26;
             this.tsProgressbar.Name = "tsProgressbar";
-            this.tsProgressbar.Size = new System.Drawing.Size(100, 39);
+            this.tsProgressbar.Size = new System.Drawing.Size(100, 24);
             // 
             // tsBeschikbaar
             // 
-            this.tsBeschikbaar.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsBeschikbaar.Name = "tsBeschikbaar";
-            this.tsBeschikbaar.Size = new System.Drawing.Size(78, 41);
+            this.tsBeschikbaar.Size = new System.Drawing.Size(39, 26);
             this.tsBeschikbaar.Text = "0/26";
             // 
             // tsLayout2
             // 
-            this.tsLayout2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsLayout2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsLayout2.Name = "tsLayout2";
-            this.tsLayout2.Size = new System.Drawing.Size(38, 41);
+            this.tsLayout2.Size = new System.Drawing.Size(19, 26);
             this.tsLayout2.Text = "||";
             // 
             // tsSlagboom1
             // 
-            this.tsSlagboom1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsSlagboom1.Name = "tsSlagboom1";
-            this.tsSlagboom1.Size = new System.Drawing.Size(306, 41);
+            this.tsSlagboom1.Size = new System.Drawing.Size(155, 26);
             this.tsSlagboom1.Text = "Slagboom 1: Normaal";
             // 
             // tsLayout1
             // 
-            this.tsLayout1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsLayout1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsLayout1.Name = "tsLayout1";
-            this.tsLayout1.Size = new System.Drawing.Size(38, 41);
+            this.tsLayout1.Size = new System.Drawing.Size(19, 26);
             this.tsLayout1.Text = "||";
             // 
             // tsSlagboom2
             // 
-            this.tsSlagboom2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsSlagboom2.Name = "tsSlagboom2";
-            this.tsSlagboom2.Size = new System.Drawing.Size(306, 41);
+            this.tsSlagboom2.Size = new System.Drawing.Size(155, 26);
             this.tsSlagboom2.Text = "Slagboom 2: Normaal";
             // 
             // tabControl1
@@ -702,7 +723,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1902, 962);
+            this.tabControl1.Size = new System.Drawing.Size(1902, 977);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -712,7 +733,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1894, 933);
+            this.tabPage1.Size = new System.Drawing.Size(1894, 948);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Controle";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -720,11 +741,11 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.pnlConnect);
-            this.tabPage2.Location = new System.Drawing.Point(4, 40);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1894, 912);
+            this.tabPage2.Size = new System.Drawing.Size(1894, 948);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Verbinden";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -759,6 +780,7 @@
             this.pnlBesturing.ResumeLayout(false);
             this.pnlBesturing.PerformLayout();
             this.pnlParkingEnStatus.ResumeLayout(false);
+            this.pnlParkingEnStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbParking)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
