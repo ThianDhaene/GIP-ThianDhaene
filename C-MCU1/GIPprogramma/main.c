@@ -65,6 +65,8 @@ void serieel_init0(void);
 char rx_buf[160];
 volatile unsigned char msg=MSG_OLD;
 
+volatile unsigned char i2c1 = 0;
+
 
 int main(void)
 {
@@ -342,11 +344,31 @@ ISR(USART1_RX_vect)
 ISR(USART0_RX_vect)
 {
 	char data = UDR0;
-	if(data==0x01){bezetteparkeerplaatsen[1]=0;}
-	if(data==0x02){bezetteparkeerplaatsen[1]=1;}
+	
+	if(data==0x01)
+	{
+		bezetteparkeerplaatsen[1]=0; 
+		if(i2c1>0) i2c1-=1;
+	}
+	if(data==0x02)
+	{
+		bezetteparkeerplaatsen[1]=1; 
+		i2c1+=1;
+	}
+	
 		
-	if(data==0x03){bezetteparkeerplaatsen[2]=0;}
-	if(data==0x04){bezetteparkeerplaatsen[2]=1;}
+	if(data==0x03)
+	{
+		bezetteparkeerplaatsen[2]=0;
+		if(i2c1>2) i2c1-=2;
+	}
+	if(data==0x04)
+	{
+		bezetteparkeerplaatsen[2]=1;
+		i2c1+=2;
+	}
+		
+	I2C(0x40,i2c1);
 		
 	if(data==0x05){bezetteparkeerplaatsen[3]=0;}
 	if(data==0x06){bezetteparkeerplaatsen[3]=1;}
