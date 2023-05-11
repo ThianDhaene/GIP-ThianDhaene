@@ -5,6 +5,8 @@
 * Author : D'haeneThian
 */
 
+
+//Toevoegen van alle libraries
 #include <avr/io.h>
 #define F_CPU 3686400L
 #include <avr/interrupt.h>
@@ -17,77 +19,80 @@
 #include <stdio.h>
 #include <string.h>
 
-//AANSTUREN SLAGBOMEN
+//INIT AANSTUREN SLAGBOMEN
 char Servo1(unsigned char graden);
 char Servo2(unsigned char graden);
 void init_servo();
-unsigned char open1=0;
-unsigned char open2=0;
+char slagboom1 = 0;
+char slagboom2 = 0;
 
-//AANSTUREN 7SEGMENT
+//INIT AANSTUREN 7SEGMENT
 volatile unsigned char waarde_e;
 volatile unsigned char waarde_t;
-volatile unsigned char linkrechts;
-volatile unsigned char teller=0;
+volatile unsigned char linksrechts;
 volatile char array1[]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
 void init_7seg(void);
 char waarde7(char waarde);
 
-//Aansturen I2C
+//AANSTUREN I2C
 void I2C(char adres, char );
+volatile unsigned char i2c1 = 0;
 
-volatile char parkeerplaats1[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-char slagboom1 = 0;
-char slagboom2 = 0;
-
-//Doorsturen status parking
-volatile unsigned char ticks1s;
-volatile unsigned char ticks16;
-void init_timer(void);
+//DOORSTUREN STATUS PARKING
+volatile unsigned char ticks4s;
+volatile unsigned char ticks64;
 char bezetteparkeerplaatsen[27];
 char buffer[5];
 char bezetteplaatsen=0;
 
-char parkingstring[160];
-
-void sendString0(char s[]);
-void sendChar0(char data);
-
-void sendString1(char s[]);
-void sendChar1(char data);
-
-void serieel_init1(void);
+//INIT FUNCTIES USART0
 void serieel_init0(void);
+void sendChar0(char data);
+void sendString0(char s[]);
 
+//INIT FUNCTIES USART1
+void serieel_init1(void);
+void sendChar1(char data);
+void sendString1(char s[]);
+
+
+//INIT ONTVANGEN VIA C#
 #define MSG_NEW 1
 #define MSG_OLD 2
-
 char rx_buf[160];
 volatile unsigned char msg=MSG_OLD;
 
-volatile unsigned char i2c1 = 0;
-
-
 int main(void)
 {
+	//CONTROLE-LED ALS UITGANG
 	DDRD |= (1<<DDRD7);
 	
+	//PORTA ALS UITGANG VOOR 7-SEGMENT
 	DDRA = 0xFF;
+	
+	//PB0 EN PB1 ALS INGANG VOOR MULTIPLEXEN
+	//PB0 LAAG EN PB1 HOOG OM TE STARTEN
 	DDRB=(1<<DDRB0)|(1<<DDRB1);
 	PORTB&=~(1<<PORTB0);
 	PORTB|=(1<<PORTB1);
 	
+	//INIT 4 PARKEERPLAATSEN MCU1
 	//P14 P15 P16 P17
 	DDRC &=~ (1<<DDRC4)|(1<<DDRC5)|(1<<DDRC6)|(1<<DDRC7);
 	
 	
-	//opstarten van verschillende componenten
+	//OPSTARTEN VERSCHILLENDE COMPONENTEN
+	//SERVOMOTOREN
 	init_servo();
-	serieel_init1();
+	//USART0 & USART1 
 	serieel_init0();
+	serieel_init1();
+	//I2C
 	twi_init();
-	init_timer();
+	//7-SEGMENT
+	init_7seg();
 	
+	//SLAGBOMEN NAAR STANDAARD POSITIE ZETTEN
 	Servo1(0);
 	Servo2(90);
 	_delay_ms(2000);
@@ -152,7 +157,7 @@ int main(void)
 				slagboom1=2;
 			}
 		}
-		if (ticks1s)
+		if (ticks4s)
 		{
 			bezetteplaatsen=0;
 			for (int i = 1; i <= 26; i++)
@@ -171,7 +176,7 @@ int main(void)
 			}
 			sprintf(buffer, "B%d\r\n",bezetteplaatsen);
 			sendString1(buffer);
-			ticks1s=0;
+			ticks4s=0;
 			waarde7(26-bezetteplaatsen);
 		}
 		
@@ -293,33 +298,24 @@ void init_servo()
 ISR (TIMER0_COMPA_vect)
 {
 	PORTB ^=(1<<PORTB0)|(1<<PORTB1);
-	if(linkrechts==1)
+	if(linksrechts==1)
 	{
 		PORTA = array1[waarde_e];
-		linkrechts=0;
+		linksrechts=0;
 	}
 	else
 	{
 		PORTA = array1[waarde_t];
-		linkrechts=1;
+		linksrechts=1;
 	}
-	ticks16++;
-	if(ticks16==64)
+	ticks64++;
+	if(ticks64==64)
 	{
-		ticks16=0;
-		ticks1s=1;
+		ticks64=0;
+		ticks4s=1;
 	}
 }
 
-void init_7seg(void)
-{
-	TCCR0A |= (1<<WGM01);	//Instellen WGM01 op 1 in TCCR0A
-	TCCR0A &=~(1<<WGM00);	//Instellen WGM00 op 0 in TCCR0A
-	TCCR0B &=~((1<<WGM02) | (1<<CS01));		//Instellen  WGM02 en CS01 op 0 in TCCR0B
-	TCCR0B |= ((1<<CS02)| (1<<CS00));		//Instellen CS02 en CS00 op 1 in TCCR0B
-	OCR0A = 20;
-	TIMSK0 |= (1<<OCIE0A);
-}
 
 char waarde7(char waarde)
 {
@@ -452,14 +448,13 @@ ISR(USART0_RX_vect)
 		
 }
 
-void init_timer(void)
+
+void init_7seg(void)
 {
-	//init
 	TCCR0A |= (1<<WGM01);	//Instellen WGM01 op 1 in TCCR0A
 	TCCR0A &=~(1<<WGM00);	//Instellen WGM00 op 0 in TCCR0A
 	TCCR0B &=~((1<<WGM02) | (1<<CS01));		//Instellen  WGM02 en CS01 op 0 in TCCR0B
 	TCCR0B |= ((1<<CS02)| (1<<CS00));		//Instellen CS02 en CS00 op 1 in TCCR0B
 	OCR0A = 20;
 	TIMSK0 |= (1<<OCIE0A);
-	sei();
 }
