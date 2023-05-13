@@ -37,6 +37,8 @@ char waarde7(char waarde);
 //AANSTUREN I2C
 void I2C(char adres, char );
 volatile unsigned char i2c1 = 0;
+char I2C_P1_aangepast=0;
+char I2C_P2_aangepast=0;
 
 //DOORSTUREN STATUS PARKING
 volatile unsigned char ticks4s;
@@ -84,7 +86,7 @@ int main(void)
 	//OPSTARTEN VERSCHILLENDE COMPONENTEN
 	//SERVOMOTOREN
 	init_servo();
-	//USART0 & USART1 
+	//USART0 & USART1
 	serieel_init0();
 	serieel_init1();
 	//I2C
@@ -95,13 +97,12 @@ int main(void)
 	//SLAGBOMEN NAAR STANDAARD POSITIE ZETTEN
 	Servo1(0);
 	Servo2(90);
-	_delay_ms(2000);
+	_delay_ms(200);
 	Servo1(90);
 	Servo2(180);
 	
 	//Statusled knipperen
-	int i;
-	for (i = 0; i < 10; i++) {
+	for (int i = 0; i < 10; i++) {
 		PORTD |=(1<<PORTD7);
 		_delay_ms(200);
 		PORTD &=~(1<<PORTD7);
@@ -120,7 +121,7 @@ int main(void)
 		//P14
 		if(PINC &(1<<PINC4)) { bezetteparkeerplaatsen[14]=1; }
 		if(!(PINC &(1<<PINC4))) { bezetteparkeerplaatsen[14]=0; }
-			
+		
 		//P15
 		if(PINC &(1<<PINC5)) { bezetteparkeerplaatsen[15]=1; }
 		if(!(PINC &(1<<PINC5))) { bezetteparkeerplaatsen[15]=0; }
@@ -132,7 +133,7 @@ int main(void)
 		//P17
 		if(PINC &(1<<PINC7)) { bezetteparkeerplaatsen[17]=1; }
 		if(!(PINC &(1<<PINC7))) { bezetteparkeerplaatsen[17]=0; }
-			
+		
 		
 		
 		
@@ -341,37 +342,49 @@ ISR(USART0_RX_vect)
 {
 	char data = UDR0;
 	
-	if(data==0x01)
+	if(data==0x01 )
 	{
-		bezetteparkeerplaatsen[1]=0; 
-		if(i2c1>0) i2c1-=1;
+		if(bezetteparkeerplaatsen[1]!=0)
+		{
+			bezetteparkeerplaatsen[1]=0;
+			if(i2c1>0) i2c1-=1;
+		}
 	}
-	if(data==0x02)
+	else if(data==0x02)
 	{
-		bezetteparkeerplaatsen[1]=1; 
-		i2c1+=1;
+		if(bezetteparkeerplaatsen[1]!=1)
+		{
+			bezetteparkeerplaatsen[1]=1;
+			i2c1+=1;
+		}
 	}
 	
-		
+	
 	if(data==0x03)
 	{
-		bezetteparkeerplaatsen[2]=0;
-		if(i2c1>2) i2c1-=2;
+		if(bezetteparkeerplaatsen[2]!=0)
+		{
+			bezetteparkeerplaatsen[2]=0;
+			if(i2c1>2) i2c1-=2;
+		}
 	}
 	if(data==0x04)
 	{
-		bezetteparkeerplaatsen[2]=1;
-		i2c1+=2;
+		if(bezetteparkeerplaatsen[2]!=1)
+		{
+			bezetteparkeerplaatsen[2]=1;
+			i2c1+=2;
+		}
 	}
-		
+	
 	I2C(0x40,i2c1);
-		
+	
 	if(data==0x05){bezetteparkeerplaatsen[3]=0;}
 	if(data==0x06){bezetteparkeerplaatsen[3]=1;}
-		
+	
 	if(data==0x07){bezetteparkeerplaatsen[4]=0;}
 	if(data==0x08){bezetteparkeerplaatsen[4]=1;}
-		
+	
 	if(data==0x09){bezetteparkeerplaatsen[5]=0;}
 	if(data==0x10){bezetteparkeerplaatsen[5]=1;}
 	
@@ -380,52 +393,52 @@ ISR(USART0_RX_vect)
 	
 	if(data==0x13){bezetteparkeerplaatsen[7]=0;}
 	if(data==0x14){bezetteparkeerplaatsen[7]=1;}
-		
+	
 	if(data==0x15){bezetteparkeerplaatsen[8]=0;}
 	if(data==0x16){bezetteparkeerplaatsen[8]=1;}
 	
 	if(data==0x17){bezetteparkeerplaatsen[9]=0;}
 	if(data==0x18){bezetteparkeerplaatsen[9]=1;}
-		
+	
 	if(data==0x19){bezetteparkeerplaatsen[10]=0;}
 	if(data==0x20){bezetteparkeerplaatsen[10]=1;}
 	
 	if(data==0x21){bezetteparkeerplaatsen[11]=0;}
 	if(data==0x22){bezetteparkeerplaatsen[11]=1;}
-		
+	
 	if(data==0x23){bezetteparkeerplaatsen[12]=0;}
 	if(data==0x24){bezetteparkeerplaatsen[12]=1;}
 	
 	if(data==0x25){bezetteparkeerplaatsen[13]=0;}
 	if(data==0x26){bezetteparkeerplaatsen[13]=1;}
-		
+	
 	if(data==0x35){bezetteparkeerplaatsen[18]=0;}
 	if(data==0x36){bezetteparkeerplaatsen[18]=1;}
-		
+	
 	if(data==0x37){bezetteparkeerplaatsen[19]=0;}
 	if(data==0x38){bezetteparkeerplaatsen[19]=1;}
-		
+	
 	if(data==0x39){bezetteparkeerplaatsen[20]=0;}
 	if(data==0x40){bezetteparkeerplaatsen[20]=1;}
-		
+	
 	if(data==0x41){bezetteparkeerplaatsen[21]=0;}
 	if(data==0x42){bezetteparkeerplaatsen[21]=1;}
-		
+	
 	if(data==0x43){bezetteparkeerplaatsen[22]=0;}
 	if(data==0x44){bezetteparkeerplaatsen[22]=1;}
-		
+	
 	if(data==0x45){bezetteparkeerplaatsen[23]=0;}
 	if(data==0x46){bezetteparkeerplaatsen[23]=1;}
-		
+	
 	if(data==0x47){bezetteparkeerplaatsen[24]=0;}
 	if(data==0x48){bezetteparkeerplaatsen[24]=1;}
-		
+	
 	if(data==0x49){bezetteparkeerplaatsen[25]=0;}
 	if(data==0x50){bezetteparkeerplaatsen[25]=1;}
 	
 	if(data==0x51){bezetteparkeerplaatsen[26]=0;}
 	if(data==0x52){bezetteparkeerplaatsen[26]=1;}
-		
+	
 	//slagboom1
 	if(data==0x53)
 	{
@@ -445,7 +458,7 @@ ISR(USART0_RX_vect)
 	{
 		Servo2(180);
 	}
-		
+	
 }
 
 
