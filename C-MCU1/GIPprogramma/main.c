@@ -341,7 +341,7 @@ ISR(USART1_RX_vect)
 ISR(USART0_RX_vect)
 {
 	char data = UDR0;
-	
+	//P1
 	if(data==0x01 )
 	{
 		if(bezetteparkeerplaatsen[1]!=0)
@@ -359,13 +359,13 @@ ISR(USART0_RX_vect)
 		}
 	}
 	
-	
+	//P2
 	if(data==0x03)
 	{
 		if(bezetteparkeerplaatsen[2]!=0)
 		{
 			bezetteparkeerplaatsen[2]=0;
-			if(i2c1>2) i2c1-=2;
+			if(i2c1>=2) i2c1-=2;
 		}
 	}
 	if(data==0x04)
@@ -377,26 +377,110 @@ ISR(USART0_RX_vect)
 		}
 	}
 	
+	//P3
+	if(data==0x05)
+	{
+		if(bezetteparkeerplaatsen[3]!=0)
+		{
+			bezetteparkeerplaatsen[3]=0;
+			if(i2c1>=4) i2c1-=4;
+		}
+	}
+	if(data==0x06)
+	{
+		if(bezetteparkeerplaatsen[3]!=1)
+		{
+			bezetteparkeerplaatsen[3]=1;
+			i2c1+=4;
+		}
+	}
+	//P4
+	if(data==0x07)
+	{
+		if(bezetteparkeerplaatsen[4]!=0)
+		{
+			bezetteparkeerplaatsen[4]=0;
+			if(i2c1>=8) i2c1-=8;
+		}
+	}
+	if(data==0x08)
+	{
+		if(bezetteparkeerplaatsen[4]!=1)
+		{
+			bezetteparkeerplaatsen[4]=1;
+			i2c1+=8;
+		}
+	}
+	//P5
+	if(data==0x09)
+	{
+		if(bezetteparkeerplaatsen[5]!=0)
+		{
+			bezetteparkeerplaatsen[5]=0;
+			if(i2c1>=16) i2c1-=16;
+		}
+	}
+	if(data==0x10)
+	{
+		if(bezetteparkeerplaatsen[5]!=1)
+		{
+			bezetteparkeerplaatsen[5]=1;
+			i2c1+=16;
+		}
+	}
+	//P6
+	if(data==0x11)
+	{
+		if(bezetteparkeerplaatsen[6]!=0)
+		{
+			bezetteparkeerplaatsen[6]=0;
+			if(i2c1>=32) i2c1-=32;
+		}
+	}
+	if(data==0x12)
+	{
+		if(bezetteparkeerplaatsen[6]!=1)
+		{
+			bezetteparkeerplaatsen[6]=1;
+			i2c1+=32;
+		}
+	}
+	//P7
+	if(data==0x13)
+	{
+		if(bezetteparkeerplaatsen[7]!=0)
+		{
+			bezetteparkeerplaatsen[7]=0;
+			if(i2c1>=64) i2c1-=64;
+		}
+	}
+	if(data==0x14)
+	{
+		if(bezetteparkeerplaatsen[7]!=1)
+		{
+			bezetteparkeerplaatsen[7]=1;
+			i2c1+=64;
+		}
+	}
+	//P8
+	if(data==0x15)
+	{
+		if(bezetteparkeerplaatsen[8]!=0)
+		{
+			bezetteparkeerplaatsen[8]=0;
+			if(i2c1>=128) i2c1-=128;
+		}
+	}
+	if(data==0x16)
+	{
+		if(bezetteparkeerplaatsen[8]!=1)
+		{
+			bezetteparkeerplaatsen[8]=1;
+			i2c1+=128;
+		}
+	}
+	
 	I2C(0x40,i2c1);
-	
-	if(data==0x05){bezetteparkeerplaatsen[3]=0;}
-	if(data==0x06){bezetteparkeerplaatsen[3]=1;}
-	
-	if(data==0x07){bezetteparkeerplaatsen[4]=0;}
-	if(data==0x08){bezetteparkeerplaatsen[4]=1;}
-	
-	if(data==0x09){bezetteparkeerplaatsen[5]=0;}
-	if(data==0x10){bezetteparkeerplaatsen[5]=1;}
-	
-	if(data==0x11){bezetteparkeerplaatsen[6]=0;}
-	if(data==0x12){bezetteparkeerplaatsen[6]=1;}
-	
-	if(data==0x13){bezetteparkeerplaatsen[7]=0;}
-	if(data==0x14){bezetteparkeerplaatsen[7]=1;}
-	
-	if(data==0x15){bezetteparkeerplaatsen[8]=0;}
-	if(data==0x16){bezetteparkeerplaatsen[8]=1;}
-	
 	if(data==0x17){bezetteparkeerplaatsen[9]=0;}
 	if(data==0x18){bezetteparkeerplaatsen[9]=1;}
 	
