@@ -37,8 +37,8 @@ char waarde7(char waarde);
 //AANSTUREN I2C
 void I2C(char adres, char );
 volatile unsigned char i2c1 = 0;
-char I2C_P1_aangepast=0;
-char I2C_P2_aangepast=0;
+volatile unsigned char i2c2 = 0;
+volatile unsigned char i2c3 = 0;
 
 //DOORSTUREN STATUS PARKING
 volatile unsigned char ticks4s;
@@ -116,24 +116,78 @@ int main(void)
 	sei();
 	while (1)
 	{
-		
 		//Alle ingangen controlleren
 		//P14
-		if(PINC &(1<<PINC4)) { bezetteparkeerplaatsen[14]=1; }
-		if(!(PINC &(1<<PINC4))) { bezetteparkeerplaatsen[14]=0; }
+		if(!(PINC &(1<<PINC4))) 
+		{ 
+			if(bezetteparkeerplaatsen[14]!=0)
+			{
+				bezetteparkeerplaatsen[14]=0;
+				if(i2c2>=32) i2c2-=32;
+			}
+		}
+		if(PINC &(1<<PINC4)) 
+		{ 
+			if(bezetteparkeerplaatsen[14]!=1)
+			{
+				bezetteparkeerplaatsen[14]=1;
+				i2c2+=32;
+			}
+		}
 		
 		//P15
-		if(PINC &(1<<PINC5)) { bezetteparkeerplaatsen[15]=1; }
-		if(!(PINC &(1<<PINC5))) { bezetteparkeerplaatsen[15]=0; }
+		if(PINC &(1<<PINC5)) 
+		{ 
+			if(bezetteparkeerplaatsen[15]!=1)
+			{
+				bezetteparkeerplaatsen[15]=1;
+				i2c2+=64;
+			}
+		}
+		if(!(PINC &(1<<PINC5))) 
+		{
+			 if(bezetteparkeerplaatsen[15]!=0)
+			 {
+				 bezetteparkeerplaatsen[15]=0;
+				 if(i2c2>=64) i2c2-=64;
+			 }
+		}
 		
 		//P16
-		if(PINC &(1<<PINC6)) { bezetteparkeerplaatsen[16]=1; }
-		if(!(PINC &(1<<PINC6))) { bezetteparkeerplaatsen[16]=0; }
+		if(PINC &(1<<PINC6)) 
+		{ 
+			if(bezetteparkeerplaatsen[16]!=1)
+			{
+				bezetteparkeerplaatsen[16]=1;
+				i2c2+=128;
+			}
+		}
+		if(!(PINC &(1<<PINC6))) 
+		{ 
+			if(bezetteparkeerplaatsen[16]!=0)
+			{
+				bezetteparkeerplaatsen[16]=0;
+				if(i2c2>=128) i2c2-=128;
+			}
+		}
 		
 		//P17
-		if(PINC &(1<<PINC7)) { bezetteparkeerplaatsen[17]=1; }
-		if(!(PINC &(1<<PINC7))) { bezetteparkeerplaatsen[17]=0; }
-		
+		if(PINC &(1<<PINC7)) 
+		{ 
+			if(bezetteparkeerplaatsen[17]!=1)
+			{
+				bezetteparkeerplaatsen[17]=1;
+				i2c3+=1;
+			}
+		}
+		if(!(PINC &(1<<PINC7))) 
+		{ 
+			if(bezetteparkeerplaatsen[17]!=0)
+			{
+				bezetteparkeerplaatsen[17]=0;
+				if(i2c3>0) i2c3-=1;
+			}
+		}
 		
 		
 		
@@ -479,49 +533,241 @@ ISR(USART0_RX_vect)
 			i2c1+=128;
 		}
 	}
-	
 	I2C(0x40,i2c1);
-	if(data==0x17){bezetteparkeerplaatsen[9]=0;}
-	if(data==0x18){bezetteparkeerplaatsen[9]=1;}
 	
-	if(data==0x19){bezetteparkeerplaatsen[10]=0;}
-	if(data==0x20){bezetteparkeerplaatsen[10]=1;}
+	//P9
+	if(data==0x17)
+	{
+		if(bezetteparkeerplaatsen[9]!=0)
+		{
+			bezetteparkeerplaatsen[9]=0;
+			if(i2c2>0) i2c2-=1;
+		}
+	}
+	if(data==0x18)
+	{
+		if(bezetteparkeerplaatsen[9]!=1)
+		{
+			bezetteparkeerplaatsen[9]=1;
+			i2c2+=1;
+		}
+	}
 	
-	if(data==0x21){bezetteparkeerplaatsen[11]=0;}
-	if(data==0x22){bezetteparkeerplaatsen[11]=1;}
+	//P10
+	if(data==0x19)
+	{
+		if(bezetteparkeerplaatsen[10]!=0)
+		{
+			bezetteparkeerplaatsen[10]=0;
+			if(i2c2>=2) i2c2-=2;
+		}
+	}
+	if(data==0x20)
+	{
+		if(bezetteparkeerplaatsen[10]!=1)
+		{
+			bezetteparkeerplaatsen[10]=1;
+			i2c2+=2;
+		}
+	}
 	
-	if(data==0x23){bezetteparkeerplaatsen[12]=0;}
-	if(data==0x24){bezetteparkeerplaatsen[12]=1;}
+	//P11
+	if(data==0x21)
+	{
+		if(bezetteparkeerplaatsen[11]!=0)
+		{
+			bezetteparkeerplaatsen[11]=0;
+			if(i2c2>=4) i2c2-=4;
+		}
+	}
+	if(data==0x22)
+	{
+		if(bezetteparkeerplaatsen[11]!=1)
+		{
+			bezetteparkeerplaatsen[11]=1;
+			i2c2+=4;
+		}
+	}
+	//P12
+	if(data==0x23)
+	{
+		if(bezetteparkeerplaatsen[12]!=0)
+		{
+			bezetteparkeerplaatsen[12]=0;
+			if(i2c2>=8) i2c2-=8;
+		}
+	}
+	if(data==0x24)
+	{
+		if(bezetteparkeerplaatsen[12]!=1)
+		{
+			bezetteparkeerplaatsen[12]=1;
+			i2c2+=8;
+		}
+	}
 	
-	if(data==0x25){bezetteparkeerplaatsen[13]=0;}
-	if(data==0x26){bezetteparkeerplaatsen[13]=1;}
+	//P13
+	if(data==0x25)
+	{
+		if(bezetteparkeerplaatsen[13]!=0)
+		{
+			bezetteparkeerplaatsen[13]=0;
+			if(i2c2>=16) i2c2-=16;
+		}
+	}
+	if(data==0x26)
+	{
+		if(bezetteparkeerplaatsen[13]!=1)
+		{
+			bezetteparkeerplaatsen[13]=1;
+			i2c2+=16;
+		}
+	}
+	I2C(0x42,i2c2);
 	
-	if(data==0x35){bezetteparkeerplaatsen[18]=0;}
-	if(data==0x36){bezetteparkeerplaatsen[18]=1;}
+	//P18
+	if(data==0x35)
+	{
+		if(bezetteparkeerplaatsen[18]!=0)
+		{
+			bezetteparkeerplaatsen[18]=0;
+			if(i2c3>0) i2c3-=1;
+		}
+		
+	}
+	if(data==0x36)
+	{
+		if(bezetteparkeerplaatsen[18]!=1)
+		{
+			bezetteparkeerplaatsen[18]=1;
+			i2c3+=2;
+		}
+	}
+	//P19
+	if(data==0x37)
+	{
+		if(bezetteparkeerplaatsen[19]!=0)
+		{
+			bezetteparkeerplaatsen[19]=0;
+			if(i2c3>=4) i2c3-=4;
+		}
+	}
+	if(data==0x38)
+	{
+		if(bezetteparkeerplaatsen[19]!=1)
+		{
+			bezetteparkeerplaatsen[19]=1;
+			i2c3+=4;
+		}
+	}
 	
-	if(data==0x37){bezetteparkeerplaatsen[19]=0;}
-	if(data==0x38){bezetteparkeerplaatsen[19]=1;}
+	//P20
+	if(data==0x39)
+	{
+		if(bezetteparkeerplaatsen[20]!=0)
+		{
+			bezetteparkeerplaatsen[20]=0;
+			if(i2c3>=8) i2c3-=8;
+		}
+	}
+	if(data==0x40)
+	{
+		if(bezetteparkeerplaatsen[20]!=1)
+		{
+			bezetteparkeerplaatsen[20]=1;
+			i2c3+=8;
+		}
+	}
+
+	//P21
+	if(data==0x41)
+	{
+		if(bezetteparkeerplaatsen[21]!=0)
+		{
+			bezetteparkeerplaatsen[21]=0;
+			if(i2c3>=16) i2c3-=16;
+		}
+	}
+	if(data==0x42)
+	{
+		if(bezetteparkeerplaatsen[21]!=1)
+		{
+			bezetteparkeerplaatsen[21]=1;
+			i2c3+=16;
+		}
+	}
+	//P22
+	if(data==0x43)
+	{
+		if(bezetteparkeerplaatsen[22]!=0)
+		{
+			bezetteparkeerplaatsen[22]=0;
+			if(i2c3>=32) i2c3-=32;
+		}
+	}
+	if(data==0x44)
+	{
+		if(bezetteparkeerplaatsen[22]!=1)
+		{
+			bezetteparkeerplaatsen[22]=1;
+			i2c3+=32;
+		}
+	}
 	
-	if(data==0x39){bezetteparkeerplaatsen[20]=0;}
-	if(data==0x40){bezetteparkeerplaatsen[20]=1;}
+	//P23
+	if(data==0x45)
+	{
+		if(bezetteparkeerplaatsen[23]!=0)
+		{
+			bezetteparkeerplaatsen[23]=0;
+			if(i2c3>=64) i2c3-=64;
+		}
+	}
+	if(data==0x46)
+	{
+		if(bezetteparkeerplaatsen[23]!=1)
+		{
+			bezetteparkeerplaatsen[23]=1;
+			i2c3+=64;
+		}
+	}
 	
-	if(data==0x41){bezetteparkeerplaatsen[21]=0;}
-	if(data==0x42){bezetteparkeerplaatsen[21]=1;}
+	//P24
+	if(data==0x47)
+	{
+		if(bezetteparkeerplaatsen[24]!=0)
+		{
+			bezetteparkeerplaatsen[24]=0;
+			if(i2c3>=128) i2c3-=128;
+		}
+	}
+	if(data==0x48)
+	{
+		if(bezetteparkeerplaatsen[24]!=1)
+		{
+			bezetteparkeerplaatsen[24]=1;
+			i2c3+=128;
+		}
+	}
+	I2C(0x44,i2c3);
 	
-	if(data==0x43){bezetteparkeerplaatsen[22]=0;}
-	if(data==0x44){bezetteparkeerplaatsen[22]=1;}
+	if(data==0x49)
+	{
+		bezetteparkeerplaatsen[25]=0;
+	}
+	if(data==0x50)
+	{
+		bezetteparkeerplaatsen[25]=1;
+	}
 	
-	if(data==0x45){bezetteparkeerplaatsen[23]=0;}
-	if(data==0x46){bezetteparkeerplaatsen[23]=1;}
-	
-	if(data==0x47){bezetteparkeerplaatsen[24]=0;}
-	if(data==0x48){bezetteparkeerplaatsen[24]=1;}
-	
-	if(data==0x49){bezetteparkeerplaatsen[25]=0;}
-	if(data==0x50){bezetteparkeerplaatsen[25]=1;}
-	
-	if(data==0x51){bezetteparkeerplaatsen[26]=0;}
-	if(data==0x52){bezetteparkeerplaatsen[26]=1;}
+	if(data==0x51)
+	{
+		bezetteparkeerplaatsen[26]=0;
+	}
+	if(data==0x52)
+	{
+		bezetteparkeerplaatsen[26]=1;
+	}
 	
 	//slagboom1
 	if(data==0x53)
