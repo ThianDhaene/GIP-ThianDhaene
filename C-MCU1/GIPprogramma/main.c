@@ -39,6 +39,7 @@ void I2C(char adres, char );
 volatile unsigned char i2c1 = 0;
 volatile unsigned char i2c2 = 0;
 volatile unsigned char i2c3 = 0;
+volatile unsigned char i2c4 = 0;
 
 //DOORSTUREN STATUS PARKING
 volatile unsigned char ticks4s;
@@ -751,24 +752,42 @@ ISR(USART0_RX_vect)
 	}
 	I2C(0x44,i2c3);
 	
+	//P25
 	if(data==0x49)
 	{
-		bezetteparkeerplaatsen[25]=0;
+		if(bezetteparkeerplaatsen[25]!=0)
+		{
+			bezetteparkeerplaatsen[25]=0;
+			if(i2c3>0) i2c3-=1;
+		}
 	}
 	if(data==0x50)
 	{
-		bezetteparkeerplaatsen[25]=1;
+		if(bezetteparkeerplaatsen[25]!=1)
+		{
+			bezetteparkeerplaatsen[25]=1;
+			i2c3+=1;
+		}
 	}
 	
+	//P26
 	if(data==0x51)
 	{
-		bezetteparkeerplaatsen[26]=0;
+		if(bezetteparkeerplaatsen[26]!=0)
+		{
+			bezetteparkeerplaatsen[26]=0;
+			if(i2c3>=2) i2c3-=2;
+		}
 	}
 	if(data==0x52)
 	{
-		bezetteparkeerplaatsen[26]=1;
+		if(bezetteparkeerplaatsen[26]!=1)
+		{
+			bezetteparkeerplaatsen[26]=1;
+			i2c3+=2;
+		}
 	}
-	
+	I2C(0x46,i2c4);
 	//slagboom1
 	if(data==0x53)
 	{
