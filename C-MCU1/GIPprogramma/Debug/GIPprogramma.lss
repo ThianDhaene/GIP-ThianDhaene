@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00000250  00000000  00000000  000032b0  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000390  00000000  00000000  00003500  2**0
+ 10 .debug_str    00000397  00000000  00000000  00003500  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000067d  00000000  00000000  00003890  2**0
+ 11 .debug_loc    0000067d  00000000  00000000  00003897  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000d0  00000000  00000000  00003f0d  2**0
+ 12 .debug_ranges 000000d0  00000000  00000000  00003f14  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1086,12 +1086,12 @@ ISR(USART0_RX_vect)
 		{
 			bezetteparkeerplaatsen[18]=0;
      6d2:	10 92 15 02 	sts	0x0215, r1	; 0x800215 <bezetteparkeerplaatsen+0x12>
-			if(i2c3>0) i2c3-=1;
+			if(i2c3>=2) i2c3-=2;
      6d6:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <i2c3>
-     6da:	88 23       	and	r24, r24
-     6dc:	39 f1       	breq	.+78     	; 0x72c <__FUSE_REGION_LENGTH__+0x32c>
+     6da:	82 30       	cpi	r24, 0x02	; 2
+     6dc:	38 f1       	brcs	.+78     	; 0x72c <__FUSE_REGION_LENGTH__+0x32c>
      6de:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <i2c3>
-     6e2:	81 50       	subi	r24, 0x01	; 1
+     6e2:	82 50       	subi	r24, 0x02	; 2
      6e4:	80 93 55 01 	sts	0x0155, r24	; 0x800155 <i2c3>
      6e8:	21 c0       	rjmp	.+66     	; 0x72c <__FUSE_REGION_LENGTH__+0x32c>
 		}
@@ -1386,13 +1386,13 @@ ISR(USART0_RX_vect)
 		{
 			bezetteparkeerplaatsen[25]=0;
      8b0:	10 92 1c 02 	sts	0x021C, r1	; 0x80021c <bezetteparkeerplaatsen+0x19>
-			if(i2c3>0) i2c3-=1;
-     8b4:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <i2c3>
+			if(i2c4>0) i2c4-=1;
+     8b4:	80 91 54 01 	lds	r24, 0x0154	; 0x800154 <i2c4>
      8b8:	88 23       	and	r24, r24
      8ba:	49 f1       	breq	.+82     	; 0x90e <__stack+0xf>
-     8bc:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <i2c3>
+     8bc:	80 91 54 01 	lds	r24, 0x0154	; 0x800154 <i2c4>
      8c0:	81 50       	subi	r24, 0x01	; 1
-     8c2:	80 93 55 01 	sts	0x0155, r24	; 0x800155 <i2c3>
+     8c2:	80 93 54 01 	sts	0x0154, r24	; 0x800154 <i2c4>
      8c6:	23 c0       	rjmp	.+70     	; 0x90e <__stack+0xf>
 		}
 	}
@@ -1408,10 +1408,10 @@ ISR(USART0_RX_vect)
 			bezetteparkeerplaatsen[25]=1;
      8d4:	81 e0       	ldi	r24, 0x01	; 1
      8d6:	80 93 1c 02 	sts	0x021C, r24	; 0x80021c <bezetteparkeerplaatsen+0x19>
-			i2c3+=1;
-     8da:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <i2c3>
+			i2c4+=1;
+     8da:	80 91 54 01 	lds	r24, 0x0154	; 0x800154 <i2c4>
      8de:	8f 5f       	subi	r24, 0xFF	; 255
-     8e0:	80 93 55 01 	sts	0x0155, r24	; 0x800155 <i2c3>
+     8e0:	80 93 54 01 	sts	0x0154, r24	; 0x800154 <i2c4>
      8e4:	24 c0       	rjmp	.+72     	; 0x92e <__stack+0x2f>
 		}
 	}
@@ -1429,14 +1429,14 @@ ISR(USART0_RX_vect)
 		{
 			bezetteparkeerplaatsen[26]=0;
      8f4:	10 92 1d 02 	sts	0x021D, r1	; 0x80021d <bezetteparkeerplaatsen+0x1a>
-			if(i2c3>=2) i2c3-=2;
-     8f8:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <i2c3>
+			if(i2c4>=2) i2c4-=2;
+     8f8:	80 91 54 01 	lds	r24, 0x0154	; 0x800154 <i2c4>
      8fc:	82 30       	cpi	r24, 0x02	; 2
      8fe:	08 f4       	brcc	.+2      	; 0x902 <__stack+0x3>
      900:	63 c0       	rjmp	.+198    	; 0x9c8 <__stack+0xc9>
-     902:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <i2c3>
+     902:	80 91 54 01 	lds	r24, 0x0154	; 0x800154 <i2c4>
      906:	82 50       	subi	r24, 0x02	; 2
-     908:	80 93 55 01 	sts	0x0155, r24	; 0x800155 <i2c3>
+     908:	80 93 54 01 	sts	0x0154, r24	; 0x800154 <i2c4>
      90c:	5d c0       	rjmp	.+186    	; 0x9c8 <__stack+0xc9>
 		}
 	}
@@ -1453,10 +1453,10 @@ ISR(USART0_RX_vect)
 			bezetteparkeerplaatsen[26]=1;
      91c:	81 e0       	ldi	r24, 0x01	; 1
      91e:	80 93 1d 02 	sts	0x021D, r24	; 0x80021d <bezetteparkeerplaatsen+0x1a>
-			i2c3+=2;
-     922:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <i2c3>
+			i2c4+=2;
+     922:	80 91 54 01 	lds	r24, 0x0154	; 0x800154 <i2c4>
      926:	8e 5f       	subi	r24, 0xFE	; 254
-     928:	80 93 55 01 	sts	0x0155, r24	; 0x800155 <i2c3>
+     928:	80 93 54 01 	sts	0x0154, r24	; 0x800154 <i2c4>
      92c:	53 c0       	rjmp	.+166    	; 0x9d4 <__stack+0xd5>
 		}
 	}
@@ -1580,7 +1580,7 @@ char Servo2(unsigned char graden)
      9c6:	8f cf       	rjmp	.-226    	; 0x8e6 <__FUSE_REGION_LENGTH__+0x4e6>
 		{
 			bezetteparkeerplaatsen[26]=1;
-			i2c3+=2;
+			i2c4+=2;
 		}
 	}
 	I2C(0x46,i2c4);
@@ -2270,12 +2270,6 @@ char Servo2(unsigned char graden)
      d4e:	62 cf       	rjmp	.-316    	; 0xc14 <main+0x1e8>
 
 00000d50 <twi_init>:
-unsigned char twi_read_ack(void)
-{
-TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWEA);  //start TWI module en stuur ACK na ontvangst
-while( !(TWCR & (1<<TWINT)) ); //wachten tot einde transmissie
-return TWDR;	//terugkeren met ontvangen data
-}
      d50:	8a e2       	ldi	r24, 0x2A	; 42
      d52:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7e00b8>
      d56:	08 95       	ret
@@ -2319,11 +2313,6 @@ return TWDR;	//terugkeren met ontvangen data
      da2:	08 95       	ret
 
 00000da4 <twi_stop>:
-
-//stoppen transmissie
-void twi_stop(void)
-{
-TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO); //versturen van een stop conditie
      da4:	84 e9       	ldi	r24, 0x94	; 148
      da6:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
      daa:	08 95       	ret

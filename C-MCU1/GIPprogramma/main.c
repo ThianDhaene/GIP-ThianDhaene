@@ -632,7 +632,7 @@ ISR(USART0_RX_vect)
 		if(bezetteparkeerplaatsen[18]!=0)
 		{
 			bezetteparkeerplaatsen[18]=0;
-			if(i2c3>0) i2c3-=1;
+			if(i2c3>=2) i2c3-=2;
 		}
 		
 	}
@@ -758,7 +758,7 @@ ISR(USART0_RX_vect)
 		if(bezetteparkeerplaatsen[25]!=0)
 		{
 			bezetteparkeerplaatsen[25]=0;
-			if(i2c3>0) i2c3-=1;
+			if(i2c4>0) i2c4-=1;
 		}
 	}
 	if(data==0x50)
@@ -766,7 +766,7 @@ ISR(USART0_RX_vect)
 		if(bezetteparkeerplaatsen[25]!=1)
 		{
 			bezetteparkeerplaatsen[25]=1;
-			i2c3+=1;
+			i2c4+=1;
 		}
 	}
 	
@@ -776,7 +776,7 @@ ISR(USART0_RX_vect)
 		if(bezetteparkeerplaatsen[26]!=0)
 		{
 			bezetteparkeerplaatsen[26]=0;
-			if(i2c3>=2) i2c3-=2;
+			if(i2c4>=2) i2c4-=2;
 		}
 	}
 	if(data==0x52)
@@ -784,7 +784,7 @@ ISR(USART0_RX_vect)
 		if(bezetteparkeerplaatsen[26]!=1)
 		{
 			bezetteparkeerplaatsen[26]=1;
-			i2c3+=2;
+			i2c4+=2;
 		}
 	}
 	I2C(0x46,i2c4);
