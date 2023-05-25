@@ -14,6 +14,7 @@ namespace GIP
     public partial class Form1 : Form
     {
         byte[] serieel = new byte[] { 0x30 };
+        bool toggleNummers = false;
         public Form1()
         {
             InitializeComponent();
@@ -212,6 +213,33 @@ namespace GIP
             if (serial.IsOpen)
             {
                 serial.Close();
+            }
+        }
+
+        private void tsWeergevenNummer_Click(object sender, EventArgs e)
+        {
+            if (toggleNummers == false)
+            {
+                foreach (Label label in pnlParkingEnStatus.Controls.OfType<Label>())
+                {
+                    int number = int.Parse(label.Name.Substring(1));
+                    label.Tag = number;
+                    labelMap[number] = label;
+                    label.Text = label.Tag.ToString();
+                }
+                toggleNummers = true;
+            }
+            else
+            {
+                foreach (Label label in pnlParkingEnStatus.Controls.OfType<Label>())
+                {
+                    int number = int.Parse(label.Name.Substring(1));
+                    label.Tag = number;
+                    labelMap[number] = label;
+                    //label.Text = label.Tag.ToString();
+                    label.Text = "   ";
+                }
+                toggleNummers = false;
             }
         }
     }

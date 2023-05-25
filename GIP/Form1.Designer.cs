@@ -85,6 +85,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tsWeergevenNummer = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlConnect.SuspendLayout();
             this.pnlBesturing.SuspendLayout();
             this.pnlParkingEnStatus.SuspendLayout();
@@ -558,7 +559,8 @@
             // 
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.slagbomenToolStripMenuItem});
+            this.slagbomenToolStripMenuItem,
+            this.tsWeergevenNummer});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -572,7 +574,7 @@
             this.slagboom1ToolStripMenuItem,
             this.slagboom2ToolStripMenuItem});
             this.slagbomenToolStripMenuItem.Name = "slagbomenToolStripMenuItem";
-            this.slagbomenToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
+            this.slagbomenToolStripMenuItem.Size = new System.Drawing.Size(99, 26);
             this.slagbomenToolStripMenuItem.Text = "Slagbomen";
             // 
             // slagboom1ToolStripMenuItem
@@ -760,6 +762,13 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // tsWeergevenNummer
+            // 
+            this.tsWeergevenNummer.Name = "tsWeergevenNummer";
+            this.tsWeergevenNummer.Size = new System.Drawing.Size(134, 24);
+            this.tsWeergevenNummer.Text = "Toggle nummers";
+            this.tsWeergevenNummer.Click += new System.EventHandler(this.tsWeergevenNummer_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -851,6 +860,7 @@
         private System.Windows.Forms.Label p3;
         private System.Windows.Forms.Label p2;
         private System.Windows.Forms.Panel pnlParkingEnStatus;
+        private System.Windows.Forms.ToolStripMenuItem tsWeergevenNummer;
     }
 }
 
