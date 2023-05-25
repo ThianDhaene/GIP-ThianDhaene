@@ -179,37 +179,37 @@ namespace GIP
                 }
                 if (currentItem == normaleWerkingSlagboom1ToolStripMenuItem)
                 {
-                    serial.Write("slagboom1-0\r");
+                    serial.Write("slagboom10\r");
                     lstConsole.Items.Insert(0, "Normale Werking 1");
                     tsSlagboom1.Text = "Slagboom 1: Normaal";
                 }
                 else if (currentItem == altijdOpenSlagboom1ToolStripMenuItem)
                 {
-                    serial.Write("slagboom1-1\r");
+                    serial.Write("slagboom11\r");
                     lstConsole.Items.Insert(0, "Altijd open 1");
                     tsSlagboom1.Text = "Slagboom 1: Altijd Open";
                 }
                 else if (currentItem == altijdGeslotenSlagboom1ToolStripMenuItem)
                 {
-                    serial.Write("slagboom1-3\r");
+                    serial.Write("slagboom13\r");
                     lstConsole.Items.Insert(0, "Altijd gesloten 1");
                     tsSlagboom1.Text = "Slagboom 1: Altijd Gesloten";
                 }
                 if (currentItem == normaleWerkingSlagboom2ToolStripMenuItem)
                 {
-                    serial.Write("slagboom2-0\r");
+                    serial.Write("slagboom20\r");
                     lstConsole.Items.Insert(0, "Normale Werking 2");
                     tsSlagboom2.Text = "Slagboom 2: Normaal";
                 }
                 else if (currentItem == altijdOpenSlagboom2ToolStripMenuItem)
                 {
-                    serial.Write("slagboom2-1\r");
+                    serial.Write("slagboom21\r");
                     lstConsole.Items.Insert(0, "Altijd open 2");
                     tsSlagboom2.Text = "Slagboom 2: Altijd Open";
                 }
                 else if (currentItem == altijdGeslotenSlagboom2ToolStripMenuItem)
                 {
-                    serial.Write("slagboom2-2\r");
+                    serial.Write("slagboom22\r");
                     lstConsole.Items.Insert(0, "Altijd gesloten 2");
                     tsSlagboom2.Text = "Slagboom 2: Altijd Gesloten";
                 }
