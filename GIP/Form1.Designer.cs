@@ -72,6 +72,7 @@
             this.normaleWerkingSlagboom2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altijdGeslotenSlagboom2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altijdOpenSlagboom2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsWeergevenNummer = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsConnectie = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsLayout3 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -85,7 +86,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.tsWeergevenNummer = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsLogBoekLocatie = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlConnect.SuspendLayout();
             this.pnlBesturing.SuspendLayout();
             this.pnlParkingEnStatus.SuspendLayout();
@@ -142,7 +143,7 @@
             this.pnlBesturing.Location = new System.Drawing.Point(3, 2);
             this.pnlBesturing.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlBesturing.Name = "pnlBesturing";
-            this.pnlBesturing.Size = new System.Drawing.Size(1888, 944);
+            this.pnlBesturing.Size = new System.Drawing.Size(1888, 938);
             this.pnlBesturing.TabIndex = 2;
             // 
             // pnlParkingEnStatus
@@ -175,9 +176,9 @@
             this.pnlParkingEnStatus.Controls.Add(this.p13);
             this.pnlParkingEnStatus.Controls.Add(this.pbParking);
             this.pnlParkingEnStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlParkingEnStatus.Location = new System.Drawing.Point(0, 28);
+            this.pnlParkingEnStatus.Location = new System.Drawing.Point(0, 30);
             this.pnlParkingEnStatus.Name = "pnlParkingEnStatus";
-            this.pnlParkingEnStatus.Size = new System.Drawing.Size(1888, 916);
+            this.pnlParkingEnStatus.Size = new System.Drawing.Size(1888, 908);
             this.pnlParkingEnStatus.TabIndex = 28;
             // 
             // p14
@@ -550,7 +551,7 @@
             this.pbParking.Image = global::GIP.Properties.Resources.garagesticker;
             this.pbParking.Location = new System.Drawing.Point(0, 0);
             this.pbParking.Name = "pbParking";
-            this.pbParking.Size = new System.Drawing.Size(1888, 916);
+            this.pbParking.Size = new System.Drawing.Size(1888, 908);
             this.pbParking.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbParking.TabIndex = 1;
             this.pbParking.TabStop = false;
@@ -560,11 +561,12 @@
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.slagbomenToolStripMenuItem,
-            this.tsWeergevenNummer});
+            this.tsWeergevenNummer,
+            this.tsLogBoekLocatie});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(1888, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(1888, 30);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -584,7 +586,7 @@
             this.altijdGeslotenSlagboom1ToolStripMenuItem,
             this.altijdOpenSlagboom1ToolStripMenuItem});
             this.slagboom1ToolStripMenuItem.Name = "slagboom1ToolStripMenuItem";
-            this.slagboom1ToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
+            this.slagboom1ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.slagboom1ToolStripMenuItem.Text = "Slagboom 1";
             // 
             // normaleWerkingSlagboom1ToolStripMenuItem
@@ -593,7 +595,7 @@
             this.normaleWerkingSlagboom1ToolStripMenuItem.CheckOnClick = true;
             this.normaleWerkingSlagboom1ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.normaleWerkingSlagboom1ToolStripMenuItem.Name = "normaleWerkingSlagboom1ToolStripMenuItem";
-            this.normaleWerkingSlagboom1ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.normaleWerkingSlagboom1ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.normaleWerkingSlagboom1ToolStripMenuItem.Text = "Normale Werking";
             this.normaleWerkingSlagboom1ToolStripMenuItem.Click += new System.EventHandler(this.slagboomToolStripMenuItem_Click);
             // 
@@ -601,7 +603,7 @@
             // 
             this.altijdGeslotenSlagboom1ToolStripMenuItem.CheckOnClick = true;
             this.altijdGeslotenSlagboom1ToolStripMenuItem.Name = "altijdGeslotenSlagboom1ToolStripMenuItem";
-            this.altijdGeslotenSlagboom1ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.altijdGeslotenSlagboom1ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.altijdGeslotenSlagboom1ToolStripMenuItem.Text = "Altijd Gesloten";
             this.altijdGeslotenSlagboom1ToolStripMenuItem.Click += new System.EventHandler(this.slagboomToolStripMenuItem_Click);
             // 
@@ -609,7 +611,7 @@
             // 
             this.altijdOpenSlagboom1ToolStripMenuItem.CheckOnClick = true;
             this.altijdOpenSlagboom1ToolStripMenuItem.Name = "altijdOpenSlagboom1ToolStripMenuItem";
-            this.altijdOpenSlagboom1ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.altijdOpenSlagboom1ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.altijdOpenSlagboom1ToolStripMenuItem.Text = "Altijd Open";
             this.altijdOpenSlagboom1ToolStripMenuItem.Click += new System.EventHandler(this.slagboomToolStripMenuItem_Click);
             // 
@@ -620,7 +622,7 @@
             this.altijdGeslotenSlagboom2ToolStripMenuItem,
             this.altijdOpenSlagboom2ToolStripMenuItem});
             this.slagboom2ToolStripMenuItem.Name = "slagboom2ToolStripMenuItem";
-            this.slagboom2ToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
+            this.slagboom2ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.slagboom2ToolStripMenuItem.Text = "Slagboom 2";
             // 
             // normaleWerkingSlagboom2ToolStripMenuItem
@@ -645,6 +647,13 @@
             this.altijdOpenSlagboom2ToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.altijdOpenSlagboom2ToolStripMenuItem.Text = "Altijd Open";
             this.altijdOpenSlagboom2ToolStripMenuItem.Click += new System.EventHandler(this.slagboomToolStripMenuItem_Click);
+            // 
+            // tsWeergevenNummer
+            // 
+            this.tsWeergevenNummer.Name = "tsWeergevenNummer";
+            this.tsWeergevenNummer.Size = new System.Drawing.Size(134, 26);
+            this.tsWeergevenNummer.Text = "Toggle nummers";
+            this.tsWeergevenNummer.Click += new System.EventHandler(this.tsWeergevenNummer_Click);
             // 
             // statusStrip1
             // 
@@ -721,11 +730,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 24);
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1902, 977);
+            this.tabControl1.Size = new System.Drawing.Size(1902, 971);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -735,7 +744,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1894, 948);
+            this.tabPage1.Size = new System.Drawing.Size(1894, 942);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Controle";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -758,16 +767,16 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1902, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1902, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // tsWeergevenNummer
+            // tsLogBoekLocatie
             // 
-            this.tsWeergevenNummer.Name = "tsWeergevenNummer";
-            this.tsWeergevenNummer.Size = new System.Drawing.Size(134, 24);
-            this.tsWeergevenNummer.Text = "Toggle nummers";
-            this.tsWeergevenNummer.Click += new System.EventHandler(this.tsWeergevenNummer_Click);
+            this.tsLogBoekLocatie.Name = "tsLogBoekLocatie";
+            this.tsLogBoekLocatie.Size = new System.Drawing.Size(139, 26);
+            this.tsLogBoekLocatie.Text = "Opslaan Logboek";
+            this.tsLogBoekLocatie.Click += new System.EventHandler(this.tsLogBoekLocatie_Click);
             // 
             // Form1
             // 
@@ -861,6 +870,7 @@
         private System.Windows.Forms.Label p2;
         private System.Windows.Forms.Panel pnlParkingEnStatus;
         private System.Windows.Forms.ToolStripMenuItem tsWeergevenNummer;
+        private System.Windows.Forms.ToolStripMenuItem tsLogBoekLocatie;
     }
 }
 

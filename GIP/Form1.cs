@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,7 +16,7 @@ namespace GIP
 {
     public partial class Form1 : Form
     {
-        byte[] serieel = new byte[] { 0x30 };
+        //byte[] serieel = new byte[] { 0x30 };
         bool toggleNummers = false;
         public Form1()
         {
@@ -93,6 +96,8 @@ namespace GIP
 
         //Data ontvangen
         //Event waarin alle serieel ontvangen data wordt verwerkt met de nodige extra functies
+
+        int[] parkeerplaatsen = new int[26];
         private void serial_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             string data = serial.ReadLine();
@@ -112,6 +117,10 @@ namespace GIP
                 else if (data.StartsWith("PB")) //Parking Bezet
                 {
                     int parkeerplaats = int.Parse(data.Substring(2));
+                    if (parkeerplaatsen[parkeerplaats] != parkeerplaats)
+                    {
+                        parkeerplaatsen[parkeerplaats]=parkeerplaats;
+                    }
                     AanpassenKleur(parkeerplaats, Color.Red);
                 }
                 else if (data.StartsWith("PL")) //Parking Leeg
@@ -218,14 +227,14 @@ namespace GIP
 
         private void tsWeergevenNummer_Click(object sender, EventArgs e)
         {
+            //private Dictionary<int, Label> labelMap = new Dictionary<int, Label>();
             if (toggleNummers == false)
             {
                 foreach (Label label in pnlParkingEnStatus.Controls.OfType<Label>())
                 {
                     int number = int.Parse(label.Name.Substring(1));
                     label.Tag = number;
-                    labelMap[number] = label;
-                    label.Text = label.Tag.ToString();
+                    label.Text = " "+label.Tag.ToString()+" " ;
                 }
                 toggleNummers = true;
             }
@@ -235,11 +244,29 @@ namespace GIP
                 {
                     int number = int.Parse(label.Name.Substring(1));
                     label.Tag = number;
-                    labelMap[number] = label;
-                    //label.Text = label.Tag.ToString();
-                    label.Text = "   ";
+                    label.Text = "    ";
                 }
                 toggleNummers = false;
+            }
+        }
+
+        bool opslaanLogboek = false;
+        string logboekLocatie;
+        private void tsLogBoekLocatie_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    //"I:\dingetje\test.txt"
+                    logboekLocatie = (fbd.SelectedPath) + @"\" + "Logboek"+DateTime.Now.ToString() + ".txt";
+                    System.Windows.Forms.MessageBox.Show("Logboek wordt opgeslagen in"+logboekLocatie);
+                    StreamWriter streamwriter = new StreamWriter(logboekLocatie);
+                    streamwriter.WriteLine("[" + DateTime.Now.ToString() + "]" + "testje");
+                    streamwriter.Close();
+                    opslaanLogboek = true;
+                }
             }
         }
     }
