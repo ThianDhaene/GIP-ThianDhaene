@@ -5,6 +5,7 @@
 * Author : D'haeneThian
 */
 
+//Toevoegen van alle libraries
 #include <avr/io.h>
 #define F_CPU 3686400L
 #include <avr/interrupt.h>
@@ -16,20 +17,24 @@
 #include <stdio.h>
 #include <string.h>
 
-
+//INIT SERIEEL
 void serieel_init0(void);
-char OmzettenNaarHex(char i, char status);
-
 void sendString0(char s[]);
 void sendChar0(char data);
+char OmzettenNaarHex(char i, char status);
 
+//INIT FUNCTIE INGANGEN
 void init_ingangen(void);
+
+//ARRAY BEZETTEPARKEERPLAATSEN
 char bezetteparkeerplaatsen[27];
 
+//INIT TIMER
 volatile unsigned char ticks1s;
 volatile unsigned char ticks16;
 void init_timer(void);
 
+//VARIABELEN SLAGBOMEN
 char slagboom1 = 1;
 char slagboom2 = 1;
 
@@ -41,12 +46,21 @@ int main(void)
 	
 	DDRD |=(1<<DDRD7);
 	
+	//Statusled knipperen
+	for (int i = 0; i < 10; i++) {
+		PORTD |=(1<<PORTD7);
+		_delay_ms(200);
+		PORTD &=~(1<<PORTD7);
+		_delay_ms(200);
+		i++;
+	}
+	
 	while (1)
 	{
 		//Inlezen alle ingangen
 		//P1
- 		if(PINA &(1<<PINA7)) {bezetteparkeerplaatsen[1]=0; }
- 		if(!(PINA &(1<<PINA7))){bezetteparkeerplaatsen[1]=1; }
+		if(PINA &(1<<PINA7)) {bezetteparkeerplaatsen[1]=0; }
+		if(!(PINA &(1<<PINA7))){bezetteparkeerplaatsen[1]=1; }
 		
 		//P2
 		if(PINA &(1<<PINA4)) {bezetteparkeerplaatsen[2]=0;}
@@ -131,7 +145,7 @@ int main(void)
 		//P26
 		if(PINA &(1<<PINA0)) {bezetteparkeerplaatsen[26]=1;}
 		if(!(PINA &(1<<PINA0))){bezetteparkeerplaatsen[26]=0;}
-			
+		
 		//Slagbomen
 		//In1
 		if (!(PINA &(1<<DDRA6))&&slagboom1==0)
