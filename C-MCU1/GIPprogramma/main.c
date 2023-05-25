@@ -200,18 +200,35 @@ int main(void)
 			
 			//ptr=strstr(rx_buf,"test");
 			
-			if(strstr(rx_buf,"slagboom1-0"))
+			if(strstr(rx_buf,"slagboom10"))
 			{
 				slagboom1=0;
 			}
-			if(strstr(rx_buf,"slagboom1-1"))
+			if(strstr(rx_buf,"slagboom11"))
 			{
 				slagboom1=1;
+				Servo1(90);
 			}
-			if(strstr(rx_buf,"slagboom1-2"))
+			if(strstr(rx_buf,"slagboom12"))
 			{
 				slagboom1=2;
+				Servo1(0);
 			}
+			if(strstr(rx_buf,"slagboom20"))
+			{
+				slagboom2=0;
+			}
+			if(strstr(rx_buf,"slagboom21"))
+			{
+				slagboom2=1;
+				Servo2(90);
+			}
+			if(strstr(rx_buf,"slagboom22"))
+			{
+				slagboom2=2;
+				Servo2(0);
+			}
+			msg=MSG_OLD;
 		}
 		if (ticks4s)
 		{
@@ -789,21 +806,21 @@ ISR(USART0_RX_vect)
 	}
 	I2C(0x46,i2c4);
 	//slagboom1
-	if(data==0x53)
+	if(data==0x53 && slagboom1==0)
 	{
 		Servo1(0);
 	}
-	if(data==0x54)
+	if(data==0x54 && slagboom1==0)
 	{
 		Servo1(90);
 	}
 	
 	//slagboom2
-	if(data==0x55)
+	if(data==0x55 && slagboom2==0) 
 	{
 		Servo2(90);
 	}
-	if(data==0x56)
+	if(data==0x56 && slagboom2==0)
 	{
 		Servo2(180);
 	}
