@@ -199,7 +199,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.p20.AutoSize = true;
-            this.p20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.p20.BackColor = System.Drawing.Color.Green;
             this.p20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.p20.Location = new System.Drawing.Point(1155, 779);
             this.p20.Name = "p20";
