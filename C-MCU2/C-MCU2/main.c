@@ -61,12 +61,12 @@ int main(void)
 		if(!(PINC &(1<<PINC0))){bezetteparkeerplaatsen[4]=0;}
 		
 		//P5
-		if(PINC &(1<<PINC1)) {bezetteparkeerplaatsen[5]=1;}
-		if(!(PINC &(1<<PINC1))){bezetteparkeerplaatsen[5]=0;}
+		//if(PINC &(1<<PINC1)) {bezetteparkeerplaatsen[5]=1;}
+		//if(!(PINC &(1<<PINC1))){bezetteparkeerplaatsen[5]=0;}
 		
 		//P6
-		if(PINC &(1<<PINC2)) {bezetteparkeerplaatsen[6]=1;}
-		if(!(PINC &(1<<PINC2))){bezetteparkeerplaatsen[6]=0;}
+		//if(PINC &(1<<PINC2)) {bezetteparkeerplaatsen[6]=1;}
+		//if(!(PINC &(1<<PINC2))){bezetteparkeerplaatsen[6]=0;}
 		
 		//P7
 		if(PINC &(1<<PINC3)) {bezetteparkeerplaatsen[7]=1;}
