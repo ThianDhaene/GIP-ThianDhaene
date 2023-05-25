@@ -97,39 +97,61 @@ namespace GIP
         //Data ontvangen
         //Event waarin alle serieel ontvangen data wordt verwerkt met de nodige extra functies
 
-        int[] parkeerplaatsen = new int[26];
+        int[] parkeerplaatsen = new int[27];
         private void serial_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             string data = serial.ReadLine();
-            Invoke(new MethodInvoker(delegate ()
+            try
             {
-                lstConsole.Items.Insert(0, data);
-                if (data.Contains("PARKING-OPGESTART"))
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    tsConnectie.Text = "Verbonden";
-                    tsConnectie.ForeColor = Color.Green;
-                }
-                else if (data.StartsWith("B")) // Aantal bezette parkeerplaatsen
-                {
-                    int bezetteparkeerplaatsen = int.Parse(data.Substring(1));
-                    BezetteParkeerplaatsen = bezetteparkeerplaatsen;
-                }
-                else if (data.StartsWith("PB")) //Parking Bezet
-                {
-                    int parkeerplaats = int.Parse(data.Substring(2));
-                    if (parkeerplaatsen[parkeerplaats] != parkeerplaats)
+                    lstConsole.Items.Insert(0, data);
+                    if (data.Contains("PARKING-OPGESTART"))
                     {
-                        parkeerplaatsen[parkeerplaats] = parkeerplaats;
+                        tsConnectie.Text = "Verbonden";
+                        tsConnectie.ForeColor = Color.Green;
                     }
-                    AanpassenKleur(parkeerplaats, Color.Red);
-                }
-                else if (data.StartsWith("PL")) //Parking Leeg
-                {
-                    int parkeerplaats = int.Parse(data.Substring(2));
-                    AanpassenKleur(parkeerplaats, Color.Green);
-                }
-            }));
-
+                    else if (data.StartsWith("B")) // Aantal bezette parkeerplaatsen
+                    {
+                        int bezetteparkeerplaatsen = int.Parse(data.Substring(1));
+                        BezetteParkeerplaatsen = bezetteparkeerplaatsen;
+                    }
+                    else if (data.StartsWith("PB")) //Parking Bezet
+                    {
+                        int parkeerplaats = int.Parse(data.Substring(2));
+                        if (parkeerplaatsen[parkeerplaats] != 1)
+                        {
+                            parkeerplaatsen[parkeerplaats] = 1;
+                            if (File.Exists(logboekLocatie))
+                            {
+                                StreamWriter streamwriter = new StreamWriter(logboekLocatie, true);
+                                streamwriter.WriteLine("[" + DateTime.Now.ToString() + "] " + parkeerplaats.ToString() + " BEZET");
+                                streamwriter.Close();
+                            }
+                        }
+                        AanpassenKleur(parkeerplaats, Color.Red);
+                    }
+                    else if (data.StartsWith("PL")) //Parking Leeg
+                    {
+                        int parkeerplaats = int.Parse(data.Substring(2));
+                        if (parkeerplaatsen[parkeerplaats] != 0)
+                        {
+                            parkeerplaatsen[parkeerplaats] = 0;
+                            if (File.Exists(logboekLocatie))
+                            {
+                                StreamWriter streamwriter = new StreamWriter(logboekLocatie, true);
+                                streamwriter.WriteLine("[" + DateTime.Now.ToString() + "] " + parkeerplaats.ToString() + " LEEG");
+                                streamwriter.Close();
+                            }
+                        }
+                        AanpassenKleur(parkeerplaats, Color.Green);
+                    }
+                }));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Text, ex.Message);
+            }
         }
 
 
@@ -219,10 +241,10 @@ namespace GIP
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (serial.IsOpen)
-            {
-                serial.Close();
-            }
+            //if (serial.IsOpen)
+            //{
+            //    serial.Close();
+            //}
         }
 
         private void tsWeergevenNummer_Click(object sender, EventArgs e)
