@@ -58,7 +58,6 @@ void serieel_init1(void);
 void sendChar1(char data);
 void sendString1(char s[]);
 
-
 //INIT ONTVANGEN VIA C#
 #define MSG_NEW 1
 #define MSG_OLD 2
