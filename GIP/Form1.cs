@@ -119,7 +119,7 @@ namespace GIP
                     int parkeerplaats = int.Parse(data.Substring(2));
                     if (parkeerplaatsen[parkeerplaats] != parkeerplaats)
                     {
-                        parkeerplaatsen[parkeerplaats]=parkeerplaats;
+                        parkeerplaatsen[parkeerplaats] = parkeerplaats;
                     }
                     AanpassenKleur(parkeerplaats, Color.Red);
                 }
@@ -234,7 +234,7 @@ namespace GIP
                 {
                     int number = int.Parse(label.Name.Substring(1));
                     label.Tag = number;
-                    label.Text = " "+label.Tag.ToString()+" " ;
+                    label.Text = " " + label.Tag.ToString() + " ";
                 }
                 toggleNummers = true;
             }
@@ -250,22 +250,24 @@ namespace GIP
             }
         }
 
-        bool opslaanLogboek = false;
         string logboekLocatie;
         private void tsLogBoekLocatie_Click(object sender, EventArgs e)
         {
-            using (var fbd = new FolderBrowserDialog())
+            using (var fbd = new OpenFileDialog())
             {
+                fbd.Filter = "txt files (*.txt)|*.txt";
+                fbd.Title = "Kies of maak een .txt bestand";
                 DialogResult result = fbd.ShowDialog();
-                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.ToString()))
                 {
-                    //"I:\dingetje\test.txt"
-                    logboekLocatie = (fbd.SelectedPath) + @"\" + "Logboek"+DateTime.Now.ToString() + ".txt";
-                    System.Windows.Forms.MessageBox.Show("Logboek wordt opgeslagen in"+logboekLocatie);
-                    StreamWriter streamwriter = new StreamWriter(logboekLocatie);
-                    streamwriter.WriteLine("[" + DateTime.Now.ToString() + "]" + "testje");
-                    streamwriter.Close();
-                    opslaanLogboek = true;
+                    logboekLocatie = (fbd.FileName.ToString());
+                    System.Windows.Forms.MessageBox.Show("Logboek wordt opgeslagen in" + logboekLocatie);
+                    if (File.Exists(logboekLocatie))
+                    {
+                        StreamWriter streamwriter = new StreamWriter(logboekLocatie, true);
+                        streamwriter.WriteLine("[" + DateTime.Now.ToString() + "]" + "LOGBOEK GEOPEND");
+                        streamwriter.Close();
+                    }
                 }
             }
         }

@@ -176,9 +176,9 @@
             this.pnlParkingEnStatus.Controls.Add(this.p13);
             this.pnlParkingEnStatus.Controls.Add(this.pbParking);
             this.pnlParkingEnStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlParkingEnStatus.Location = new System.Drawing.Point(0, 30);
+            this.pnlParkingEnStatus.Location = new System.Drawing.Point(0, 28);
             this.pnlParkingEnStatus.Name = "pnlParkingEnStatus";
-            this.pnlParkingEnStatus.Size = new System.Drawing.Size(1888, 908);
+            this.pnlParkingEnStatus.Size = new System.Drawing.Size(1888, 910);
             this.pnlParkingEnStatus.TabIndex = 28;
             // 
             // p14
@@ -551,7 +551,7 @@
             this.pbParking.Image = global::GIP.Properties.Resources.garagesticker;
             this.pbParking.Location = new System.Drawing.Point(0, 0);
             this.pbParking.Name = "pbParking";
-            this.pbParking.Size = new System.Drawing.Size(1888, 908);
+            this.pbParking.Size = new System.Drawing.Size(1888, 910);
             this.pbParking.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbParking.TabIndex = 1;
             this.pbParking.TabStop = false;
@@ -566,7 +566,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(1888, 30);
+            this.menuStrip2.Size = new System.Drawing.Size(1888, 28);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
