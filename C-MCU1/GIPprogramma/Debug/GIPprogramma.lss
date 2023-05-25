@@ -2199,6 +2199,7 @@ char Servo2(unsigned char graden)
 			}
 			msg=MSG_OLD;
      cc2:	d0 93 00 01 	sts	0x0100, r29	; 0x800100 <__data_start>
+			//strcpy(rx_buf,"");
 		}
 		if (ticks4s)
      cc6:	80 91 21 02 	lds	r24, 0x0221	; 0x800221 <ticks4s>
@@ -2295,7 +2296,7 @@ char Servo2(unsigned char graden)
      d54:	f1 f7       	brne	.-4      	; 0xd52 <main+0x306>
      d56:	00 c0       	rjmp	.+0      	; 0xd58 <main+0x30c>
      d58:	00 00       	nop
-			msg=MSG_OLD;
+			//strcpy(rx_buf,"");
 		}
 		if (ticks4s)
 		{

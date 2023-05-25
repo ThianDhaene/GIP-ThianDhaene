@@ -229,6 +229,7 @@ int main(void)
 				Servo2(0);
 			}
 			msg=MSG_OLD;
+			//strcpy(rx_buf,"");
 		}
 		if (ticks4s)
 		{
