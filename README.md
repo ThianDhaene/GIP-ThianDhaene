@@ -1,11 +1,11 @@
 # GIP6ICT
 Dit is de repository van mijn GIP
 
-## Aansluiten parkeergarage
+### Aansluiten parkeergarage
 1. Voedingsadapter verbinden met de connector.
 2. De 4 draden van de MAX232 module verbinden met overeenstemmende connectoren en aansluiten op een beschikbare USB poort
 
-## Handleiding voor opstarten van de garage
+### Handleiding voor opstarten van de garage
 1. Opstarten C# applicatie.
    * starten van .exe bestand
 3. Seriële poort selecteren.
