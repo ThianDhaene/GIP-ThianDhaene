@@ -283,7 +283,7 @@ namespace GIP
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.ToString()))
                 {
                     logboekLocatie = (fbd.FileName.ToString());
-                    System.Windows.Forms.MessageBox.Show("Logboek wordt opgeslagen in" + logboekLocatie);
+                    System.Windows.Forms.MessageBox.Show("Logboek wordt opgeslagen in: " + logboekLocatie);
                     if (File.Exists(logboekLocatie))
                     {
                         StreamWriter streamwriter = new StreamWriter(logboekLocatie, true);
