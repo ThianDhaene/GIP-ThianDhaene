@@ -277,7 +277,7 @@ namespace GIP
         {
             using (var fbd = new OpenFileDialog())
             {
-                fbd.Filter = "txt files (*.txt)|*.txt";
+                fbd.Filter = ".txt files (*.txt)|*.txt";
                 fbd.Title = "Kies of maak een .txt bestand";
                 DialogResult result = fbd.ShowDialog();
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.ToString()))
