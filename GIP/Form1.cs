@@ -59,6 +59,7 @@ namespace GIP
                     lstConsole.Items.Insert(0, "Nieuwe poort geopend:" + poort);
                     lstConsole.Items.Insert(0, "Start de garage op en wacht op bevestiging");
                     lstPoort.Enabled = false;
+                    lblConnect.Visible = false;
                 }
             }
             catch (System.Exception ex)

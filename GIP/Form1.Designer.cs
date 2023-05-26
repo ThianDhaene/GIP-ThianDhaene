@@ -87,6 +87,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lblConnect = new System.Windows.Forms.Label();
             this.pnlConnect.SuspendLayout();
             this.pnlBesturing.SuspendLayout();
             this.pnlParkingEnStatus.SuspendLayout();
@@ -119,7 +120,7 @@
             this.pnlConnect.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlConnect.MinimumSize = new System.Drawing.Size(0, 50);
             this.pnlConnect.Name = "pnlConnect";
-            this.pnlConnect.Size = new System.Drawing.Size(2126, 200);
+            this.pnlConnect.Size = new System.Drawing.Size(2121, 200);
             this.pnlConnect.TabIndex = 1;
             // 
             // lstPoort
@@ -765,12 +766,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblConnect);
             this.tabPage2.Controls.Add(this.pnlConnect);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(2132, 1181);
+            this.tabPage2.Size = new System.Drawing.Size(2127, 1185);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Verbinden";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -785,6 +787,16 @@
             this.menuStrip1.Size = new System.Drawing.Size(2135, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lblConnect
+            // 
+            this.lblConnect.AutoSize = true;
+            this.lblConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnect.Location = new System.Drawing.Point(8, 206);
+            this.lblConnect.Name = "lblConnect";
+            this.lblConnect.Size = new System.Drawing.Size(264, 25);
+            this.lblConnect.TabIndex = 2;
+            this.lblConnect.Text = "Kies de correcte seriële poort";
             // 
             // Form1
             // 
@@ -816,6 +828,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -880,6 +893,7 @@
         private System.Windows.Forms.Panel pnlParkingEnStatus;
         private System.Windows.Forms.ToolStripMenuItem tsWeergevenNummer;
         private System.Windows.Forms.ToolStripMenuItem tsLogBoekLocatie;
+        private System.Windows.Forms.Label lblConnect;
     }
 }
 
