@@ -484,22 +484,22 @@ ISR(USART0_RX_vect)
 		}
 	}
 	//P5
-	if(data==0x09)
-	{
-		if(bezetteparkeerplaatsen[5]!=0)
-		{
-			bezetteparkeerplaatsen[5]=0;
-			if(i2c1>=16) i2c1-=16;
-		}
-	}
-	if(data==0x10)
-	{
-		if(bezetteparkeerplaatsen[5]!=1)
-		{
-			bezetteparkeerplaatsen[5]=1;
-			i2c1+=16;
-		}
-	}
+	//if(data==0x09)
+	//{
+		//if(bezetteparkeerplaatsen[5]!=0)
+		//{
+			//bezetteparkeerplaatsen[5]=0;
+			//if(i2c1>=16) i2c1-=16;
+		//}
+	//}
+	//if(data==0x10)
+	//{
+		//if(bezetteparkeerplaatsen[5]!=1)
+		//{
+			//bezetteparkeerplaatsen[5]=1;
+			//i2c1+=16;
+		//}
+	//}
 	//P6
 	if(data==0x11)
 	{
